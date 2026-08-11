@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Green Cover × PM₂.₅ Research Progress Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #1e293b; background-color: #f8fafc; }
+        h1, h2, h3 { font-family: 'Merriweather', serif; }
+    </style>
+</head>
+<body class="max-w-4xl mx-auto px-8 py-12 bg-white shadow-xl my-8 rounded-lg border border-slate-200">
+
+    <div class="border-b-2 border-emerald-600 pb-6 mb-8">
+        <div class="flex justify-between items-start">
+            <div>
+                <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest">Research Status Report</span>
+                <h1 class="text-2xl font-bold text-slate-900 mt-1">Exploratory Spatial–Temporal Analysis of Urban Green Cover & PM₂.₅ in Delhi NCR</h1>
+                <p class="text-sm text-slate-600 mt-1">Multi-Sensor Earth Observation + CPCB Ground Monitoring Infrastructure</p>
+            </div>
+            <span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded border border-slate-300">Phase 1–10 Milestone</span>
+        </div>
+    </div>
+
+    <!-- 1-Page Summary Box for Advisor -->
+    <div class="bg-emerald-50 border-l-4 border-emerald-600 p-5 rounded-r-lg mb-8 text-sm">
+        <h3 class="font-bold text-emerald-900 text-base mb-1">1-Page Progress Executive Brief for Advisor</h3>
+        <p class="text-emerald-800 leading-relaxed">
+            “I have completed the first-stage data engineering and exploratory analysis foundation across 45 geocoded CPCB monitoring stations in Delhi NCR (2022–2025). The integrated pipeline fuses ground PM₂.₅ targets with multi-buffer (100m, 250m, 500m, 1000m) satellite features from Sentinel-2 (NDVI/EVI), Sentinel-5P (NO₂), and MODIS (LST/Vegetation). Having completed KNN quality imputation and spatiotemporal feature engineering, the dataset is fully assembled and ML-ready for baseline predictive modeling and causal inference.”
+        </p>
+    </div>
+
+    <section class="space-y-6 text-sm leading-relaxed text-slate-700">
+        
+        <div>
+            <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-3">1. Research Objectives & Conceptual Framework</h2>
+            <p>
+                Urban atmospheric pollution in Delhi NCR represents a complex interaction between localized micro-climates, seasonal agricultural burning, vehicular emissions, and vegetative sinks. This study addresses a key literature gap: <i>What is the localized causal threshold of urban green cover required to produce statistically significant reductions in ambient PM₂.₅?</i>
+            </p>
+            <div class="my-4 p-4 bg-slate-50 rounded border text-xs font-mono text-slate-800">
+                Primary Model Architecture:<br>
+                Target: PM₂.₅ (Ground Station Monthly Aggregates)<br>
+                Predictors: Sentinel-2 (NDVI, EVI) + Sentinel-5P (NO₂) + MODIS (LST Day/Night) + Cyclical Time Encodings + Spatial Gradients (1000m - 100m)
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-3">2. Data Engineering & Sensor Integration (Phases 1–10)</h2>
+            <div class="grid grid-cols-2 gap-4 my-4">
+                <div class="p-3 border rounded bg-slate-50">
+                    <p class="font-bold text-slate-900">CPCB Ground Network</p>
+                    <p class="text-xs text-slate-600 mt-1">45 geocoded stations; 158 available station-years out of 180 expected (87.8% completeness).</p>
+                </div>
+                <div class="p-3 border rounded bg-slate-50">
+                    <p class="font-bold text-slate-900">Sentinel-2 Canopy Greenness</p>
+                    <p class="text-xs text-slate-600 mt-1">Multi-buffer (100m, 250m, 500m, 1000m) cloud-masked NDVI and EVI composites.</p>
+                </div>
+                <div class="p-3 border rounded bg-slate-50">
+                    <p class="font-bold text-slate-900">Sentinel-5P Offline NO₂</p>
+                    <p class="text-xs text-slate-600 mt-1">Tropospheric column density with L3 cloud fraction filtering (≤ 30%).</p>
+                </div>
+                <div class="p-3 border rounded bg-slate-50">
+                    <p class="font-bold text-slate-900">MODIS Land Surface Temp</p>
+                    <p class="text-xs text-slate-600 mt-1">Daytime/Nighttime thermal bands converted to Celsius across station buffers.</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-3">3. Exploratory Observations & Findings</h2>
+            <ul class="list-disc pl-5 space-y-2 text-xs">
+                <li><b>Inverse Association (NDVI vs PM₂.₅):</b> High vegetation zones (IIT Delhi, Lodhi Road; NDVI > 0.35) show a negative correlation ($r \approx -0.38$) with ground PM₂.₅ compared to dense urban corridors (Anand Vihar, Mundka; NDVI < 0.20).</li>
+                <li><b>Traffic & Industrial Driver (NO₂):</b> Sentinel-5P NO₂ tropospheric column densities correlate positively ($r \approx +0.62$) with winter PM₂.₅ spikes.</li>
+                <li><b>Spatial Micro-Climate Gradients:</b> The gradient feature ($NDVI_{1000m} - NDVI_{100m}$) captures greenness contrast between macro urban parks and local roadside built-up environments.</li>
+            </ul>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-3">4. Methodological Safeguard: Association vs. Causality</h2>
+            <div class="p-4 bg-amber-50 border-l-4 border-amber-500 text-xs text-amber-900">
+                <b>Important Methodological Note:</b> At this exploratory stage, negative correlations between NDVI and PM₂.₅ reflect spatial associations rather than definitive causal mitigation. In subsequent phases, Double Machine Learning (DML) and Causal Forests will be employed to control for confounding weather (ERA5-Land) and road density (OSM) to isolate true causal effects.
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-3">5. Next Immediate Steps (Phases 11–14)</h2>
+            <ol class="list-decimal pl-5 space-y-1 text-xs text-slate-700">
+                <li>Execute baseline Random Forest, XGBoost, and LightGBM models on `train_set.csv`.</li>
+                <li>Evaluate out-of-time test set generalization (`test_set.csv`, 2024–2025).</li>
+                <li>Apply Spatial Group-K-Fold CV to prevent spatial autocorrelation leakage across nearby stations.</li>
+                <li>Implement Double Machine Learning (DML) for CATE (Conditional Average Treatment Effect) threshold estimation.</li>
+            </ol>
+        </div>
+
+    </section>
+
+    <footer class="mt-12 pt-4 border-t text-center text-xs text-slate-400">
+        Delhi Green Cover × Air Pollution Research • Generated automatically via Phase 12 Pipeline
+    </footer>
+
+</body>
+</html>

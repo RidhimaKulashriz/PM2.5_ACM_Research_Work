@@ -1,0 +1,6 @@
+check,count,status
+Duplicate Station Names,0,PASS
+Duplicate Coordinates,0,PASS
+Latitudes out of Delhi bounds,0,PASS
+Longitudes out of Delhi bounds,0,PASS
+Missing Coordinates,0,PASS

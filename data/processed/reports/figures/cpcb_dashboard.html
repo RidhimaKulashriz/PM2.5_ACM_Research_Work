@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPCB Delhi Air Quality — Data Audit & EDA Dashboard</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --text:#172033; --muted:#667085;
+  --line:#e6eaf0; --accent:#315efb; --accent2:#12a594;
+  --warn:#d97706; --danger:#dc3545; --shadow:0 8px 30px rgba(31,41,55,.07);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.container{max-width:1450px;margin:auto;padding:28px}
+.hero{background:linear-gradient(135deg,#111827,#243b73);color:white;border-radius:24px;padding:38px 42px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-90px;top:-120px;background:rgba(255,255,255,.08)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;opacity:.75;font-weight:700}
+h1{font-size:clamp(30px,4vw,48px);margin:8px 0 8px;letter-spacing:-.03em}
+.hero p{max-width:850px;color:#d9e1f2;margin:0;font-size:16px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.badge{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);padding:7px 11px;border-radius:999px;font-size:13px}
+.section{margin-top:30px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:14px}
+h2{font-size:25px;margin:0;letter-spacing:-.02em}
+h3{font-size:17px;margin:0 0 5px}
+.small{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:var(--shadow)}
+.metric .label{font-size:13px;color:var(--muted);font-weight:600}
+.metric .value{font-size:34px;font-weight:800;margin:4px 0}
+.metric .sub{font-size:12px;color:var(--muted)}
+.metric.good .value{color:var(--accent2)}
+.metric.warn .value{color:var(--warn)}
+.metric.info .value{color:var(--accent)}
+.metric.danger .value{color:var(--danger)}
+.coverage{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.summary-list{display:grid;gap:10px;margin-top:15px}
+.row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding:10px 0;font-size:14px}
+.row:last-child{border-bottom:0}
+.status{font-weight:700}
+.green{color:var(--accent2)} .orange{color:var(--warn)} .red{color:var(--danger)}
+.figure-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.figure-card{padding:0;overflow:hidden}
+.figure-card img{width:100%;display:block;background:#fafbfc;min-height:180px;object-fit:contain}
+.figure-body{padding:17px 19px}
+.figure-number{font-size:11px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.note{background:#eef4ff;border:1px solid #d7e3ff;border-radius:16px;padding:18px 20px}
+.warning{background:#fff8eb;border:1px solid #fde3ad;border-radius:16px;padding:18px 20px}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#111827;color:#dbeafe;border-radius:13px;padding:16px;overflow:auto;font-size:13px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.link{display:inline-block;text-decoration:none;color:var(--accent);background:#eef3ff;border:1px solid #dbe4ff;padding:9px 12px;border-radius:10px;font-size:13px;font-weight:650}
+.footer{margin:35px 0 10px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}.coverage{grid-template-columns:1fr}}
+@media(max-width:700px){.container{padding:16px}.hero{padding:28px 24px}.grid,.figure-grid{grid-template-columns:1fr}.section-head{display:block}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <div class="eyebrow">Research Data Quality & Exploratory Analysis</div>
+  <h1>CPCB Delhi Air Quality Dashboard</h1>
+  <p>
+    A combined research dashboard presenting the CPCB dataset audit, preprocessing status,
+    station-year coverage and exploratory visualizations for Delhi monitoring stations.
+  </p>
+  <div class="meta">
+    <span class="badge">45 monitoring stations</span>
+    <span class="badge">2022–2025</span>
+    <span class="badge">PM2.5 + PM10</span>
+    <span class="badge">158 available station-years</span>
+    <span class="badge">22 unavailable station-years</span>
+  </div>
+</header>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h2>Dataset at a glance</h2>
+      <div class="small">Initial CPCB audit results before downstream spatial/ML analysis.</div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card metric info">
+      <div class="label">Monitoring stations</div>
+      <div class="value">45</div>
+      <div class="sub">Stations detected in the raw CPCB directory</div>
+    </div>
+    <div class="card metric">
+      <div class="label">Expected station-years</div>
+      <div class="value">180</div>
+      <div class="sub">45 stations × 4 years</div>
+    </div>
+    <div class="card metric good">
+      <div class="label">Available station-years</div>
+      <div class="value">158</div>
+      <div class="sub">87.8% of expected station-years</div>
+    </div>
+    <div class="card metric warn">
+      <div class="label">Unavailable station-years</div>
+      <div class="value">22</div>
+      <div class="sub">12.2% of expected station-years</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="coverage">
+    <div class="card">
+      <h3>Audit interpretation</h3>
+      <p class="small">
+        The audit found 158 readable station-year datasets out of 180 expected combinations.
+        Every available station-year currently contains PM2.5 and PM10 columns according to
+        the audit output.
+      </p>
+      <div class="summary-list">
+        <div class="row"><span>PM2.5 column availability</span><span class="status green">158 / 158</span></div>
+        <div class="row"><span>PM10 column availability</span><span class="status green">158 / 158</span></div>
+        <div class="row"><span>Missing station-years</span><span class="status orange">22 / 180</span></div>
+        <div class="row"><span>Raw data modified</span><span class="status green">No</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Research workflow</h3>
+      <div class="code">
+RAW CPCB DATA<br>
+&nbsp;&nbsp;↓<br>
+01 — DATA AUDIT<br>
+&nbsp;&nbsp;↓<br>
+02 — CLEAN + STANDARDIZE<br>
+&nbsp;&nbsp;↓<br>
+03 — EDA / VISUALIZATION  ← CURRENT STAGE<br>
+&nbsp;&nbsp;↓<br>
+04 — METEOROLOGY + SATELLITE INTEGRATION<br>
+&nbsp;&nbsp;↓<br>
+05 — SPATIAL ML / EXPLAINABILITY
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h2>Audit & quality visualizations</h2>
+      <div class="small">Visualizations generated during the EDA and quality-assessment stage.</div>
+    </div>
+  </div>
+
+  <div class="figure-grid">
+
+    <article class="card figure-card">
+      <img src="eda/01_station_data_coverage.png" alt="Station data coverage">
+      <div class="figure-body"><div class="figure-number">EDA 01</div><h3>Station Data Coverage</h3><div class="small">Number of observations contributed by each monitoring station.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/02_station_mean_pm25.png" alt="Station mean PM2.5">
+      <div class="figure-body"><div class="figure-number">EDA 02</div><h3>Station-wise Mean PM2.5</h3><div class="small">Average PM2.5 concentration across monitoring stations.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/03_station_mean_pm10.png" alt="Station mean PM10">
+      <div class="figure-body"><div class="figure-number">EDA 03</div><h3>Station-wise Mean PM10</h3><div class="small">Average PM10 concentration across monitoring stations.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/03_pm25_distribution.png" alt="PM2.5 distribution">
+      <div class="figure-body"><div class="figure-number">EDA 04</div><h3>PM2.5 Distribution</h3><div class="small">Distribution of observed PM2.5 concentrations.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/04_pm10_distribution.png" alt="PM10 distribution">
+      <div class="figure-body"><div class="figure-number">EDA 05</div><h3>PM10 Distribution</h3><div class="small">Distribution of observed PM10 concentrations.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/05_pm25_vs_pm10_scatter.png" alt="PM2.5 versus PM10 scatter">
+      <div class="figure-body"><div class="figure-number">EDA 06</div><h3>PM2.5 vs PM10</h3><div class="small">Initial relationship between the two particulate-matter measures.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/06_monthly_pm25_trend.png" alt="Monthly PM2.5 trend">
+      <div class="figure-body"><div class="figure-number">EDA 07</div><h3>Monthly PM2.5 Trend</h3><div class="small">Temporal variation in average PM2.5 by month.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/07_monthly_pm10_trend.png" alt="Monthly PM10 trend">
+      <div class="figure-body"><div class="figure-number">EDA 08</div><h3>Monthly PM10 Trend</h3><div class="small">Temporal variation in average PM10 by month.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/08_seasonal_pm25.png" alt="Seasonal PM2.5">
+      <div class="figure-body"><div class="figure-number">EDA 09</div><h3>Seasonal PM2.5</h3><div class="small">Seasonal comparison of PM2.5 concentration.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/09_seasonal_pm10.png" alt="Seasonal PM10">
+      <div class="figure-body"><div class="figure-number">EDA 10</div><h3>Seasonal PM10</h3><div class="small">Seasonal comparison of PM10 concentration.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/10_station_completeness.png" alt="Station completeness">
+      <div class="figure-body"><div class="figure-number">EDA 11</div><h3>Station Completeness</h3><div class="small">Comparison of data completeness across stations.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/11_observations_by_station_year.png" alt="Observations by station and year">
+      <div class="figure-body"><div class="figure-number">EDA 12</div><h3>Observations by Station-Year</h3><div class="small">Observation volume across individual station-year combinations.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/01_station_mean_pm25.png" alt="Additional station PM2.5 visualization">
+      <div class="figure-body"><div class="figure-number">EDA 13</div><h3>Station PM2.5 — Alternate View</h3><div class="small">Additional PM2.5 visualization generated during the exploratory stage.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/02_station_mean_pm10.png" alt="Additional station PM10 visualization">
+      <div class="figure-body"><div class="figure-number">EDA 14</div><h3>Station PM10 — Alternate View</h3><div class="small">Additional PM10 visualization generated during the exploratory stage.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/04_monthly_pm25_trend.png" alt="Additional monthly PM2.5 visualization">
+      <div class="figure-body"><div class="figure-number">EDA 15</div><h3>Monthly PM2.5 — Alternate View</h3><div class="small">Additional temporal visualization generated during the exploratory stage.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/05_seasonal_pm25.png" alt="Additional seasonal PM2.5 visualization">
+      <div class="figure-body"><div class="figure-number">EDA 16</div><h3>Seasonal PM2.5 — Alternate View</h3><div class="small">Additional seasonal visualization generated during the exploratory stage.</div></div>
+    </article>
+
+    <article class="card figure-card">
+      <img src="eda/07_station_year_coverage.png" alt="Station-year coverage">
+      <div class="figure-body"><div class="figure-number">EDA 17</div><h3>Station-Year Coverage</h3><div class="small">Availability of data across the 2022–2025 station-year matrix.</div></div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="warning">
+    <h3>Data-quality note</h3>
+    <p class="small">
+      The 22 unavailable station-years are retained as a data-availability finding rather than
+      being artificially filled. Missing files and missing observations inside an available file
+      are treated as different issues. Extreme or suspicious pollutant observations should be
+      investigated before exclusion; they should not be silently deleted.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h2>Research reports</h2>
+      <div class="small">Keep these alongside the dashboard when presenting the work.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="links">
+      <a class="link" href="../cpcb_file_inventory.csv">File inventory CSV</a>
+      <a class="link" href="../cpcb_column_audit.csv">Column audit CSV</a>
+      <a class="link" href="../cpcb_missing_data_report.csv">Missing-data report CSV</a>
+      <a class="link" href="../cpcb_station_year_summary.csv">Station-year summary CSV</a>
+      <a class="link" href="../cpcb_cleaning_summary.csv">Cleaning summary CSV</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="note">
+    <h3>Current research stage</h3>
+    <p class="small">
+      The dataset has progressed from raw collection through systematic auditing,
+      standardization and exploratory analysis. The next methodological stage is to
+      characterize spatial and temporal patterns and then integrate meteorological and
+      satellite-derived variables for the proposed spatial machine-learning framework.
+    </p>
+  </div>
+</section>
+
+<div class="footer">
+  CPCB Delhi Air Quality Research Dashboard · Prepared for research progress review · 2026
+</div>
+
+</div>
+</body>
+</html>

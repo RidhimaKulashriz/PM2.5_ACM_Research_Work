@@ -1,0 +1,23 @@
+study_area:
+  name: "Delhi"
+  # Bounding box roughly covering Delhi NCT (Long Min, Lat Min, Long Max, Lat Max)
+  bbox: [76.83, 28.40, 77.34, 28.88]
+
+gee:
+  # Replace with your actual Google Cloud Project ID mapped to Earth Engine
+  project_id: "delhi-pm25-research" 
+
+time_period:
+  years: [2022, 2023, 2024, 2025]
+  months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+spatial:
+  buffers_m: [100, 250, 500, 1000]
+  # CRS for extraction (WGS 84)
+  crs: "EPSG:4326"
+
+satellite:
+  sentinel2:
+    # 0.60 is the recommended threshold for Cloud Score+ cs_cdf
+    cloud_score_plus_threshold: 0.60 
+    scale_m: 10

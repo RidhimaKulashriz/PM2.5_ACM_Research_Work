@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Delhi NCR PM2.5 & Green Cover Research Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#667085;--line:#e6e9ef;--blue:#3157d5;--green:#19866b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}
+.wrap{max-width:1400px;margin:auto;padding:26px}header{padding:34px;border-radius:20px;color:white;background:linear-gradient(135deg,#172554,#3157d5);margin-bottom:20px}
+h1{margin:7px 0;font-size:34px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:11px;opacity:.8;font-weight:bold}
+.sub{max-width:900px;line-height:1.6;opacity:.9}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.pill{padding:7px 11px;border:1px solid #ffffff44;border-radius:99px;background:#ffffff15;font-size:12px}
+nav{position:sticky;top:8px;z-index:5;background:#fffffff2;border:1px solid var(--line);padding:7px;border-radius:13px;display:flex;gap:5px;overflow:auto;margin-bottom:20px}
+nav button{border:0;background:transparent;padding:10px 14px;border-radius:8px;color:var(--muted);font-weight:700;cursor:pointer;white-space:nowrap}nav button.active,nav button:hover{background:#eef2ff;color:var(--blue)}
+.tab{display:none}.tab.active{display:block}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px;box-shadow:0 5px 18px #10182808}
+.label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:bold}.value{font-size:29px;font-weight:800;margin:8px 0}.note,.desc{font-size:12px;color:var(--muted)}
+.chart{height:280px}.title{font-size:15px;font-weight:800}.section{margin:24px 0 11px;font-size:19px}
+.callout{padding:15px;border-left:4px solid var(--blue);background:#f7f9ff;border-radius:9px;font-size:13px;line-height:1.6}.warn{background:#fff9ed;border-left-color:#b7791f}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}th{font-size:11px;color:var(--muted);text-transform:uppercase}
+.badge{display:inline-block;padding:5px 9px;border-radius:99px;font-size:11px;font-weight:bold}.done{background:#eaf8f2;color:#14795d}.next{background:#fff5df;color:#946318}.plan{background:#f0f2f5;color:#68707d}
+.bar{height:8px;background:#edf0f4;border-radius:99px;margin:9px 0}.bar span{display:block;height:100%;background:var(--blue);border-radius:99px}
+.map{height:380px;border:1px solid var(--line);border-radius:12px;position:relative;overflow:hidden;background:linear-gradient(140deg,#edf3f7,#fafafa)}.map:before{content:"";position:absolute;inset:-20%;background-image:linear-gradient(#64748b14 1px,transparent 1px),linear-gradient(90deg,#64748b14 1px,transparent 1px);background-size:42px 42px;transform:rotate(-7deg)}
+.dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--blue);border:3px solid white;box-shadow:0 2px 7px #0003;z-index:2}.legend{position:absolute;bottom:12px;left:12px;background:white;border:1px solid var(--line);padding:8px;border-radius:8px;font-size:11px;z-index:3}
+footer{text-align:center;color:var(--muted);font-size:11px;margin:25px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}.two,.three{grid-template-columns:1fr}}@media(max-width:600px){.wrap{padding:12px}header{padding:24px}h1{font-size:27px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap">
+<header><div class="eyebrow">Research Progress Dashboard · Delhi NCR</div>
+<h1>Urban Green Cover, Spatial Pollution & PM₂.₅</h1>
+<div class="sub">Exploratory integration of CPCB ground observations with satellite and environmental covariates, designed as the evidence layer for later predictive, causal and spatial-heterogeneity analysis.</div>
+<div class="pills"><span class="pill">1,615 matched samples</span><span class="pill">Train ≤ 2023: 806</span><span class="pill">Test ≥ 2024: 809</span><span class="pill">Causal analysis: next phase</span></div></header>
+
+<nav>
+<button class="active" onclick="tab('overview',this)">Overview</button><button onclick="tab('air',this)">Air Quality</button>
+<button onclick="tab('green',this)">Green Cover</button><button onclick="tab('drivers',this)">Pollution Drivers</button>
+<button onclick="tab('spatial',this)">Spatial</button><button onclick="tab('quality',this)">Data Quality</button><button onclick="tab('progress',this)">Research Progress</button>
+</nav>
+
+<section id="overview" class="tab active">
+<div class="grid">
+<div class="card"><div class="label">Matched observations</div><div class="value">1,615</div><div class="note">CPCB target + feature integration</div></div>
+<div class="card"><div class="label">Training samples</div><div class="value">806</div><div class="note">Year ≤ 2023</div></div>
+<div class="card"><div class="label">Held-out samples</div><div class="value">809</div><div class="note">Year ≥ 2024</div></div>
+<div class="card"><div class="label">Stations</div><div class="value">45</div><div class="note">Project station inventory</div></div></div>
+<div class="two"><div class="card"><div class="title">Research architecture</div>
+<p class="desc">Ground layer → CPCB PM₂.₅/PM₁₀, gaseous pollutants and meteorology.</p>
+<p class="desc">Remote sensing → Sentinel-2 vegetation, MODIS MAIAC AOD and Sentinel-5P NO₂.</p>
+<p class="desc">Controls → ERA5-Land, OSM, WorldPop, ESA WorldCover and landscape structure.</p>
+<p class="desc">Inference → predictive ML → DML/Causal Forest → MGWR.</p></div>
+<div class="card"><div class="title">Chronological train/test split</div><div class="chart"><canvas id="split"></canvas></div></div></div>
+<h2 class="section">Primary research question</h2>
+<div class="card callout"><b>How much urban green cover is associated with measurable reductions in PM₂.₅, and how does that relationship vary spatially after accounting for pollution, meteorological and built-environment confounders?</b><br><br>This dashboard is exploratory; it does <b>not</b> claim that NDVI causes lower PM₂.₅.</div>
+</section>
+
+<section id="air" class="tab">
+<div class="grid">
+<div class="card"><div class="label">Target</div><div class="value">PM₂.₅</div><div class="note">CPCB ground observations</div></div>
+<div class="card"><div class="label">Complementary pollutant</div><div class="value">PM₁₀</div><div class="note">Master-table variable</div></div>
+<div class="card"><div class="label">Meteorological fields</div><div class="value">9+</div><div class="note">AT, RH, WS, WD, RF, SR, BP, etc.</div></div>
+<div class="card"><div class="label">Raw temporal scale</div><div class="value">Hourly</div><div class="note">Before aggregation</div></div></div>
+<div class="two"><div class="card"><div class="title">Illustrative seasonal PM₂.₅ structure</div><div class="note">Replace with aggregated values from the final CSV.</div><div class="chart"><canvas id="pm"></canvas></div></div>
+<div class="card"><div class="title">Master dataset fields</div><table><tr><th>Group</th><th>Variables</th></tr><tr><td>Pollutants</td><td>PM₂.₅, PM₁₀, NO, NO₂, NOx, NH₃, SO₂, CO, Ozone, VOCs</td></tr><tr><td>Meteorology</td><td>AT, RH, WS, WD, RF, TOT-RF, SR, BP, VWS</td></tr><tr><td>Quality</td><td>Negative, extreme and consistency flags</td></tr></table></div></div>
+</section>
+
+<section id="green" class="tab">
+<div class="grid"><div class="card"><div class="label">Primary treatment</div><div class="value">NDVI</div><div class="note">Vegetation greenness</div></div><div class="card"><div class="label">Vegetation</div><div class="value">NDVI · EVI</div><div class="note">Sentinel-2 layer</div></div><div class="card"><div class="label">Built environment</div><div class="value">NDBI</div><div class="note">Spatial control</div></div><div class="card"><div class="label">Water context</div><div class="value">NDWI</div><div class="note">Spatial control</div></div></div>
+<div class="two"><div class="card"><div class="title">NDVI distribution</div><div class="note">Awaiting final satellite-feature join.</div><div class="chart"><canvas id="ndvi"></canvas></div></div>
+<div class="card"><div class="title">PM₂.₅ vs NDVI</div><div class="note">Exploratory association only.</div><div class="chart"><canvas id="scatter"></canvas></div></div></div>
+<div class="card callout warn" style="margin-top:16px"><b>Interpretation guardrail:</b> a negative PM₂.₅–NDVI association would be correlational. A causal effect and an NDVI threshold require the planned DML/Causal Forest stage.</div>
+</section>
+
+<section id="drivers" class="tab"><div class="two"><div class="card"><div class="title">Driver correlation matrix</div><div class="note">Calculate from the final integrated dataset.</div><div class="chart"><canvas id="corr"></canvas></div></div>
+<div class="card"><div class="title">Control-variable rationale</div><table><tr><th>Variable</th><th>Role</th></tr><tr><td>NO₂</td><td>Traffic / combustion proxy</td></tr><tr><td>AOD</td><td>Aerosol burden signal</td></tr><tr><td>Temperature</td><td>Seasonal / atmospheric control</td></tr><tr><td>Humidity</td><td>Particle growth / retrieval influence</td></tr><tr><td>Wind</td><td>Dispersion / transport</td></tr><tr><td>Road density</td><td>Built-environment proxy</td></tr><tr><td>Population</td><td>Urban intensity control</td></tr></table></div></div></section>
+
+<section id="spatial" class="tab"><div class="two"><div class="card"><div class="title">Monitoring network</div><div class="note">Schematic until station coordinates are joined to the final dataset.</div><div class="map">
+<span class="dot" style="left:42%;top:33%"></span><span class="dot" style="left:54%;top:42%"></span><span class="dot" style="left:62%;top:55%"></span><span class="dot" style="left:35%;top:55%"></span><span class="dot" style="left:49%;top:63%"></span><span class="dot" style="left:70%;top:35%"></span><span class="dot" style="left:27%;top:42%"></span><span class="dot" style="left:58%;top:25%"></span><div class="legend">● monitoring station · schematic</div></div></div>
+<div class="card"><div class="title">Spatial analysis plan</div><p><span class="badge done">COMPLETE</span> Data alignment</p><div class="bar"><span style="width:100%"></span></div><p class="desc">Station observations matched to the current pipeline.</p><p><span class="badge next">IN PROGRESS</span> Predictive spatial ML</p><div class="bar"><span style="width:35%"></span></div><p class="desc">Baseline models + spatial cross-validation.</p><p><span class="badge plan">PLANNED</span> Causal spatial inference</p><div class="bar"><span style="width:10%"></span></div><p class="desc">DML/Causal Forest + MGWR.</p></div></div></section>
+
+<section id="quality" class="tab"><div class="grid"><div class="card"><div class="label">Matched</div><div class="value">1,615</div></div><div class="card"><div class="label">Train share</div><div class="value">49.9%</div></div><div class="card"><div class="label">Test share</div><div class="value">50.1%</div></div><div class="card"><div class="label">Split</div><div class="value">Temporal</div></div></div>
+<div class="card"><table><tr><th>Quality check</th><th>Status</th><th>Purpose</th></tr><tr><td>Negative PM₂.₅</td><td><span class="badge done">FLAGGED</span></td><td>Physical plausibility</td></tr><tr><td>Extreme PM₂.₅</td><td><span class="badge done">FLAGGED</span></td><td>Review extreme events</td></tr><tr><td>PM₁₀ &lt; PM₂.₅</td><td><span class="badge done">FLAGGED</span></td><td>Logical consistency</td></tr><tr><td>Target-feature matching</td><td><span class="badge done">SUCCESS</span></td><td>1,615 matched samples</td></tr><tr><td>Satellite completeness</td><td><span class="badge next">TO QUANTIFY</span></td><td>Final feature table required</td></tr></table></div></section>
+
+<section id="progress" class="tab"><div class="three">
+<div class="card"><span class="badge done">COMPLETE</span><h3>1 · Literature & scoping</h3><p class="desc">Research gap, variables and causal framework defined.</p></div>
+<div class="card"><span class="badge done">COMPLETE</span><h3>2 · CPCB cleaning</h3><p class="desc">Target data audited and quality flags established.</p></div>
+<div class="card"><span class="badge done">COMPLETE</span><h3>3 · Target integration</h3><p class="desc">1,615 matched samples with chronological split.</p></div>
+<div class="card"><span class="badge next">IN PROGRESS</span><h3>4 · Feature engineering</h3><p class="desc">Finalize satellite/environmental features and completeness.</p></div>
+<div class="card"><span class="badge plan">NEXT</span><h3>5 · Baseline ML</h3><p class="desc">Random Forest / Gradient Boosting + spatial CV.</p></div>
+<div class="card"><span class="badge plan">NEXT</span><h3>6 · Causal & spatial inference</h3><p class="desc">DML/Causal Forest followed by MGWR.</p></div></div>
+<h2 class="section">Supervisor-ready interpretation</h2><div class="card callout">The project has moved from literature review into an auditable data pipeline: CPCB observations are cleaned and integrated, the temporal split is explicit, data-quality checks are retained, and causal claims are intentionally deferred until the formal causal-inference stage.</div></section>
+
+<footer>Exploratory research dashboard · Values based on uploaded project records. Placeholder charts are explicitly labelled.</footer>
+</div>
+<script>
+function tab(id,b){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+const opt={responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true}}};
+new Chart(split,{type:'doughnut',data:{labels:['Train ≤2023','Test ≥2024'],datasets:[{data:[806,809]}]},options:opt});
+new Chart(pm,{type:'bar',data:{labels:['Winter','Pre-monsoon','Monsoon','Post-monsoon'],datasets:[{label:'Illustrative only',data:[171,72,32,92]}]},options:opt});
+new Chart(ndvi,{type:'bar',data:{labels:['0-.1','.1-.2','.2-.3','.3-.4','.4-.5','.5-.6','.6+'],datasets:[{label:'Awaiting data',data:[0,0,0,0,0,0,0]}]},options:opt});
+new Chart(scatter,{type:'scatter',data:{datasets:[{label:'Awaiting final satellite join',data:[]}]},options:{...opt,scales:{x:{title:{display:true,text:'NDVI'}},y:{title:{display:true,text:'PM₂.₅ (µg/m³)'}}}}});
+new Chart(corr,{type:'bar',data:{labels:['NDVI','NO₂','AOD','Temp','RH','Wind'],datasets:[{label:'Calculate from final data',data:[0,0,0,0,0,0]}]},options:{...opt,indexAxis:'y',scales:{x:{min:-1,max:1,title:{display:true,text:'Correlation'}}}}});
+</script></body></html>
