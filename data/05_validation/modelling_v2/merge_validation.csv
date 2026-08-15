@@ -1,0 +1,6 @@
+merge_name,left_rows,right_rows,result_rows,key,validation_status
+GLOBAL_STATS,1615,1615,1615,Stations: 35,PASS
+ERA5,1615,1615,1615,"['station', 'year', 'month']",SUCCESS
+WorldPop,1615,1615,1615,"['station', 'year', 'month']",SUCCESS
+OSM,1615,1615,1615,"['station', 'year', 'month']",SUCCESS
+WorldCover,1615,1615,1615,"['station', 'year', 'month']",SUCCESS

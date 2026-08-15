@@ -29,4 +29,7 @@ desktop.ini
 
 *.pkl
 *.pickle
-*.joblib
+*.joblibcache/
+data/01_raw/
+
+cache/
