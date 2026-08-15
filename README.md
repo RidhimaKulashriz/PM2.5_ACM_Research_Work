@@ -112,13 +112,12 @@ Planned data sources include:
 
 | Data Source     | Purpose                                |
 | --------------- | -------------------------------------- |
-| CPCB            | Ground PM₂.₅ observations              |
-| MODIS MAIAC AOD | Aerosol optical depth                  |
-| Sentinel-2      | Vegetation and land-surface indicators |
-| Sentinel-5P     | Atmospheric NO₂                        |
-| ERA5-Land       | Meteorological variables               |
-| ESA WorldCover  | Land-use / land-cover information      |
-| OpenStreetMap   | Urban and infrastructure features      |
+| CPCB            | Ground PM₂.₅ observations              | done
+| Sentinel-2      | Vegetation and land-surface indicators | done
+| Sentinel-5P     | Atmospheric NO₂                        | done
+| ERA5-Land       | Meteorological variables               | done
+| ESA WorldCover  | Land-use / land-cover information      | done 
+| OpenStreetMap   | Urban and infrastructure features      | done
 
 The objective is to construct a **spatially aligned multimodal dataset** for Delhi NCR.
 
