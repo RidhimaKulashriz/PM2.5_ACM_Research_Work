@@ -97,6 +97,16 @@ The implementation added the following files:
 | `data/modeling/results/` | Stores metrics, fitted models, feature importance, and split-distribution outputs. |
 | `requirements.txt` | Adds LightGBM as an explicit dependency. |
 
+## 6. Follow-up leakage and overfitting audit
+
+A follow-up audit confirmed that the pipeline is leakage-safe at the row-key and preprocessing levels. The master, train, and test schemas match; there are no duplicate `(station, year, month)` keys; train/test key overlap is zero; the split union equals the master key universe; all four years appear in both partitions; and IIT Delhi remains train-only. The feature audit found no numeric predictor names containing `pm25` or `pm_25`, and no nonnumeric predictors were silently discarded. Median imputation and Ridge scaling are fitted inside each model pipeline rather than on the complete dataset.
+
+The main risk is evaluation-design failure rather than direct leakage. The locked test partition contains 261 October/November observations and has mean PM2.5 of 164.67, while training contains only six October/November observations and has mean 85.21. This creates an approximately 79.46-unit target-mean difference. The expanded audit also compared random K-fold, station-year grouped, station grouped, and year grouped validation; the tree-based models remained strong under grouped validation, while Ridge was unstable, especially for station-held-out evaluation.
+
+A target-free month/year-aware alternative split was generated without overwriting the locked split. It preserves 1,292 training rows, 323 test rows, all four years in both partitions, and the IIT Delhi train-only constraint. It assigns 26–27 test rows per month, resulting in train/test target means of 100.65 and 102.91. On this alternative split, Random Forest achieved test R² 0.920 with an absolute train/test R² gap of 0.058, and LightGBM achieved test R² 0.958 with a gap of 0.039. These results support treating the original negative locked-split scores as a composition-shift stress test rather than as definitive evidence that the algorithms fail.
+
+The complete audit is documented in [`overfitting_leakage_audit.md`][6], with machine-readable outputs in [`overfitting_leakage_audit.json`][7], [`validation_strategy_comparison.csv`][8], and [`stratified_split_model_performance.csv`][9].
+
 ## References
 
 [1]: ../data/modeling/results/data_integrity_validation.json "Data-integrity validation output"
@@ -104,3 +114,7 @@ The implementation added the following files:
 [3]: ../data/modeling/results/season_distribution_analysis.csv "Season-level distribution analysis"
 [4]: ../data/modeling/results/year_distribution_analysis.csv "Year-level distribution analysis"
 [5]: ../data/modeling/results/station_distribution_analysis.csv "Station-level distribution analysis"
+[6]: overfitting_leakage_audit.md "Leakage, split-integrity, and overfitting audit"
+[7]: ../data/modeling/results/overfitting_leakage_audit.json "Machine-readable leakage and overfitting audit"
+[8]: ../data/modeling/results/validation_strategy_comparison.csv "Validation strategy comparison"
+[9]: ../data/modeling/results/stratified_split_model_performance.csv "Alternative split model performance"
