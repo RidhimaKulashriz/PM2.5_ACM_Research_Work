@@ -7,3 +7,4 @@ jupyter>=1.0.0
 geemap>=0.24.0
 ee
 scikit-learn
+lightgbm>=4.0.0
