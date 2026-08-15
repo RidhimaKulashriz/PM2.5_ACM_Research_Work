@@ -1,0 +1,57 @@
+CPCB → ML-READY STATION EXCLUSION AUDIT
+================================================================================
+
+Project: Urban Green Cover Thresholds for PM2.5 Mitigation: A Spatial Causal Machine Learning Framework for Delhi NCR.
+
+CPCB master rows: 1,377,696
+CPCB unique stations: 44
+ML-ready rows: 1,615
+ML-ready unique stations: 35
+Stations missing from ML-ready: 9
+Stations retained: 35
+
+DUPLICATE AUDIT
+--------------------------------------------------------------------------------
+exact_duplicate_rows: 0
+duplicate_station_timestamp: 0
+duplicate_station_year_timestamp: 0
+
+MISSING STATIONS
+--------------------------------------------------------------------------------
+CPRI_Mathura_Road
+Commonwealth_Sports_Complex
+IGNOU_Maidan_Garhi
+JNU
+Lodhi_Road
+NSIT_Dwarka
+NSUT_Jaffarpur
+Pusa
+Talkatora_Garden
+
+STATION DIAGNOSIS
+--------------------------------------------------------------------------------
+                    station                                     decision    cpcb_status                                       satellite_status                                               exclusion_mechanism                                                                             recommended_action
+          CPRI_Mathura_Road     RECOVER IF MULTIMODAL FEATURES AVAILABLE         Strong Not found in detected intermediate station-level files            Likely multimodal matching / satellite-stage exclusion                       Trace satellite matching and feature-generation stages before restoring.
+Commonwealth_Sports_Complex                                      EXCLUDE No valid PM2.5 Not found in detected intermediate station-level files                                          CPCB outcome unavailable    Do not integrate unless an independent validated CPCB source restores genuine observations.
+         IGNOU_Maidan_Garhi                                      EXCLUDE No valid PM2.5 Not found in detected intermediate station-level files                                          CPCB outcome unavailable    Do not integrate unless an independent validated CPCB source restores genuine observations.
+                        JNU                                      EXCLUDE No valid PM2.5 Not found in detected intermediate station-level files                                          CPCB outcome unavailable    Do not integrate unless an independent validated CPCB source restores genuine observations.
+                 Lodhi_Road EXCLUDE FROM PRIMARY MODEL; SENSITIVITY ONLY       Moderate Not found in detected intermediate station-level files Likely CPCB temporal coverage + downstream completeness filtering Do not add to the primary model until an explicit station-month completeness rule supports it.
+                NSIT_Dwarka     RECOVER IF MULTIMODAL FEATURES AVAILABLE         Strong Not found in detected intermediate station-level files            Likely multimodal matching / satellite-stage exclusion                       Trace satellite matching and feature-generation stages before restoring.
+             NSUT_Jaffarpur                                      EXCLUDE No valid PM2.5 Not found in detected intermediate station-level files                                          CPCB outcome unavailable    Do not integrate unless an independent validated CPCB source restores genuine observations.
+                       Pusa     RECOVER IF MULTIMODAL FEATURES AVAILABLE         Strong Not found in detected intermediate station-level files            Likely multimodal matching / satellite-stage exclusion                       Trace satellite matching and feature-generation stages before restoring.
+           Talkatora_Garden                                      EXCLUDE No valid PM2.5 Not found in detected intermediate station-level files                                          CPCB outcome unavailable    Do not integrate unless an independent validated CPCB source restores genuine observations.
+
+PIPELINE SCRIPTS DETECTED
+--------------------------------------------------------------------------------
+No relevant pipeline scripts were detected.
+
+INTERMEDIATE DATA TRACE
+--------------------------------------------------------------------------------
+No usable intermediate station-level data files were detected.
+
+INTERPRETATION
+--------------------------------------------------------------------------------
+This audit does not modify the repository.
+A station with strong CPCB PM2.5 availability should not be excluded solely because it was absent from the final ML-ready table.
+For CPRI_Mathura_Road, NSIT_Dwarka and Pusa, the next decision should depend on whether the existing Sentinel-2, Sentinel-5P and MODIS feature-generation pipeline can produce valid station-month records for those stations.
+Stations with zero valid PM2.5 throughout their available study-period records should not be restored to a PM2.5 regression dataset.

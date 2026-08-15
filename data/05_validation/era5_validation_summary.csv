@@ -1,0 +1,6 @@
+variable,rows_in_master,valid_values,missing_values,missing_percent,actual_min,actual_max,physical_violations
+__PIPELINE__,1615,1615,0,0.0,,,0
+era5_temp_mean,1615,1615,0,0.0,11.53507660569948,34.74439533111849,0
+era5_rh_mean,1615,1615,0,0.0,25.60456489700845,84.21074929800383,0
+era5_wind_speed_mean,1615,1615,0,0.0,1.448704093246999,2.96892376221478,0
+era5_blh_mean,1615,1615,0,0.0,208.3745880126953,1005.8765258789062,0
