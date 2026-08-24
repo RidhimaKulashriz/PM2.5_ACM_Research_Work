@@ -65,7 +65,35 @@ The dependence-aware intervals use station-clustered uncertainty and are the pre
 
 The robustness extension includes a 2,000-replicate wild cluster bootstrap, fold and station stability tables, residualized-treatment overlap diagnostics, within-station permutation falsification, random-forest nuisance-learner sensitivity, and deterministic geographic-block cross-fitting sensitivity. The geographic-block sensitivity estimate for the primary treatment is -38.253146.
 
-Validation scripts are provided for both the base DML and robustness package. Exact input SHA-256 hashes are recorded in the configuration files, and all generated outputs remain in the isolated DML directory.
+## Pre-treatment and time-aware sensitivity
+
+A follow-up sensitivity constructs the exact previous calendar month of each NDVI treatment within each split, preventing cross-split lag leakage. An expanding time-aware design fits nuisance models only on years earlier than each holdout year (2023, 2024, and 2025). The scored sample contains 764 out-of-fold rows per treatment and 34 represented station clusters.
+
+| Lagged treatment | Time-aware estimate | Station-clustered 95% interval |
+|---|---:|---:|
+| Sentinel-2 NDVI, 1,000 m | 26.970369 | [-1.665192, 55.605930] |
+| Sentinel-2 NDVI, 500 m | 19.742400 | [-6.430400, 45.915201] |
+| MODIS NDVI, 1,000 m | -76.421049 | [-111.513209, -41.328890] |
+
+These lagged results differ from the contemporaneous Version 1 estimates, demonstrating that exposure timing and satellite product choice are first-order modeling decisions. They are sensitivity evidence and are not pooled with the headline estimate.
+
+Static figures are generated under `data/modeling_changes/dml_v3/figures/`, including `dml_estimates_forest.png`, `time_aware_lagged_forest.png`, and `time_aware_sample_coverage.png`.
+
+### DML diagnostic figures
+
+![Original and dependence-aware DML intervals](data/modeling_changes/dml_v3/figures/dml_estimates_forest.png)
+
+*Figure: Original influence-function intervals compared with station-clustered intervals.*
+
+![Time-aware lagged-treatment estimates](data/modeling_changes/dml_v3/figures/time_aware_lagged_forest.png)
+
+*Figure: Expanding time-aware DML using exact previous-calendar-month NDVI treatments.*
+
+![Time-aware sample coverage](data/modeling_changes/dml_v3/figures/time_aware_sample_coverage.png)
+
+*Figure: Holdout-row coverage for each expanding time-aware split.*
+
+Validation scripts are provided for the base DML, robustness package, and pre-treatment package. Exact input SHA-256 hashes are recorded in the configuration files, and all generated outputs remain in the isolated DML directory.
 
 ## Reproduce the analysis
 
@@ -76,6 +104,9 @@ python data/modeling_changes/dml_v3/run_dml.py
 python data/modeling_changes/dml_v3/validate_dml.py
 python data/modeling_changes/dml_v3/robustness_checks.py
 python data/modeling_changes/dml_v3/validate_robustness.py
+python data/modeling_changes/dml_v3/pre_treatment_dml.py
+python data/modeling_changes/dml_v3/validate_pre_treatment.py
+python data/modeling_changes/dml_v3/generate_dml_figures.py
 ```
 
 ## Pull request
