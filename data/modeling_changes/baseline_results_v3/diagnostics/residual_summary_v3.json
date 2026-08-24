@@ -1,0 +1,9 @@
+{
+    "best_model": "LightGBM",
+    "mean_residual": 0.07474712821525585,
+    "median_residual": -0.5173980221398864,
+    "std_residual": 18.524799908291275,
+    "skewness": -6.194809577641799,
+    "max_underprediction": 53.114557163759116,
+    "max_overprediction": -234.81937235517722
+}
