@@ -2,8 +2,8 @@
 
 A research pipeline for studying the relationship between **urban green cover and PM₂.₅ pollution across Delhi NCR**, with the eventual goal of identifying spatial patterns and estimating where increased green cover may contribute to particulate pollution mitigation.
 
-> **Current Status:** Phase 1 — CPCB Ground-Station Data Ingestion, Auditing & Exploratory Analysis
-> **Next:** Phase 2 — Multimodal Satellite + Meteorological Data Integration
+> **Current Status:** Version 1 — V3 Double Machine Learning implementation and robustness validation
+> **Next:** Pre-treatment panel design, dependence-aware causal inference, and spatial heterogeneity refinement
 
 ---
 
@@ -28,6 +28,63 @@ The research will ultimately investigate questions such as:
 * Does the effect of green cover vary across different parts of the city?
 * Are there identifiable vegetation thresholds associated with lower PM₂.₅?
 * How do meteorology, urban structure, and other confounders influence this relationship?
+
+---
+
+# Version 1 — V3 Double Machine Learning Analysis
+
+The repository now contains a complete first-pass DML implementation on the frozen 2025-context V3 datasets. The work is isolated under `data/modeling_changes/dml_v3/` and does not modify the canonical datasets, train/test splits, or protected baseline results.
+
+## Data used
+
+| Input | Rows | Role |
+|---|---:|---|
+| V3 master modeling dataset | 1,615 | Reference and integrity cross-check |
+| V3 training split | 1,292 | Cross-fitted DML estimation |
+| V3 locked test split | 323 | External diagnostic only |
+
+Train/test station–year–month keys do not overlap, and the split preserves the master key universe. IIT Delhi remains train-only under the existing split design.
+
+## DML specification
+
+The outcome is monthly station-level `pm25`. The primary treatment is `sentinel2_ndvi_mean_1000m`; sensitivity treatments are `sentinel2_ndvi_mean_500m` and `modis_ndvi_mean_1000m`. The base specification uses five-fold station-grouped cross-fitting, median imputation, and `HistGradientBoostingRegressor` nuisance models.
+
+Controls were pre-specified from temporal/spatial context, ERA5 meteorology, 2025 population and road density, and non-vegetation Dynamic World context. Green-cover proxies, Sentinel-5P NO₂/pollution proxies, and contemporaneous MODIS/LST or gradient variables were excluded to reduce treatment-proxy and plausible post-treatment adjustment.
+
+## Results
+
+| Treatment | Estimate | Original 95% interval | Dependence-aware interval |
+|---|---:|---:|---:|
+| Sentinel-2 NDVI, 1,000 m | -21.180373 | [-32.643994, -9.716752] | [-53.548470, 11.187723] |
+| Sentinel-2 NDVI, 500 m | -7.046748 | [-16.163475, 2.069980] | [-37.240398, 23.146902] |
+| MODIS NDVI, 1,000 m | -17.618217 | [-30.505183, -4.731252] | [-48.456363, 13.219928] |
+
+The dependence-aware intervals use station-clustered uncertainty and are the preferred checks for the station-month panel. The primary point estimate is negative, but the robust interval includes zero; the result is suggestive observational evidence rather than a conclusive causal claim.
+
+## Robustness and validation
+
+The robustness extension includes a 2,000-replicate wild cluster bootstrap, fold and station stability tables, residualized-treatment overlap diagnostics, within-station permutation falsification, random-forest nuisance-learner sensitivity, and deterministic geographic-block cross-fitting sensitivity. The geographic-block sensitivity estimate for the primary treatment is -38.253146.
+
+Validation scripts are provided for both the base DML and robustness package. Exact input SHA-256 hashes are recorded in the configuration files, and all generated outputs remain in the isolated DML directory.
+
+## Reproduce the analysis
+
+From the repository root:
+
+```bash
+python data/modeling_changes/dml_v3/run_dml.py
+python data/modeling_changes/dml_v3/validate_dml.py
+python data/modeling_changes/dml_v3/robustness_checks.py
+python data/modeling_changes/dml_v3/validate_robustness.py
+```
+
+## Pull request
+
+The correct cross-fork pull request is [PR #2](https://github.com/hitakshijoshi20072911/PM2.5_ACM_Research_Work/pull/2). Its base is `hitakshijoshi20072911/PM2.5_ACM_Research_Work:main`, and its head is `RidhimaKulashriz/PM2.5_ACM_Research_Work:dml-v3-implementation`. The PR contains the complete base DML work, robustness artifacts, audit trail, and validators.
+
+## Interpretation and next steps
+
+This Version 1 DML analysis remains subject to conditional exchangeability, overlap, treatment definition, measurement, spatial dependence, serial dependence, and exposure/outcome simultaneity assumptions. The next methodological priority is a clearly pre-treatment exposure window or defensible quasi-experimental variation, with dependence-aware inference treated as the primary result.
 
 ---
 
@@ -216,7 +273,9 @@ PM2.5_ACM_Research_Work/
 ├── data/
 │   ├── raw/
 │   ├── processed/
-│   └── ml_ready/
+│   ├── ml_ready/
+│   └── modeling_changes/
+│       └── dml_v3/        # Version 1 DML code, outputs, reports, and audits
 │
 ├── notebooks/
 │   └── Exploratory and research notebooks
@@ -281,25 +340,25 @@ Spatial Heterogeneity & Threshold Analysis
 | Data auditing                    | ✅ Implemented           |
 | Data cleaning / standardization  | ✅ Implemented / ongoing |
 | CPCB exploratory analysis        | ✅ Implemented / ongoing |
-| Multimodal satellite integration | 🔄 Next phase           |
-| Meteorological integration       | 🔄 Planned              |
-| Spatial feature engineering      | 🔄 Planned              |
-| PM₂.₅ ML prediction              | 🔄 Planned              |
-| Spatial PM₂.₅ surface            | 🔄 Planned              |
-| Causal ML                        | 🔄 Planned              |
-| Green-cover effect estimation    | 🔄 Planned              |
-| Spatial heterogeneity analysis   | 🔄 Planned              |
-| Threshold analysis               | 🔄 Planned              |
+| Multimodal satellite integration | ✅ Included in V3 dataset |
+| Meteorological integration       | ✅ Included in V3 controls |
+| Spatial feature engineering      | ✅ Included in V3 dataset |
+| PM₂.₅ ML prediction              | 🔄 Separate modeling track |
+| Spatial PM₂.₅ surface            | 🔄 Planned refinement |
+| Causal ML                        | ✅ V3 DML Version 1 |
+| Green-cover effect estimation    | ✅ Version 1 complete |
+| Spatial heterogeneity analysis   | ✅ Exploratory sensitivity |
+| Threshold analysis               | 🔄 Planned |
 
 ---
 
 ## Development Status
 
-This repository represents an **active research project**. The current implementation should be considered the **data engineering and exploratory foundation** of the larger spatial causal machine learning framework.
+This repository represents an **active research project**. The data engineering foundation, multimodal V3 modeling inputs, and a Version 1 DML analysis are now represented in the repository.
 
-The modelling and causal inference components described above are **planned subsequent phases and are not yet represented as completed results**.
+The V3 DML result is an initial observational analysis with explicit robustness caveats. It should not be treated as a final causal claim. Further work will improve the temporal design, dependence-aware inference, spatial heterogeneity analysis, and causal identification strategy.
 
-As development progresses, each phase will be added to the repository with corresponding code, datasets, notebooks, validation results, and research outputs.
+Each subsequent phase will be added with corresponding code, datasets, validation results, and research outputs.
 
 ---
 
@@ -331,9 +390,9 @@ pip install -r requirements.txt
 
 ## Data
 
-The repository contains the project's working datasets, including raw and processed CPCB observations.
+The repository contains the project's working datasets, including raw and processed CPCB observations and the V3 multimodal modeling inputs.
 
-Large files are managed using **Git LFS**.
+Large files are managed using **Git LFS**. The DML outputs are kept separately under `data/modeling_changes/dml_v3/` so generated diagnostics remain reviewable without changing the canonical source data policy.
 
 The research dataset will continue to evolve as additional satellite, meteorological, land-cover, and spatial datasets are incorporated.
 
@@ -347,4 +406,4 @@ Delhi NCR PM₂.₅ Spatial & Causal Machine Learning Research
 
 ---
 
-> **Research status:** Phase 1 completed / ongoing refinement → Phase 2 multimodal environmental data integration
+> **Research status:** Version 1 V3 DML implemented and validated → next: pre-treatment panel and spatial causal refinement
