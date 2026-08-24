@@ -1,0 +1,5 @@
+treatment,spatial_block_fold,held_out_block,n,n_stations
+sentinel2_ndvi_mean_1000m,0,1_0,461,12
+sentinel2_ndvi_mean_1000m,1,0_1,420,12
+sentinel2_ndvi_mean_1000m,2,1_1,220,6
+sentinel2_ndvi_mean_1000m,3,0_0,191,5
