@@ -1,7 +1,3 @@
-metric,status,value
-row_count_match,PASS,1615.0
-station_count_match,PASS,35.0
-missing_250m,PASS,0.0
-missing_500m,PASS,0.0
-missing_1000m,PASS,0.0
-no_negative_density,PASS,1126.4563231415204
+version https://git-lfs.github.com/spec/v1
+oid sha256:7e4013869f0edbd0fe6c472b7cc727291214a9ac9df3ca29048d8b67082f605f
+size 196

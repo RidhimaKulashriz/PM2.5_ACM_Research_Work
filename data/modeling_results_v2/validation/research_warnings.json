@@ -1,0 +1,5 @@
+{
+    "warnings": [
+        "WARNING: Substantial overfitting detected (Train-Test R\u00b2 gap > 0.15)."
+    ]
+}

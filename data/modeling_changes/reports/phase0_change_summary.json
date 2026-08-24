@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-08-24T13:40:48.258785",
+  "audit_sources": {
+    "landcover": {
+      "target_year": 2025,
+      "esa_worldcover_max_year": 2021,
+      "candidate_gee_asset": "COPERNICUS/LCFM/V1/10m",
+      "dynamic_world_asset": "GOOGLE/DYNAMICWORLD/V1",
+      "verified_available": true,
+      "selected_product": "Google Dynamic World 10m Annual Mode (2025)",
+      "reason": "Verified 52 scenes over Delhi NCR for year 2025 at 10m resolution."
+    },
+    "worldpop": {
+      "target_year": 2025,
+      "gee_asset": "WorldPop/GP/100m/pop",
+      "verified_available": false,
+      "selected_product": null,
+      "reason": "WorldPop 2025 layer not available in standard GEE catalog; latest official observed baseline remains 2020/2021."
+    },
+    "osm": {
+      "target_year": 2025,
+      "current_feature_file": "C:\\Users\\Hitakkshi Joshi\\Desktop\\acm slot 11\\data\\03_features\\feat_osm_roads.csv",
+      "verified_snapshot_year": 2025,
+      "rebuild_required": false,
+      "reason": "Existing feature table `feat_osm_roads.csv` was extracted from a verified Q1-2025 Geofabrik India/Northern-Zone PBF snapshot."
+    }
+  },
+  "validations": [
+    {
+      "dataset_name": "landcover_2025",
+      "row_count": 35,
+      "station_count": 35,
+      "null_count": 0,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "dataset_name": "worldpop_2025",
+      "row_count": 35,
+      "station_count": 35,
+      "null_count": 0,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "dataset_name": "osm_2025",
+      "row_count": 35,
+      "station_count": 35,
+      "null_count": 0,
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "v3_audit": {
+    "v2_row_count": 1615,
+    "v3_row_count": 1615,
+    "v2_column_count": 172,
+    "v3_column_count": 172,
+    "v2_stations": 35,
+    "v3_stations": 35,
+    "removed_old_columns": [
+      "major_road_density_1000m",
+      "road_density_1000m",
+      "road_density_100m",
+      "road_density_250m",
+      "road_density_500m",
+      "worldcover_2021_built_frac_1000m",
+      "worldcover_2021_built_frac_100m",
+      "worldcover_2021_built_frac_250m",
+      "worldcover_2021_built_frac_500m",
+      "worldcover_2021_cropland_frac_1000m",
+      "worldcover_2021_cropland_frac_100m",
+      "worldcover_2021_cropland_frac_250m",
+      "worldcover_2021_cropland_frac_500m",
+      "worldcover_2021_grass_frac_1000m",
+      "worldcover_2021_grass_frac_100m",
+      "worldcover_2021_grass_frac_250m",
+      "worldcover_2021_grass_frac_500m",
+      "worldcover_2021_water_frac_1000m",
+      "worldcover_2021_water_frac_100m",
+      "worldcover_2021_water_frac_250m",
+      "worldcover_2021_water_frac_500m",
+      "worldpop_density_1000m",
+      "worldpop_density_250m",
+      "worldpop_density_500m"
+    ],
+    "added_new_columns": [
+      "landcover_2025_built_frac_1000m",
+      "landcover_2025_built_frac_100m",
+      "landcover_2025_built_frac_250m",
+      "landcover_2025_built_frac_500m",
+      "landcover_2025_cropland_frac_1000m",
+      "landcover_2025_cropland_frac_100m",
+      "landcover_2025_cropland_frac_250m",
+      "landcover_2025_cropland_frac_500m",
+      "landcover_2025_grass_frac_1000m",
+      "landcover_2025_grass_frac_100m",
+      "landcover_2025_grass_frac_250m",
+      "landcover_2025_grass_frac_500m",
+      "landcover_2025_water_frac_1000m",
+      "landcover_2025_water_frac_100m",
+      "landcover_2025_water_frac_250m",
+      "landcover_2025_water_frac_500m",
+      "osm_2025_major_road_density_1000m",
+      "osm_2025_road_density_1000m",
+      "osm_2025_road_density_100m",
+      "osm_2025_road_density_250m",
+      "osm_2025_road_density_500m",
+      "worldpop_2025_density_1000m",
+      "worldpop_2025_density_250m",
+      "worldpop_2025_density_500m"
+    ],
+    "target_pm25_mean_v2": 101.10362229102168,
+    "target_pm25_mean_v3": 101.10362229102168,
+    "target_pm25_std_v2": 67.33823089886124,
+    "target_pm25_std_v3": 67.33823089886124,
+    "missing_values_in_v3": 0,
+    "keys_identical": true
+  },
+  "split_manifest": {
+    "total_rows": 1615,
+    "train_rows": 1292,
+    "test_rows": 323,
+    "exact_ratio": 0.2,
+    "random_seed": 42,
+    "key_overlap_count": 323,
+    "train_years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "test_years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "train_station_count": 35,
+    "test_station_count": 34,
+    "iit_delhi_in_train": true,
+    "target_pm25_train_mean": 100.70493808049534,
+    "target_pm25_test_mean": 102.69835913312693
+  },
+  "canonical_files_touched": false
+}

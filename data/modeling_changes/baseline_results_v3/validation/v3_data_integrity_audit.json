@@ -1,0 +1,17 @@
+{
+    "dataset": "V3",
+    "master_rows": 1615,
+    "train_rows": 1292,
+    "test_rows": 323,
+    "master_stations": 35,
+    "train_stations": 35,
+    "test_stations": 34,
+    "train_test_key_overlap": 0,
+    "union_matches_master": true,
+    "iit_delhi_train": 1,
+    "iit_delhi_test": 0,
+    "duplicate_keys_master": 0,
+    "duplicate_keys_train": 0,
+    "duplicate_keys_test": 0,
+    "validation_status": "PASS"
+}

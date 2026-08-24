@@ -283,7 +283,7 @@ data/05_validation/worldcover_validation.csv
 # iit delhi problem : 
 "The final panel contained 35 monitoring stations. One station (IIT Delhi) had only one valid multimodal station-month observation and was therefore retained in the analytical dataset but assigned exclusively to the training subset during the primary temporal-stratified holdout; it was not used as an independent test location."
 
-### dataset creation and splitting info: 
+### dataset creation and splitting info (v1) [failed logic btw]: 
 Yes — this split has **passed all the hard validation checks**, so you can now treat the generated train/test files as your primary modeling split.
 
 The important outputs and their purposes are:
@@ -315,7 +315,7 @@ data/modeling/splits/test.csv
 
 These are the two files you should feed into the modeling pipeline.
 
-### What the successful output proves
+### What the successful output proves - it failedd
 
 Your terminal shows:
 
@@ -372,3 +372,390 @@ master_modelling_dataset_v2.csv   ← canonical final dataset
 Then modeling happens **only on `train.csv` initially**. The `test.csv` stays untouched until the final model comparison/evaluation.
 
 One other note: the `PerformanceWarning: DataFrame is highly fragmented` is a performance warning, not a correctness failure. Your split itself passed. You do not need to redo the split because of that warning.
+
+# splitting decision and logic (v2) : 
+Yes. The logic behind the script is basically: make the 20% test set representative across time and stations while preserving the exact row universe and the exact 80:20 ratio.
+
+But I would still ask Gemini Pro to critically review it before you lock the split, because there is a genuine tradeoff between year/month representativeness, station representation, and exact 80:20 allocation. The script I gave you is a defensible approach, but it is not the only possible approach, and for a research paper I want the rationale to be explicit.
+
+1. Logic behind the current splitting strategy
+
+Your data are not ordinary i.i.d. tabular data. They are a station-month panel:
+
+station × year × month
+
+with:
+
+1615 observations
+35 stations
+2022–2025
+
+and the target:
+
+pm25
+
+The original concern from your teacher was that a chronological split such as:
+
+2022–2023 → train
+2024–2025 → test
+
+could be misleading because different years may represent different environmental regimes. Your example of the COVID/lockdown year illustrates exactly that concern.
+
+So we wanted the test set to contain observations from all four years, rather than making “year” itself equivalent to “train vs test.”
+
+The current script therefore does this:
+
+First: it treats
+
+data/ml_ready/master_modelling_dataset_v2.csv
+
+as immutable.
+
+Second: it validates the V2 dataset before splitting:
+
+1,615 rows
+35 stations
+2022–2025
+unique station-year-month keys
+numeric/non-missing PM₂.₅
+stable station coordinates
+no infinite values
+
+Third: it calculates the overall exact test size:
+
+1615 × 0.20 = 323
+
+so:
+
+Train = 1292
+Test  = 323
+
+Fourth: it allocates the test quota across year × month cells, rather than simply randomly taking 20% of the whole dataset.
+
+That matters because your earlier split produced:
+
+Winter       56
+Summer        2
+Monsoon       4
+Post-monsoon 261
+
+which was obviously a terrible test distribution.
+
+The current script instead tries to make the test set cover the calendar structure.
+
+Fifth: it guarantees one test observation from every station with at least two observations.
+
+That was introduced because you discovered:
+
+IIT_Delhi = 1 observation
+
+and therefore it is mathematically impossible for IIT_Delhi to occur in both train and test without duplicating its only observation.
+
+So:
+
+IIT_Delhi → train only
+
+while the other stations with ≥2 observations get test representation.
+
+Finally: it validates the resulting split and only writes the files if everything passes.
+
+2. Why this is better than the previous split
+
+Your previous split technically gave:
+
+Train = 1344
+Test = 271
+
+instead of 80:20, and the test set was heavily concentrated in post-monsoon observations.
+
+The resulting LightGBM performance was:
+
+Test R²  = -0.421
+RMSE      = 79.50
+MAE       = 53.76
+
+while training R² was:
+
+0.999
+
+and year-wise performance collapsed in 2023/2024.
+
+That was a strong sign that the evaluation distribution needed to be investigated before interpreting the models.
+
+3. But there is an important research question about the current strategy
+
+The current method prioritizes:
+
+1. exact 80:20
+2. year-month representation
+3. station representation
+
+That is reasonable.
+
+However, forcing a test observation from every station and every non-degenerate year-month cell is a constraint, and constraints can sometimes make the test set less proportional than a pure stratified sample.
+
+For example, suppose a particular year-month already has many observations. The algorithm may still be forced to allocate at least one test row there and then redistribute the remaining quota elsewhere.
+
+So I would like Gemini to evaluate whether a more statistically principled approach would be:
+
+proportional stratified sampling by year-month first, followed by minimal station-coverage swaps
+
+rather than building the split around station guarantees first.
+
+That is why I would get a second opinion before freezing it.
+
+4. The deeper issue: there are actually TWO validation questions
+
+This is very important for your paper.
+
+Your current split is intended to answer:
+
+How well does the model predict PM₂.₅ when all study years and seasons are represented in both training and testing?
+
+That is a valid primary predictive experiment.
+
+But it does not answer:
+
+Can the model generalize to a completely new monitoring station?
+
+because the same stations mostly exist in both sets.
+
+For that, we need a separate station-grouped/spatial validation later.
+
+So I would eventually have:
+
+Experiment A — primary balanced holdout
+80:20
+year/month stratified
+same stations may appear in both
+Experiment B — spatial generalization
+Group by station
+some stations entirely held out
+
+The second one is especially important for your geospatial research.
+
+### something new  change of dataset for population and land cover: 
+(venv) PS C:\Users\Hitakkshi Joshi\Desktop\acm slot 11> python src\features\phase0_temporal_update.py
+======================================================================
+PHASE 0 — CLEAN 2025 CONTEXTUAL UPDATE
+======================================================================
+Loaded V2: 1615 rows, 172 columns.
+Initialising Google Earth Engine...
+Google Earth Engine initialized successfully.
+
+============================================================
+2025 LAND COVER — GOOGLE DYNAMIC WORLD
+============================================================
+Dynamic World 2025 images: 2232477
+Processing Dynamic World: Alipur (1/35)
+Processing Dynamic World: Anand_Vihar (2/35)
+Processing Dynamic World: Ashok_Vihar (3/35)
+Processing Dynamic World: Aya_Nagar (4/35)
+Processing Dynamic World: Bawana (5/35)
+Processing Dynamic World: Burari_Crossing (6/35)
+Processing Dynamic World: Chandni_Chowk (7/35)
+Processing Dynamic World: DTU (8/35)
+Processing Dynamic World: Dr._Karni_Singh_Shooting_Range (9/35)
+Processing Dynamic World: Dwarka-Sector_8 (10/35)
+Processing Dynamic World: IGI_Airport_(T3) (11/35)
+Processing Dynamic World: IHBAS_Dilshad_Garden (12/35)
+Processing Dynamic World: IIT_Delhi (13/35)
+Processing Dynamic World: IMD_Lodhi_Road (14/35)
+Processing Dynamic World: ITO (15/35)
+Processing Dynamic World: Jahangirpuri (16/35)
+Processing Dynamic World: Jawaharlal_Nehru_Stadium (17/35)
+Processing Dynamic World: Major_Dhyan_Chand_National_Stadium (18/35)
+Processing Dynamic World: Mandir_Marg (19/35)
+Processing Dynamic World: Mundka (20/35)
+Processing Dynamic World: Najafgarh (21/35)
+Processing Dynamic World: Narela (22/35)
+Processing Dynamic World: Nehru_Nagar (23/35)
+Processing Dynamic World: North_Campus_DU (24/35)
+Processing Dynamic World: Okhla_Phase-2 (25/35)
+Processing Dynamic World: Patparganj (26/35)
+Processing Dynamic World: Punjabi_Bagh (27/35)
+Processing Dynamic World: R_K_Puram (28/35)
+Processing Dynamic World: Rohini (29/35)
+Processing Dynamic World: Shadipur (30/35)
+Processing Dynamic World: Sirifort (31/35)
+Processing Dynamic World: Sonia_Vihar (32/35)
+Processing Dynamic World: Sri_Aurobindo_Marg (33/35)
+Processing Dynamic World: Vivek_Vihar (34/35)
+Processing Dynamic World: Wazirpur (35/35)
+
+============================================================
+2025 POPULATION — JRC GHSL P2023A
+============================================================
+Processing GHSL population: Alipur (1/35)
+Processing GHSL population: Anand_Vihar (2/35)
+Processing GHSL population: Ashok_Vihar (3/35)
+Processing GHSL population: Aya_Nagar (4/35)
+Processing GHSL population: Bawana (5/35)
+Processing GHSL population: Burari_Crossing (6/35)
+Processing GHSL population: Chandni_Chowk (7/35)
+Processing GHSL population: DTU (8/35)
+Processing GHSL population: Dr._Karni_Singh_Shooting_Range (9/35)
+Processing GHSL population: Dwarka-Sector_8 (10/35)
+Processing GHSL population: IGI_Airport_(T3) (11/35)
+Processing GHSL population: IHBAS_Dilshad_Garden (12/35)
+Processing GHSL population: IIT_Delhi (13/35)
+Processing GHSL population: IMD_Lodhi_Road (14/35)
+Processing GHSL population: ITO (15/35)
+Processing GHSL population: Jahangirpuri (16/35)
+Processing GHSL population: Jawaharlal_Nehru_Stadium (17/35)
+Processing GHSL population: Major_Dhyan_Chand_National_Stadium (18/35)
+Processing GHSL population: Mandir_Marg (19/35)
+Processing GHSL population: Mundka (20/35)
+Processing GHSL population: Najafgarh (21/35)
+Processing GHSL population: Narela (22/35)
+Processing GHSL population: Nehru_Nagar (23/35)
+Processing GHSL population: North_Campus_DU (24/35)
+Processing GHSL population: Okhla_Phase-2 (25/35)
+Processing GHSL population: Patparganj (26/35)
+Processing GHSL population: Punjabi_Bagh (27/35)
+Processing GHSL population: R_K_Puram (28/35)
+Processing GHSL population: Rohini (29/35)
+Processing GHSL population: Shadipur (30/35)
+Processing GHSL population: Sirifort (31/35)
+Processing GHSL population: Sonia_Vihar (32/35)
+Processing GHSL population: Sri_Aurobindo_Marg (33/35)
+Processing GHSL population: Vivek_Vihar (34/35)
+Processing GHSL population: Wazirpur (35/35)
+
+============================================================
+2025 OSM ROAD INFRASTRUCTURE
+============================================================
+
+============================================================
+ASSEMBLING MASTER MODELING DATASET V3
+============================================================
+Removing old contextual columns:
+  - worldpop_density_250m
+  - worldpop_density_500m
+  - worldpop_density_1000m
+  - road_density_100m
+  - road_density_250m
+  - road_density_500m
+  - road_density_1000m
+  - major_road_density_1000m
+  - worldcover_2021_built_frac_100m
+  - worldcover_2021_grass_frac_100m
+  - worldcover_2021_cropland_frac_100m
+  - worldcover_2021_water_frac_100m
+  - worldcover_2021_built_frac_250m
+  - worldcover_2021_grass_frac_250m
+  - worldcover_2021_cropland_frac_250m
+  - worldcover_2021_water_frac_250m
+  - worldcover_2021_built_frac_500m
+  - worldcover_2021_grass_frac_500m
+  - worldcover_2021_cropland_frac_500m
+  - worldcover_2021_water_frac_500m
+  - worldcover_2021_built_frac_1000m
+  - worldcover_2021_grass_frac_1000m
+  - worldcover_2021_cropland_frac_1000m
+  - worldcover_2021_water_frac_1000m
+
+V3 saved to:
+C:\Users\Hitakkshi Joshi\Desktop\acm slot 11\data\modeling_changes\datasets\master_modeling_dataset_v3.csv
+
+============================================================
+GENERATING YEAR × MONTH STRATIFIED SPLIT
+============================================================
+
+======================================================================
+PHASE 0 COMPLETE — ALL DATA ARE ACTUAL SOURCED VALUES
+======================================================================
+V2 rows: 1615
+V3 rows: 1615
+Train rows: 1292
+Test rows: 323
+
+2025 contextual layers:
+✓ Dynamic World 2025 — genuine GEE extraction
+✓ GHSL 2025 population — genuine GEE extraction
+✓ OSM 2025 — existing validated project feature table
+
+2021 contextual layers removed:
+✓ ESA WorldCover 2021 removed
+✓ WorldPop 2021-era features removed
+
+Canonical datasets modified:
+NO
+
+Output:
+C:\Users\Hitakkshi Joshi\Desktop\acm slot 11\data\modeling_changes\datasets\master_modeling_dataset_v3.csv
+C:\Users\Hitakkshi Joshi\Desktop\acm slot 11\data\modeling_changes\splits\train.csv
+C:\Users\Hitakkshi Joshi\Desktop\acm slot 11\data\modeling_changes\splits\test.csv
+
+STATUS: PASS
+======================================================================
+(venv) PS C:\Users\Hitakkshi Joshi\Desktop\acm slot 11> 
+
+## resplitting of data (v3): 
+Yes. **This split is finally good enough to freeze and use.** I would stop changing the split now and move to baseline modelling.
+
+### Why I’m comfortable with it
+
+**Station balance — good**
+
+* Every normal station has **9 or 10 test observations**.
+* 47-row stations have 9, 45-row station has 9, Chandni Chowk has 7.
+* IIT Delhi is correctly train-only.
+* No station is dominating the test set.
+
+**Year balance — good**
+
+* 2022: 20.05%
+* 2023: 19.65%
+* 2024: 19.70%
+* 2025: 20.59%
+
+That is very close to the intended 20%.
+
+**Month balance — good**
+The test fractions range roughly from **18.8% to 20.7%**, which is a very reasonable result given integer row constraints.
+
+**Year × Month balance — especially good**
+Every available year-month combination is represented, and the test fraction is essentially:
+
+* ~18.2% for 33-row strata
+* ~20.0–20.6% for 34–35-row strata
+* no extreme over/under-representation
+
+This is much better than your earlier splits.
+
+### One small technical correction
+
+Your `expected_test` is calculated using:
+
+```text
+323 / 1615 = 19.999%
+```
+
+but your actual eligible sampling fraction is:
+
+```text
+323 / 1614 = 20.0124%
+```
+
+because IIT Delhi is deliberately excluded from test.
+
+This is **not a problem with the split**. It is only a diagnostic-definition issue. For the final report, describe the split as:
+
+> **1,292 training observations and 323 test observations (approximately 80:20), with IIT Delhi retained exclusively in training because only one valid station-month observation was available.**
+
+And ideally change the diagnostics' expected fraction to use the **eligible pool (1,614)** so the reported expected values are internally consistent.
+
+### One important modelling precaution
+
+Your `train.csv` and `test.csv` now contain the derived `season` column. For your actual models, **do not accidentally use `season` as an additional predictor if your notebook was not designed for it**. It is derived directly from `month` and is primarily useful for diagnostics/stratification. Keep the original feature-selection logic consistent with your previous baseline runs.
+
+### Final decision
+
+**Freeze this split. ✅**
+
+Use it for the new V3 baseline modelling, and record this methodology:
+
+> A station-proportional 80:20 holdout was constructed with fixed station-level test quotas. Within each station, observations were selected to preserve available temporal coverage, while candidate splits were evaluated using Year × Month, month, year and seasonal distributions. PM₂.₅ was not used during split construction. IIT Delhi was retained in training only because it contained a single valid station-month observation.
+
+Then move on to your **baseline models → spatial validation → DML/cross-fitting**. Do not spend more time optimizing this split unless the final `validation_report.csv` contains a FAIL.

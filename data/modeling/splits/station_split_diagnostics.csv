@@ -1,36 +1,3 @@
-station,total,train,test,status
-Alipur,48,36,12,OK
-Anand_Vihar,48,36,12,OK
-Ashok_Vihar,48,36,12,OK
-Aya_Nagar,48,36,12,OK
-Bawana,48,36,12,OK
-Burari_Crossing,47,36,11,OK
-Chandni_Chowk,35,27,8,OK
-DTU,48,36,12,OK
-Dr._Karni_Singh_Shooting_Range,48,36,12,OK
-Dwarka-Sector_8,48,36,12,OK
-IGI_Airport_(T3),48,36,12,OK
-IHBAS_Dilshad_Garden,48,36,12,OK
-IIT_Delhi,1,1,0,TRAIN_ONLY_INSUFFICIENT_OBSERVATIONS
-IMD_Lodhi_Road,47,36,11,OK
-ITO,48,36,12,OK
-Jahangirpuri,48,39,9,OK
-Jawaharlal_Nehru_Stadium,48,40,8,OK
-Major_Dhyan_Chand_National_Stadium,48,40,8,OK
-Mandir_Marg,48,40,8,OK
-Mundka,48,40,8,OK
-Najafgarh,48,40,8,OK
-Narela,48,40,8,OK
-Nehru_Nagar,48,40,8,OK
-North_Campus_DU,48,40,8,OK
-Okhla_Phase-2,48,40,8,OK
-Patparganj,48,40,8,OK
-Punjabi_Bagh,48,40,8,OK
-R_K_Puram,48,40,8,OK
-Rohini,48,40,8,OK
-Shadipur,48,40,8,OK
-Sirifort,45,37,8,OK
-Sonia_Vihar,48,40,8,OK
-Sri_Aurobindo_Marg,48,40,8,OK
-Vivek_Vihar,48,40,8,OK
-Wazirpur,48,40,8,OK
+version https://git-lfs.github.com/spec/v1
+oid sha256:f0d723ce1fcd96e8c513cf7bfbe2dbaad1dc14c2bd865f6c731b2df52c70104e
+size 956

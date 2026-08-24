@@ -1,18 +1,3 @@
-metric,value
-master_row_count,1615
-output_row_count,1615
-master_station_count,35
-output_station_count,35
-duplicate_station_year_month_count,0
-missing_feature_count,0
-minimum_fraction,0.0
-maximum_fraction,1.0
-"fraction_values_outside_[0,1]",0
-stations_with_complete_WorldCover_features,35
-WorldCover_asset_ID,ESA/WorldCover/v200
-WorldCover_year,2021
-WorldCover_spatial_resolution,10m
-GEE_project,delhi-pm25-research
-CRS_used_for_station_buffers,EPSG:4326/spherical_meters (EE Native)
-number_of_valid_pixels_used_1000m_buffers,1095980.4980392158
-Scientific_Limitation_Note,ESA WorldCover 2021 is used as a static pre-study land-cover baseline. It does not represent land-cover changes during 2022-2025.
+version https://git-lfs.github.com/spec/v1
+oid sha256:0ec7bac60c3602aae72152a16b85dc5f375299beec8e2055af9c5a342145f16c
+size 719

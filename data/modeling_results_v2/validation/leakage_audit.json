@@ -1,0 +1,10 @@
+{
+    "leakage_candidates": [
+        "pm25"
+    ],
+    "excluded_from_predictors": [
+        "station",
+        "pm25"
+    ],
+    "highly_correlated_features": {}
+}
