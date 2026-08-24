@@ -1,0 +1,2 @@
+# DML outputs are small, reviewable text artifacts. Keep canonical source datasets under their existing LFS policy.
+*.csv -filter -diff -merge text
