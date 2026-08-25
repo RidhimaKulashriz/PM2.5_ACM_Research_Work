@@ -1,0 +1,19 @@
+{
+  "random_state": 42,
+  "master_input": "data/modeling_changes/datasets/master_modeling_dataset_v3.csv",
+  "train_input": "data/modeling_changes/splits/train.csv",
+  "test_input": "data/modeling_changes/splits/test.csv",
+  "feature_count": 194,
+  "models": [
+    "Linear Regression",
+    "Random Forest",
+    "LightGBM"
+  ],
+  "cv": "5-fold GroupKFold grouped by station on training only",
+  "target": "pm25",
+  "best_test_model_by_rmse": "LightGBM",
+  "protected_paths": [
+    "data/modeling_changes/datasets/",
+    "data/modeling_changes/splits/"
+  ]
+}
