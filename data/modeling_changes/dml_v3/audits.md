@@ -35,3 +35,17 @@ The package also reports year-wise and season-wise metrics, retains extreme PM2.
 ## Reproducibility
 
 Execute the notebook with a Python 3 Jupyter kernel after installing its declared dependencies. The notebook is already stored in executed form at `notebooks/baseline_regression_models_v3.ipynb`; derived outputs are isolated under `data/modeling_changes/baseline_predictive_v1/`. The DML headline and time-aware causal sensitivities remain separate and must not be replaced by predictive baseline performance.
+
+## 2026-08-25 — Station-supported spatial surface and threshold screen
+
+A separate package was added under `data/modeling_changes/spatial_threshold_v1/` using the same frozen V3 master, canonical train split, and locked test split. The protected-input hashes match the existing DML configuration exactly: 1,615 master rows, 1,292 training rows, and 323 locked-test rows across 35 fixed-coordinate stations. No canonical dataset, split, baseline result, or existing DML output was modified.
+
+The spatial prediction extension uses the locked LightGBM predictive baseline with five-fold station-grouped training CV and a locked-test diagnostic. Because the V3 repository contains observed station coordinates but no validated grid of environmental covariates, the surface is intentionally station-supported: predictions are shown at observed station coordinates and aggregated by station. No interpolation, IDW, raster extrapolation, or unobserved-grid prediction is performed. The locked-test diagnostic is R² 0.924811, RMSE 18.814873 µg/m³, and MAE 9.973572 µg/m³ across 323 rows and 34 stations.
+
+The threshold extension is a separately specified predictive/associational screen for `sentinel2_ndvi_mean_1000m` using a piecewise-linear Ridge model with 17 candidate training quantiles from 0.10 to 0.90 and five station-grouped training folds. The selected breakpoint is NDVI 0.377235, approximately the 0.75 training quantile. Its locked-test diagnostic is R² 0.742283, RMSE 34.833294 µg/m³, and MAE 25.690121 µg/m³. In 100 station-bootstrap repetitions, the same candidate quantile was selected only 6% of the time, so the frozen stability rule correctly concludes that no stable threshold is identified.
+
+The four static figures, report, input hashes, JSON mirrors, visual review, and validator were generated successfully. The threshold screen is not a causal dose-response estimate and must not be translated into a policy threshold or a required amount of greenery. A continuous PM₂.₅ raster and any causal threshold claim remain separate Version 2 research tasks requiring a validated prediction-grid covariate table, an explicit nonlinear estimand, overlap checks, pre-treatment exposure timing, and a defensible identification strategy.
+
+## Reproducibility
+
+Run `python data/modeling_changes/spatial_threshold_v1/run_spatial_threshold.py` followed by `python data/modeling_changes/spatial_threshold_v1/validate_spatial_threshold.py` from the repository root. Outputs are isolated under `data/modeling_changes/spatial_threshold_v1/`.
