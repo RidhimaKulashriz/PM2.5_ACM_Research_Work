@@ -1,0 +1,5 @@
+# Visual review — V3 spatial surface and threshold figures
+
+The four generated PNG figures were reviewed as a contact sheet after execution. The station-supported predicted surface and station-error map show readable coordinate axes, station labels, continuous legends, and explicit caveats that the map is descriptive and not interpolated or causal. The threshold-CV figure shows the full pre-specified candidate breakpoint grid, the selected breakpoint, a labeled RMSE axis, and a clear note that the breakpoint is not a causal vegetation threshold. The threshold-relationship figure shows observed decile means with uncertainty bars, the fitted piecewise curve, the selected breakpoint, units, and an explicit associational/predictive disclaimer.
+
+No clipped titles, missing legends, misleading color scales, or unreadable annotations were observed at contact-sheet scale. The figures are static PNGs and do not imply prediction at unobserved locations. The contact sheet is retained as a review aid; the four individual PNGs are the research figures.
