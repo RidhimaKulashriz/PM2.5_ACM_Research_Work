@@ -2,8 +2,8 @@
 
 A research pipeline for studying the relationship between **urban green cover and PM₂.₅ pollution across Delhi NCR**, with the eventual goal of identifying spatial patterns and estimating where increased green cover may contribute to particulate pollution mitigation.
 
-> **Current Status:** Version 1 — V3 Double Machine Learning implementation, robustness validation, time-aware sensitivity, and metric audits
-> **Next:** Rolling-origin temporal validation, measurement-error sensitivity, and pre-specified nonlinear dose-response analysis
+> **Current Status:** Version 1 — V3 Double Machine Learning implementation, robustness validation, time-aware sensitivities, predictive baseline modeling, and metric audits
+> **Next:** Supervisor review; any measurement-error, placebo, nonlinear dose-response, or quasi-experimental extensions will be Version 2 work with a separate specification.
 
 ---
 
@@ -47,7 +47,7 @@ Train/test station–year–month keys do not overlap, and the split preserves t
 
 ## DML specification
 
-The outcome is monthly station-level `pm25`. The primary treatment is `sentinel2_ndvi_mean_1000m`; sensitivity treatments are `sentinel2_ndvi_mean_500m` and `modis_ndvi_mean_1000m`. The base specification uses five-fold station-grouped cross-fitting, median imputation, and `HistGradientBoostingRegressor` nuisance models.
+The outcome is monthly station-level `pm25`. The primary treatment is `sentinel2_ndvi_mean_1000m`; sensitivity treatments are `sentinel2_ndvi_mean_500m` and `modis_ndvi_mean_1000m`. The base specification uses five-fold station-grouped cross-fitting, median imputation, and `HistGradientBoostingRegressor` nuisance models. This follows the orthogonal-score and cross-fitting framework for Double Machine Learning [1].
 
 Controls were pre-specified from temporal/spatial context, ERA5 meteorology, 2025 population and road density, and non-vegetation Dynamic World context. Green-cover proxies, Sentinel-5P NO₂/pollution proxies, and contemporaneous MODIS/LST or gradient variables were excluded to reduce treatment-proxy and plausible post-treatment adjustment.
 
@@ -105,7 +105,7 @@ The attachment-to-repository implementation map is documented in `data/modeling_
 
 ## Learner benchmark
 
-A transparent nuisance-learner benchmark compares HistGradientBoosting, Random Forest, and Extra Trees using the same station-grouped folds. Learners are selected only by cross-fitted nuisance prediction RMSE, never by causal coefficient sign or confidence-interval width.
+A transparent nuisance-learner benchmark compares HistGradientBoosting, Random Forest, and Extra Trees using the same station-grouped folds. Learners are selected only by cross-fitted nuisance prediction RMSE, never by causal coefficient sign or confidence-interval width. The predictive benchmark is separate from the causal estimand and follows standard regression-evaluation practice rather than classification accuracy [2].
 
 | Learner | Outcome RMSE | Outcome R2 | Treatment RMSE | Treatment R2 |
 |---|---:|---:|---:|---:|
@@ -125,7 +125,7 @@ These temporal estimates are sensitivities, not replacements for the headline es
 
 ## V3 baseline predictive modeling
 
-The repository also contains a separate immutable-input predictive baseline under `data/modeling_changes/baseline_predictive_v1/`. The executed notebook compares Linear Regression, Random Forest, and LightGBM on the frozen V3 master and canonical train/test split. It uses train-fitted preprocessing and five-fold station-grouped cross-validation on the training data only. The existing split remains the primary year-balanced diagnostic split, not a spatially independent generalization test.
+The repository also contains a separate immutable-input predictive baseline under `data/modeling_changes/baseline_predictive_v1/`. The executed notebook `notebooks/baseline_regression_models_v3.ipynb` compares Linear Regression, Random Forest, and LightGBM on the frozen V3 master and canonical train/test split. It uses train-fitted preprocessing and five-fold station-grouped cross-validation on the training data only. LightGBM is used as a predictive regression learner, not as a causal estimator [3]. The existing split remains the primary year-balanced diagnostic split, not a spatially independent generalization test.
 
 | Model | Locked-test R² | Locked-test RMSE (µg/m³) | Locked-test MAE (µg/m³) |
 |---|---:|---:|---:|
@@ -135,7 +135,32 @@ The repository also contains a separate immutable-input predictive baseline unde
 
 LightGBM is the best predictive baseline by locked-test RMSE and MAE. The tree-model train scores are much higher than locked-test scores, so potential overfitting is explicitly flagged. Temporal variables dominate aggregate tree importance, and high predictor collinearity makes individual importance rankings unstable. These are predictive findings only. Accuracy, precision, and recall are not reported as equivalent regression metrics for continuous PM₂.₅, and feature importance is not a causal effect.
 
-The package includes year-wise and season-wise diagnostics, residual and extreme-event audits, station-level error summaries, input SHA-256 hashes, an automated findings report, and exactly six static high-resolution figures under `data/modeling_changes/baseline_predictive_v1/results/plots/`. The narrative report is `data/modeling_changes/baseline_predictive_v1/baseline_predictive_report.md`, and the executed notebook is `notebooks/baseline_regression_models_v3.ipynb`.
+The package includes year-wise and season-wise diagnostics, residual and extreme-event audits, station-level error summaries, input SHA-256 hashes, an automated findings report, and exactly six static high-resolution figures under `data/modeling_changes/baseline_predictive_v1/results/plots/`. The narrative report is `data/modeling_changes/baseline_predictive_v1/baseline_predictive_report.md`, and the executed notebook is `notebooks/baseline_regression_models_v3.ipynb`. The notebook writes canonical CSV tables locally; the fork publishes direct JSON review mirrors because GitHub browser upload cannot create the repository’s Git-LFS CSV objects. The JSON mirrors are unchanged serializations, documented in `data/modeling_changes/baseline_predictive_v1/results/README.md`.
+
+## Spatial PM₂.₅ surface and threshold screen
+
+The V3 extension now includes a separate, auditable spatial prediction and threshold-analysis package under `data/modeling_changes/spatial_threshold_v1/`. These analyses are predictive/associational extensions; they do not replace the DML estimand or establish causal green-cover effects.
+
+The spatial model uses the locked LightGBM predictive configuration with five-fold station-grouped training validation. The V3 inputs contain 35 fixed-coordinate monitoring stations but no validated grid of environmental covariates for unobserved locations. Accordingly, the reported “surface” is **station-supported**: it shows predicted PM₂.₅ at observed station coordinates and summarizes station-level error. No interpolation, IDW filling, raster extrapolation, or unobserved-grid prediction is used.
+
+| Spatial diagnostic | Value |
+|---|---:|
+| Locked-test rows / stations | 323 / 34 |
+| LightGBM locked-test R² | 0.924811 |
+| LightGBM locked-test RMSE | 18.814873 µg/m³ |
+| LightGBM locked-test MAE | 9.973572 µg/m³ |
+
+The threshold work is a separate predictive breakpoint screen for `sentinel2_ndvi_mean_1000m`. It evaluates 17 pre-specified training quantiles from 0.10 to 0.90 using a piecewise-linear Ridge model and station-grouped training CV. The selected training breakpoint is NDVI **0.377235**, approximately the 0.75 training quantile. Its locked-test diagnostic is R² **0.742283**, RMSE **34.833294 µg/m³**, and MAE **25.690121 µg/m³**. However, the same quantile was selected in only 6% of 100 station-bootstrap repetitions, so the frozen stability rule concludes that **no stable threshold is identified**.
+
+The threshold result must not be described as “the amount of greenery required,” a policy threshold, or a causal dose-response effect. The complete contract, output tables, input hashes, report, validator, and visual review are stored in `data/modeling_changes/spatial_threshold_v1/`.
+
+![Station-supported predicted PM₂.₅ surface](data/modeling_changes/spatial_threshold_v1/results/plots/01_station_supported_surface.png)
+
+*Station-supported predictive map using observed station coordinates only; it is not an interpolated concentration raster or causal effect map.*
+
+![Predictive threshold screen](data/modeling_changes/spatial_threshold_v1/results/plots/03_threshold_cv.png)
+
+*Pre-specified breakpoint screen selected by training station-grouped CV; the breakpoint is not a causal vegetation threshold.*
 
 ## Reproduce the analysis
 
@@ -158,21 +183,33 @@ python data/modeling_changes/dml_v3/within_station_time_dml.py
 python data/modeling_changes/dml_v3/validate_best_implementation.py
 jupyter nbconvert --to notebook --execute notebooks/baseline_regression_models_v3.ipynb --inplace --ExecutePreprocessor.timeout=900
 python data/modeling_changes/baseline_predictive_v1/validate_baseline.py
+python data/modeling_changes/spatial_threshold_v1/run_spatial_threshold.py
+python data/modeling_changes/spatial_threshold_v1/validate_spatial_threshold.py
 ```
 
 ## Pull request
 
-The correct cross-fork pull request is [PR #2](https://github.com/hitakshijoshi20072911/PM2.5_ACM_Research_Work/pull/2). Its base is `hitakshijoshi20072911/PM2.5_ACM_Research_Work:main`, and its head is `RidhimaKulashriz/PM2.5_ACM_Research_Work:dml-v3-implementation`. The PR contains the complete base DML work, robustness artifacts, time-aware specifications, learner benchmark, audit trail, and validators.
+The correct cross-fork pull request is [PR #2](https://github.com/hitakshijoshi20072911/PM2.5_ACM_Research_Work/pull/2). Its base is `hitakshijoshi20072911/PM2.5_ACM_Research_Work:main`, and its head is `RidhimaKulashriz/PM2.5_ACM_Research_Work:dml-v3-implementation`. The PR contains the complete base DML work, robustness artifacts, time-aware specifications, learner benchmark, predictive baseline notebook, six figures, audit trail, and validators.
+
+The PR is conflict-free and mergeable. The fork account can update the PR but does not have permission to merge into Hitakshi’s upstream repository; final merge therefore requires an upstream maintainer.
 
 ## Interpretation and next steps
 
-This Version 1 DML analysis remains subject to conditional exchangeability, overlap, treatment definition, measurement, spatial dependence, serial dependence, and exposure/outcome simultaneity assumptions. The next methodological priority is a clearly pre-treatment exposure window or defensible quasi-experimental variation, with dependence-aware inference treated as the primary result.
+This Version 1 DML analysis remains subject to conditional exchangeability, overlap, treatment definition, measurement, spatial dependence, serial dependence, and exposure/outcome simultaneity assumptions. The next methodological priority is supervisor review and, only if approved, a clearly pre-treatment exposure window, satellite measurement-error analysis, negative-control/placebo tests, or defensible quasi-experimental variation. The station-supported surface is not a continuous spatial raster, and the threshold screen did not identify a stable breakpoint. Dependence-aware inference remains primary for causal interpretation.
 
 ---
 
-# Current Phase — Phase 1
+## References
 
-## CPCB Data Ingestion, Audit & Exploratory Analysis
+[1]: https://academic.oup.com/ectj/article/21/1/C1/5056401 Chernozhukov et al., “Double/Debiased Machine Learning for Treatment and Structural Parameters,” *The Econometrics Journal*.
+[2]: https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics scikit-learn, “Regression metrics.”
+[3]: https://lightgbm.readthedocs.io/en/latest/ LightGBM documentation.
+
+---
+
+# Current Repository Phase — Version 1 Review
+
+## CPCB Foundation, V3 DML, and Predictive Baseline
 
 The repository is currently focused on establishing a reliable **ground-truth air-quality data foundation** using CPCB monitoring data for Delhi.
 
@@ -357,10 +394,13 @@ PM2.5_ACM_Research_Work/
 │   ├── processed/
 │   ├── ml_ready/
 │   └── modeling_changes/
-│       └── dml_v3/        # Version 1 DML code, outputs, reports, and audits
+│       ├── dml_v3/        # Version 1 DML code, outputs, reports, and audits
+│       ├── baseline_predictive_v1/ # Predictive baseline outputs and validation
+│       └── spatial_threshold_v1/ # Station-supported surface and threshold screen
 │
 ├── notebooks/
-│   └── Exploratory and research notebooks
+│   ├── Exploratory and research notebooks
+│   └── baseline_regression_models_v3.ipynb # Executed predictive baseline
 │
 ├── reports/
 │   └── Analysis outputs and research reports
@@ -425,12 +465,12 @@ Spatial Heterogeneity & Threshold Analysis
 | Multimodal satellite integration | ✅ Included in V3 dataset |
 | Meteorological integration       | ✅ Included in V3 controls |
 | Spatial feature engineering      | ✅ Included in V3 dataset |
-| PM₂.₅ ML prediction              | 🔄 Separate modeling track |
-| Spatial PM₂.₅ surface            | 🔄 Planned refinement |
+| PM₂.₅ ML prediction              | ✅ V3 predictive baseline |
+| Spatial PM₂.₅ surface            | ✅ Station-supported V3 surface |
 | Causal ML                        | ✅ V3 DML Version 1 |
 | Green-cover effect estimation    | ✅ Version 1 complete |
 | Spatial heterogeneity analysis   | ✅ Exploratory sensitivity |
-| Threshold analysis               | 🔄 Planned |
+| Threshold analysis               | ✅ Predictive screen; no stable threshold identified |
 
 ---
 
@@ -488,4 +528,4 @@ Delhi NCR PM₂.₅ Spatial & Causal Machine Learning Research
 
 ---
 
-> **Research status:** Version 1 V3 DML implemented and validated → next: pre-treatment panel and spatial causal refinement
+> **Research status:** Version 1 V3 DML and predictive baseline implemented, validated, documented, and published in the fork-to-upstream PR → awaiting upstream maintainer review
