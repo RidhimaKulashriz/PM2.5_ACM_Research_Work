@@ -1,0 +1,22 @@
+[
+  {
+    "n": 323,
+    "r2": 0.924810602343371,
+    "rmse": 18.814872911947692,
+    "mae": 9.973571931942876,
+    "model": "LightGBM",
+    "split": "locked_test",
+    "features": 194.0,
+    "stations_test": 34.0
+  },
+  {
+    "n": 1292,
+    "r2": 0.8609548362533447,
+    "rmse": 24.53650945770108,
+    "mae": 16.550406172920344,
+    "model": "LightGBM",
+    "split": "training_grouped_cv_mean",
+    "features": NaN,
+    "stations_test": NaN
+  }
+]
