@@ -93,7 +93,15 @@ Static figures are generated under `data/modeling_changes/dml_v3/figures/`, incl
 
 *Figure: Holdout-row coverage for each expanding time-aware split.*
 
-Validation scripts are provided for the base DML, robustness package, and pre-treatment package. Exact input SHA-256 hashes are recorded in the configuration files, and all generated outputs remain in the isolated DML directory.
+Validation scripts are provided for the base DML, robustness package, pre-treatment package, and attachment-driven audit package. Exact input SHA-256 hashes are recorded in the configuration files, and all generated outputs remain in the isolated DML directory.
+
+## Attachment-driven audits
+
+The attachment audit records missingness by split, variable domain, station, and treatment. It also logs cross-fitted nuisance-model RMSE, MAE, and R2, residual orthogonality correlation, mean orthogonal score, and a fixed PM2.5 concentration-band agreement metric for presentation readability. The band metric is descriptive only and is not an official AQI accuracy measure.
+
+Forward-fill, backward-fill, linear interpolation, and inverse-distance imputation are not applied automatically because imputing observed outcomes or treatments can change the causal estimand and introduce artificial temporal or spatial signal. Threshold extraction is also deferred: the current partially linear DML estimator targets a constant marginal effect, whereas thresholds require a separate nonlinear dose-response specification and overlap analysis.
+
+The attachment-to-repository implementation map is documented in `data/modeling_changes/dml_v3/attachment_implementation_scope.md`.
 
 ## Reproduce the analysis
 
@@ -107,6 +115,8 @@ python data/modeling_changes/dml_v3/validate_robustness.py
 python data/modeling_changes/dml_v3/pre_treatment_dml.py
 python data/modeling_changes/dml_v3/validate_pre_treatment.py
 python data/modeling_changes/dml_v3/generate_dml_figures.py
+python data/modeling_changes/dml_v3/attachment_audits.py
+python data/modeling_changes/dml_v3/validate_attachment_audits.py
 ```
 
 ## Pull request
