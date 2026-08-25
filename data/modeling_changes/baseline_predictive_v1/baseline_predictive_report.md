@@ -55,18 +55,18 @@ jupyter nbconvert --to notebook --execute notebooks/baseline_regression_models_v
 python data/modeling_changes/baseline_predictive_v1/validate_baseline.py
 ```
 
-For standard notebook execution, use a Python 3 kernel with pandas, NumPy, scikit-learn, matplotlib, seaborn, LightGBM, and Jupyter notebook execution support. The executed notebook and all derived outputs are isolated under `notebooks/baseline_regression_models_v3.ipynb` and `data/modeling_changes/baseline_predictive_v1/`. The `input_hashes.json` file records the SHA-256 hashes of the frozen master, train, and test inputs.
+For standard notebook execution, use a Python 3 kernel with pandas, NumPy, scikit-learn, matplotlib, seaborn, LightGBM, and Jupyter notebook execution support. The executed notebook and all derived outputs are isolated under `notebooks/baseline_regression_models_v3.ipynb` and `data/modeling_changes/baseline_predictive_v1/`. The `input_hashes.json` file records the SHA-256 hashes of the frozen master, train, and test inputs. The notebook writes canonical CSV tables locally; because the fork routes CSV paths through Git LFS and browser upload cannot create LFS objects, the fork publishes direct JSON review mirrors of each table alongside the six PNG figures. No values are changed by the JSON serialization.
 
 ## Artifact inventory
 
 | Artifact | Purpose |
 |---|---|
 | `notebooks/baseline_regression_models_v3.ipynb` | Executed single-notebook model workflow |
-| `results/baseline_model_metrics.csv` | Train, test, and training-only grouped-CV metrics |
-| `results/yearly_model_metrics.csv` | Test metrics by year |
-| `results/seasonal_model_metrics.csv` | Test metrics by season |
-| `results/residual_summary.csv` | Residual and extreme-event diagnostics |
-| `results/feature_importance.csv` | RF impurity and LightGBM gain importance |
+| `results/baseline_model_metrics.csv` / `.json` | Train, test, and training-only grouped-CV metrics; JSON is the browser-published review mirror |
+| `results/yearly_model_metrics.csv` / `.json` | Test metrics by year; JSON is the browser-published review mirror |
+| `results/seasonal_model_metrics.csv` / `.json` | Test metrics by season; JSON is the browser-published review mirror |
+| `results/residual_summary.csv` / `.json` | Residual and extreme-event diagnostics; JSON is the browser-published review mirror |
+| `results/feature_importance.csv` / `.json` | RF impurity and LightGBM gain importance; JSON is the browser-published review mirror |
 | `results/findings_report.txt` | Automated findings and guardrails |
 | `results/plots/01_...` through `06_...` | Six static research figures |
 | `input_hashes.json` | Protected-input integrity record |
