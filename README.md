@@ -123,6 +123,20 @@ A rolling-origin sensitivity uses 36 chronological holdout months from 2023–20
 
 These temporal estimates are sensitivities, not replacements for the headline estimate and are not pooled with it. Their differences demonstrate that exposure timing and station-level structure materially affect the estimand. The complete outputs are `rolling_time_summary.csv`, `rolling_time_folds.csv`, `within_station_time_summary.csv`, and `within_station_time_folds.csv`.
 
+## V3 baseline predictive modeling
+
+The repository also contains a separate immutable-input predictive baseline under `data/modeling_changes/baseline_predictive_v1/`. The executed notebook compares Linear Regression, Random Forest, and LightGBM on the frozen V3 master and canonical train/test split. It uses train-fitted preprocessing and five-fold station-grouped cross-validation on the training data only. The existing split remains the primary year-balanced diagnostic split, not a spatially independent generalization test.
+
+| Model | Locked-test R² | Locked-test RMSE (µg/m³) | Locked-test MAE (µg/m³) |
+|---|---:|---:|---:|
+| Linear Regression | 0.820184 | 29.096270 | 21.637563 |
+| Random Forest | 0.908961 | 20.703122 | 11.390408 |
+| LightGBM | **0.924285** | **18.880479** | **10.088022** |
+
+LightGBM is the best predictive baseline by locked-test RMSE and MAE. The tree-model train scores are much higher than locked-test scores, so potential overfitting is explicitly flagged. Temporal variables dominate aggregate tree importance, and high predictor collinearity makes individual importance rankings unstable. These are predictive findings only. Accuracy, precision, and recall are not reported as equivalent regression metrics for continuous PM₂.₅, and feature importance is not a causal effect.
+
+The package includes year-wise and season-wise diagnostics, residual and extreme-event audits, station-level error summaries, input SHA-256 hashes, an automated findings report, and exactly six static high-resolution figures under `data/modeling_changes/baseline_predictive_v1/results/plots/`. The narrative report is `data/modeling_changes/baseline_predictive_v1/baseline_predictive_report.md`, and the executed notebook is `notebooks/baseline_regression_models_v3.ipynb`.
+
 ## Reproduce the analysis
 
 From the repository root:
@@ -142,6 +156,8 @@ python data/modeling_changes/dml_v3/validate_model_selection.py
 python data/modeling_changes/dml_v3/rolling_time_dml.py
 python data/modeling_changes/dml_v3/within_station_time_dml.py
 python data/modeling_changes/dml_v3/validate_best_implementation.py
+jupyter nbconvert --to notebook --execute notebooks/baseline_regression_models_v3.ipynb --inplace --ExecutePreprocessor.timeout=900
+python data/modeling_changes/baseline_predictive_v1/validate_baseline.py
 ```
 
 ## Pull request
