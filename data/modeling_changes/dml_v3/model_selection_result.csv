@@ -1,0 +1,2 @@
+treatment,outcome_learner_selected,treatment_learner_selected,selection_rule,theta,cluster_se,cluster_ci_low,cluster_ci_high,n_clusters,y_rmse_selected,t_rmse_selected,y_r2_selected,t_r2_selected
+sentinel2_ndvi_mean_1000m,extra_trees,hist_gradient_boosting,minimum cross-fitted nuisance RMSE; causal estimate not used,-25.996936028707427,21.56540541979823,-68.26513065151195,16.2712585940971,35,24.203199639152192,0.0833606204167711,0.8694610026991362,0.4670569871274134

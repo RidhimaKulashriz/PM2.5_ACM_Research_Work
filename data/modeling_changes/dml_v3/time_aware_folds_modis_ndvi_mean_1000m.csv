@@ -1,0 +1,4 @@
+treatment,holdout_year,train_year_max,n_train,n_holdout,n_train_stations,n_holdout_stations
+modis_ndvi_mean_1000m,2023,2022,234,256,34,34
+modis_ndvi_mean_1000m,2024,2023,490,257,34,34
+modis_ndvi_mean_1000m,2025,2024,747,251,34,34

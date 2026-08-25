@@ -1,0 +1,13 @@
+{
+  "seed": 42,
+  "n_folds": 5,
+  "wild_bootstrap_reps": 2000,
+  "permutation_reps": 1000,
+  "grouping": "station",
+  "input_sha256": {
+    "train.csv": "27feff3f3ebd9c6110a3981c94ce717edb7e0c697ef8593a6a4b277a90012483",
+    "test.csv": "04e8562e436b5bfad925e5c564ff1f1b7be6e18498ae1b918e45a108509eaea7"
+  },
+  "primary_treatment": "sentinel2_ndvi_mean_1000m",
+  "cluster_count": 35
+}
