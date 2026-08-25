@@ -1,0 +1,2 @@
+theta,cluster_se,cluster_ci_low,cluster_ci_high,n,n_stations,n_folds,treatment,first_holdout_year,last_holdout_year,y_rmse_oof,y_mae_oof,y_r2_oof,t_rmse_oof,t_mae_oof,t_r2_oof,min_train_months
+-65.31163101834817,11.056477857930378,-86.9823276198917,-43.640934416804626,969,35,36,sentinel2_ndvi_mean_1000m,2023,2025,28.257072406251957,19.12013766786935,0.8399228013724056,0.053536390564311094,0.040123912940451895,0.7844405828249273,12

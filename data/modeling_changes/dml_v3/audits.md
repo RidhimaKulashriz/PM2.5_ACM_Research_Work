@@ -21,11 +21,3 @@ Run `python data/modeling_changes/dml_v3/run_dml.py` followed by `python data/mo
 ## Caveats for the research report
 
 The partially linear DML interpretation requires conditional exchangeability, overlap after adjustment, a well-defined treatment, and sufficiently controlled dependence/measurement processes. The current station-month panel may still contain unmeasured spatial and temporal confounding, treatment measurement error, serial dependence, and exposure/outcome simultaneity. The next methodological improvement should add dependence-robust uncertainty and, if scientifically justified, a pre-treatment exposure design or a spatially grouped sensitivity analysis.
-
-## 2026-08-25 — Predictive learner benchmark for precision improvement
-
-A pre-specified learner benchmark compared HistGradientBoosting, Random Forest, and Extra Trees under the same five station-grouped cross-fitting folds. Learners were compared only by held-out nuisance prediction loss; neither the causal coefficient nor interval width was used for selection.
-
-Extra Trees produced the strongest outcome nuisance prediction (RMSE 24.203200, MAE 15.634399, R2 0.869461), improving on HistGradientBoosting (RMSE 25.054989, MAE 16.130006, R2 0.860111). HistGradientBoosting remained the best treatment nuisance learner (RMSE 0.083361, R2 0.467057). Combining those predictive winners gives a sensitivity coefficient of -25.996936 with station-clustered 95% interval [-68.265131, 16.271259]. The interval remains wide and includes zero, so better nuisance prediction does not by itself establish a more precise causal effect.
-
-The benchmark is reported as a sensitivity analysis and does not replace the original pre-specified DML specification. The selection rule, candidate hyperparameters, fold structure, and outputs are stored in `model_selection_config.json`, `model_selection_benchmark.csv`, `model_selection_result.csv`, and `model_selection_report.md`.

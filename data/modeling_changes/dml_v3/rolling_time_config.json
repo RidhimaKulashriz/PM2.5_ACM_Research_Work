@@ -1,0 +1,10 @@
+{
+  "seed": 42,
+  "group": "station",
+  "treatment": "sentinel2_ndvi_mean_1000m",
+  "min_train_months": 12,
+  "rule": "fit only on rows with strictly earlier calendar month than the holdout month",
+  "input_sha256": {
+    "train.csv": "27feff3f3ebd9c6110a3981c94ce717edb7e0c697ef8593a6a4b277a90012483"
+  }
+}
