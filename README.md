@@ -2,8 +2,8 @@
 
 A research pipeline for studying the relationship between **urban green cover and PM₂.₅ pollution across Delhi NCR**, with the eventual goal of identifying spatial patterns and estimating where increased green cover may contribute to particulate pollution mitigation.
 
-> **Current Status:** Version 1 — V3 Double Machine Learning implementation and robustness validation
-> **Next:** Pre-treatment panel design, dependence-aware causal inference, and spatial heterogeneity refinement
+> **Current Status:** Version 1 — V3 Double Machine Learning implementation, robustness validation, time-aware sensitivity, and metric audits
+> **Next:** Rolling-origin temporal validation, measurement-error sensitivity, and pre-specified nonlinear dose-response analysis
 
 ---
 
@@ -103,6 +103,18 @@ Forward-fill, backward-fill, linear interpolation, and inverse-distance imputati
 
 The attachment-to-repository implementation map is documented in `data/modeling_changes/dml_v3/attachment_implementation_scope.md`.
 
+## Learner benchmark
+
+A transparent nuisance-learner benchmark compares HistGradientBoosting, Random Forest, and Extra Trees using the same station-grouped folds. Learners are selected only by cross-fitted nuisance prediction RMSE, never by causal coefficient sign or confidence-interval width.
+
+| Learner | Outcome RMSE | Outcome R2 | Treatment RMSE | Treatment R2 |
+|---|---:|---:|---:|---:|
+| HistGradientBoosting | 25.054989 | 0.860111 | 0.083361 | 0.467057 |
+| Random Forest | 24.460314 | 0.866673 | 0.086756 | 0.422758 |
+| Extra Trees | 24.203200 | 0.869461 | 0.084366 | 0.454122 |
+
+The predictive winners produce a sensitivity coefficient of -25.996936 with station-clustered 95% interval [-68.265131, 16.271259]. The interval still includes zero, so improved nuisance prediction should not be presented as proof of a more precise causal effect.
+
 ## Reproduce the analysis
 
 From the repository root:
@@ -117,6 +129,7 @@ python data/modeling_changes/dml_v3/validate_pre_treatment.py
 python data/modeling_changes/dml_v3/generate_dml_figures.py
 python data/modeling_changes/dml_v3/attachment_audits.py
 python data/modeling_changes/dml_v3/validate_attachment_audits.py
+python data/modeling_changes/dml_v3/model_selection_benchmark.py
 ```
 
 ## Pull request
