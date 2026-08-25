@@ -115,6 +115,14 @@ A transparent nuisance-learner benchmark compares HistGradientBoosting, Random F
 
 The predictive winners produce a sensitivity coefficient of -25.996936 with station-clustered 95% interval [-68.265131, 16.271259]. The interval still includes zero, so improved nuisance prediction should not be presented as proof of a more precise causal effect.
 
+## Best-defensible implementation
+
+The analysis contract in `analysis_contract.md` freezes the estimand, protected inputs, leakage rules, inference hierarchy, and specification-selection decisions before comparison. The preferred implementation is the pre-specified station-grouped DML with dependence-aware inference, time-aware sensitivities, overlap and falsification diagnostics, and transparent learner benchmarking. No specification is selected using a favorable coefficient sign, p-value, or confidence-interval width.
+
+A rolling-origin sensitivity uses 36 chronological holdout months from 2023–2025. Every holdout month is predicted using only strictly earlier calendar months. It scores 969 rows and 35 station clusters. The primary treatment estimate is -65.311631 with station-clustered 95% interval [-86.982328, -43.640934]. A within-station expanding-time sensitivity learns station means from earlier years only, excludes one first-appearance IIT Delhi row with no earlier station mean, and estimates -44.397641 with interval [-66.307516, -22.487766] over 968 rows and 34 station clusters.
+
+These temporal estimates are sensitivities, not replacements for the headline estimate and are not pooled with it. Their differences demonstrate that exposure timing and station-level structure materially affect the estimand. The complete outputs are `rolling_time_summary.csv`, `rolling_time_folds.csv`, `within_station_time_summary.csv`, and `within_station_time_folds.csv`.
+
 ## Reproduce the analysis
 
 From the repository root:
@@ -130,11 +138,15 @@ python data/modeling_changes/dml_v3/generate_dml_figures.py
 python data/modeling_changes/dml_v3/attachment_audits.py
 python data/modeling_changes/dml_v3/validate_attachment_audits.py
 python data/modeling_changes/dml_v3/model_selection_benchmark.py
+python data/modeling_changes/dml_v3/validate_model_selection.py
+python data/modeling_changes/dml_v3/rolling_time_dml.py
+python data/modeling_changes/dml_v3/within_station_time_dml.py
+python data/modeling_changes/dml_v3/validate_best_implementation.py
 ```
 
 ## Pull request
 
-The correct cross-fork pull request is [PR #2](https://github.com/hitakshijoshi20072911/PM2.5_ACM_Research_Work/pull/2). Its base is `hitakshijoshi20072911/PM2.5_ACM_Research_Work:main`, and its head is `RidhimaKulashriz/PM2.5_ACM_Research_Work:dml-v3-implementation`. The PR contains the complete base DML work, robustness artifacts, audit trail, and validators.
+The correct cross-fork pull request is [PR #2](https://github.com/hitakshijoshi20072911/PM2.5_ACM_Research_Work/pull/2). Its base is `hitakshijoshi20072911/PM2.5_ACM_Research_Work:main`, and its head is `RidhimaKulashriz/PM2.5_ACM_Research_Work:dml-v3-implementation`. The PR contains the complete base DML work, robustness artifacts, time-aware specifications, learner benchmark, audit trail, and validators.
 
 ## Interpretation and next steps
 
