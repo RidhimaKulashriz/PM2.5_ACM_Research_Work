@@ -1,0 +1,167 @@
+[
+  {
+    "R2": -5.82633165349956,
+    "RMSE": 181.45484597568569,
+    "MAE": 101.83240470583462,
+    "MedianAE": 32.62957976412644,
+    "model": "Linear Regression",
+    "fold": 1,
+    "n_train": 1060,
+    "n_validation": 232,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.6983695765261755,
+    "RMSE": 38.20387597898942,
+    "MAE": 29.848558882114496,
+    "MedianAE": 23.233914826470937,
+    "model": "Linear Regression",
+    "fold": 2,
+    "n_train": 1024,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "R2": -0.1168416197629842,
+    "RMSE": 65.46860609788739,
+    "MAE": 49.55701824512658,
+    "MedianAE": 37.59592164903286,
+    "model": "Linear Regression",
+    "fold": 3,
+    "n_train": 1024,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "R2": -132.5899986954886,
+    "RMSE": 777.5466112436,
+    "MAE": 111.4519900845043,
+    "MedianAE": 58.612741868274384,
+    "model": "Linear Regression",
+    "fold": 4,
+    "n_train": 1026,
+    "n_validation": 266,
+    "stations_validation": 7
+  },
+  {
+    "R2": -26.67446919948921,
+    "RMSE": 349.7083192643997,
+    "MAE": 162.84249691942173,
+    "MedianAE": 34.03242273937519,
+    "model": "Linear Regression",
+    "fold": 5,
+    "n_train": 1034,
+    "n_validation": 258,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.9130155230628394,
+    "RMSE": 20.48310338310231,
+    "MAE": 13.40535905172412,
+    "MedianAE": 7.923299999999937,
+    "model": "Random Forest",
+    "fold": 1,
+    "n_train": 1060,
+    "n_validation": 232,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.7918589705781043,
+    "RMSE": 31.73574542629452,
+    "MAE": 20.59245037313433,
+    "MedianAE": 12.096833333333535,
+    "model": "Random Forest",
+    "fold": 2,
+    "n_train": 1024,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.8242068831360665,
+    "RMSE": 25.973963904588004,
+    "MAE": 15.414780597014916,
+    "MedianAE": 8.525699999999837,
+    "model": "Random Forest",
+    "fold": 3,
+    "n_train": 1024,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.8959837187304134,
+    "RMSE": 21.69652202984057,
+    "MAE": 15.988400125313277,
+    "MedianAE": 11.606816666666656,
+    "model": "Random Forest",
+    "fold": 4,
+    "n_train": 1026,
+    "n_validation": 266,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.8529855306673682,
+    "RMSE": 25.488621861682724,
+    "MAE": 17.232211498708008,
+    "MedianAE": 9.20473333333338,
+    "model": "Random Forest",
+    "fold": 5,
+    "n_train": 1034,
+    "n_validation": 258,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.924163847883115,
+    "RMSE": 19.125509934692037,
+    "MAE": 13.497450820072656,
+    "MedianAE": 8.74602635477936,
+    "model": "LightGBM",
+    "fold": 1,
+    "n_train": 1060,
+    "n_validation": 232,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.7832355284239858,
+    "RMSE": 32.386491711847185,
+    "MAE": 20.74591043577,
+    "MedianAE": 12.623985552619857,
+    "model": "LightGBM",
+    "fold": 2,
+    "n_train": 1024,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.8473352835491442,
+    "RMSE": 24.20508639992027,
+    "MAE": 14.72437439440684,
+    "MedianAE": 8.187851925552017,
+    "model": "LightGBM",
+    "fold": 3,
+    "n_train": 1024,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.8859541410901695,
+    "RMSE": 22.71847734000894,
+    "MAE": 17.19935508547497,
+    "MedianAE": 13.175781537109271,
+    "model": "LightGBM",
+    "fold": 4,
+    "n_train": 1026,
+    "n_validation": 266,
+    "stations_validation": 7
+  },
+  {
+    "R2": 0.8506015409269687,
+    "RMSE": 25.694452792949992,
+    "MAE": 17.785860625586153,
+    "MedianAE": 10.63980837941665,
+    "model": "LightGBM",
+    "fold": 5,
+    "n_train": 1034,
+    "n_validation": 258,
+    "stations_validation": 7
+  }
+]

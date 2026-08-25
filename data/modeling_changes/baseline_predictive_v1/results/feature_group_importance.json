@@ -1,0 +1,102 @@
+[
+  {
+    "model": "LightGBM",
+    "feature_group": "Temporal",
+    "importance_share": 0.7542210986879961
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Meteorology",
+    "importance_share": 0.1245568410849224
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0335051454232381
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Thermal",
+    "importance_share": 0.0176519655721207
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Land cover",
+    "importance_share": 0.016913626228739
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Other",
+    "importance_share": 0.0160469601655693
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Roads",
+    "importance_share": 0.0136761235181447
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Population",
+    "importance_share": 0.0120219753218633
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "NO₂",
+    "importance_share": 0.0071027321467954
+  },
+  {
+    "model": "LightGBM",
+    "feature_group": "Spatial",
+    "importance_share": 0.0043035318506106
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Temporal",
+    "importance_share": 0.7038051983638565
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Meteorology",
+    "importance_share": 0.1572081398752682
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0480839730033612
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Thermal",
+    "importance_share": 0.0275493695721234
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Population",
+    "importance_share": 0.0154413654836038
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Land cover",
+    "importance_share": 0.0140258074867282
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Roads",
+    "importance_share": 0.012654300636612
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Other",
+    "importance_share": 0.0097482817466067
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "NO₂",
+    "importance_share": 0.0092248287197589
+  },
+  {
+    "model": "Random Forest",
+    "feature_group": "Spatial",
+    "importance_share": 0.0022587351120806
+  }
+]

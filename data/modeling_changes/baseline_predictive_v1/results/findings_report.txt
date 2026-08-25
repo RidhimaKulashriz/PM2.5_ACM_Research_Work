@@ -1,0 +1,41 @@
+V3 BASELINE PREDICTIVE MODELING FINDINGS
+=========================================
+Best locked-test model by RMSE: LightGBM
+The analysis is predictive and observational; no baseline result establishes causality.
+Primary metrics are R2, RMSE, and MAE. Accuracy, precision, and recall are intentionally not reported for continuous PM2.5 regression.
+
+Model metrics:
+            model  train_R2  train_RMSE  train_MAE  test_R2  test_RMSE  test_MAE  test_MedianAE  CV_R2_mean  CV_R2_std  CV_RMSE_mean  CV_RMSE_std  CV_MAE_mean  CV_MAE_std
+Linear Regression  0.875000   23.684128  18.146379 0.820184  29.096270 21.637563      17.619091  -32.901854  56.818620    282.476452   302.729850    91.106494   52.806089
+    Random Forest  0.990239    6.618224   4.295660 0.908961  20.703122 11.390408       6.497000    0.855610   0.049957     25.075591     4.411473    16.526640    2.659745
+         LightGBM  0.999619    1.307879   0.628834 0.924285  18.880479 10.088022       6.682582    0.858258   0.052242     24.826004     4.879498    16.790590    2.824722
+
+Residual summaries:
+            model  mean_residual_observed_minus_predicted  median_residual  residual_std  worst_positive_residual_underprediction  worst_negative_residual_overprediction  mean_abs_residual  high_pm25_rmse_train_p95_group  non_high_pm25_rmse  high_to_non_high_rmse_ratio  abs_residual_observed_corr
+Linear Regression                                0.905401        -2.614430     29.127303                                82.434724                             -220.594287          21.637563                       56.412329           26.773655                     2.107009                    0.233876
+    Random Forest                               -0.046673         0.027067     20.735192                                51.867133                             -255.492400          11.390408                       32.395944           19.852608                     1.631823                    0.237163
+         LightGBM                               -0.046876        -0.745870     18.909715                                49.000084                             -244.006891          10.088022                       23.678071           18.577654                     1.274546                    0.174743
+
+Automated flags and notes:
+[FLAG] Random Forest has at least 10% lower test RMSE than Linear Regression: predictive nonlinear improvement should be investigated.
+[FLAG] LightGBM has at least 10% lower test RMSE than Linear Regression: predictive nonlinear improvement should be investigated.
+[FLAG] Linear Regression has substantially larger RMSE for observations above the training 95th percentile; extreme pollution events influence error.
+[FLAG] Random Forest has substantially larger RMSE for observations above the training 95th percentile; extreme pollution events influence error.
+[FLAG] LightGBM has substantially larger RMSE for observations above the training 95th percentile; extreme pollution events influence error.
+[FLAG] Unusually high station-level error under LightGBM: ['Chandni_Chowk', 'DTU', 'Shadipur']. Spatial station behavior is descriptive and requires further investigation.
+[FLAG] Linear Regression has unusually high year-wise RMSE in ['2024']; temporal regime differences require investigation.
+[FLAG] Random Forest has unusually high year-wise RMSE in ['2024']; temporal regime differences require investigation.
+[FLAG] LightGBM has unusually high year-wise RMSE in ['2024']; temporal regime differences require investigation.
+[FLAG] Linear Regression has unusually high season-wise RMSE in ['Post-monsoon']; temporal regime differences require investigation.
+[FLAG] Random Forest has unusually high season-wise RMSE in ['Post-monsoon']; temporal regime differences require investigation.
+[FLAG] LightGBM has unusually high season-wise RMSE in ['Post-monsoon']; temporal regime differences require investigation.
+[FLAG] Random Forest's largest aggregate predictive importance group is Temporal (70.4%); this is not causal evidence.
+[FLAG] LightGBM's largest aggregate predictive importance group is Temporal (75.4%); this is not causal evidence.
+[FLAG] High training-feature collinearity (absolute correlation >= 0.90) found in 439 pairs; tree importance and linear coefficients should not be interpreted independently.
+
+Interpretation guardrails:
+- The year-balanced split is not spatially independent because most stations occur in both train and test.
+- Feature importance is predictive/exploratory, not a causal effect or treatment ranking.
+- Extreme PM2.5 observations are retained; elevated RMSE for them is a diagnostic, not a reason to remove them.
+- The primary NDVI relationship figure is descriptive and cannot establish that vegetation reduces PM2.5.
+- DML estimates and dependence-aware intervals remain the separate causal-inference workstream.
