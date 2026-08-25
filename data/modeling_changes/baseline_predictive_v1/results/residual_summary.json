@@ -1,0 +1,41 @@
+[
+  {
+    "model": "Linear Regression",
+    "mean_residual_observed_minus_predicted": 0.9054008436251372,
+    "median_residual": -2.6144304604584363,
+    "residual_std": 29.127303023157904,
+    "worst_positive_residual_underprediction": 82.43472442259764,
+    "worst_negative_residual_overprediction": -220.59428736829963,
+    "mean_abs_residual": 21.63756340936239,
+    "high_pm25_rmse_train_p95_group": 56.412328878567294,
+    "non_high_pm25_rmse": 26.7736545369195,
+    "high_to_non_high_rmse_ratio": 2.107008918068229,
+    "abs_residual_observed_corr": 0.2338760652792075
+  },
+  {
+    "model": "Random Forest",
+    "mean_residual_observed_minus_predicted": -0.0466734778121762,
+    "median_residual": 0.0270666666667267,
+    "residual_std": 20.735192312751582,
+    "worst_positive_residual_underprediction": 51.8671333333333,
+    "worst_negative_residual_overprediction": -255.4923999999998,
+    "mean_abs_residual": 11.390408049535608,
+    "high_pm25_rmse_train_p95_group": 32.39594442927146,
+    "non_high_pm25_rmse": 19.852608152861244,
+    "high_to_non_high_rmse_ratio": 1.6318230924535937,
+    "abs_residual_observed_corr": 0.237163317251416
+  },
+  {
+    "model": "LightGBM",
+    "mean_residual_observed_minus_predicted": -0.0468763992550213,
+    "median_residual": -0.7458704389356114,
+    "residual_std": 18.90971526843806,
+    "worst_positive_residual_underprediction": 49.000084419109456,
+    "worst_negative_residual_overprediction": -244.0068914166072,
+    "mean_abs_residual": 10.088021686226476,
+    "high_pm25_rmse_train_p95_group": 23.678070849382312,
+    "non_high_pm25_rmse": 18.577653915161267,
+    "high_to_non_high_rmse_ratio": 1.2745458041964377,
+    "abs_residual_observed_corr": 0.1747432315125573
+  }
+]

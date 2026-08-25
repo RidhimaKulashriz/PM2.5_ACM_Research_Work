@@ -1,0 +1,16 @@
+fold,learner,n_train,n_holdout,n_train_stations,n_holdout_stations
+0,hist_gradient_boosting,1060,232,28,7
+0,random_forest,1060,232,28,7
+0,extra_trees,1060,232,28,7
+1,hist_gradient_boosting,1024,268,28,7
+1,random_forest,1024,268,28,7
+1,extra_trees,1024,268,28,7
+2,hist_gradient_boosting,1024,268,28,7
+2,random_forest,1024,268,28,7
+2,extra_trees,1024,268,28,7
+3,hist_gradient_boosting,1026,266,28,7
+3,random_forest,1026,266,28,7
+3,extra_trees,1026,266,28,7
+4,hist_gradient_boosting,1034,258,28,7
+4,random_forest,1034,258,28,7
+4,extra_trees,1034,258,28,7

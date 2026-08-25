@@ -1,0 +1,3106 @@
+[
+  {
+    "model": "Random Forest",
+    "feature": "year",
+    "importance": 0.0023088124621455,
+    "importance_measure": "split_impurity",
+    "feature_group": "Temporal",
+    "importance_share": 0.0023088124621455
+  },
+  {
+    "model": "Random Forest",
+    "feature": "month",
+    "importance": 0.0018148019631338,
+    "importance_measure": "split_impurity",
+    "feature_group": "Temporal",
+    "importance_share": 0.0018148019631338
+  },
+  {
+    "model": "Random Forest",
+    "feature": "latitude",
+    "importance": 0.000581596423254,
+    "importance_measure": "split_impurity",
+    "feature_group": "Spatial",
+    "importance_share": 0.000581596423254
+  },
+  {
+    "model": "Random Forest",
+    "feature": "longitude",
+    "importance": 0.0016771386888266,
+    "importance_measure": "split_impurity",
+    "feature_group": "Spatial",
+    "importance_share": 0.0016771386888266
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_mean_100m",
+    "importance": 0.000448351403998,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000448351403998
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_mean_250m",
+    "importance": 0.0010571291114197,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0010571291114197
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_mean_500m",
+    "importance": 0.0005589171126526,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005589171126526
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_mean_1000m",
+    "importance": 0.0005572270035783,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005572270035783
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_median_100m",
+    "importance": 0.0004053433431171,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004053433431171
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_median_250m",
+    "importance": 0.0004880259774985,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004880259774985
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_median_500m",
+    "importance": 0.0003953629605449,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003953629605449
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_median_1000m",
+    "importance": 0.0007135756853503,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007135756853503
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_std_100m",
+    "importance": 0.0007368822139378,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007368822139378
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_std_250m",
+    "importance": 0.0017091900969701,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0017091900969701
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_std_500m",
+    "importance": 0.0008072301245148,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0008072301245148
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_evi_std_1000m",
+    "importance": 0.0012199332694106,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0012199332694106
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_max_100m",
+    "importance": 0.0005881534322212,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005881534322212
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_max_250m",
+    "importance": 0.0005288673148683,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005288673148683
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_max_500m",
+    "importance": 0.0006925204256831,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006925204256831
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_max_1000m",
+    "importance": 0.0018446480436312,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0018446480436312
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_mean_100m",
+    "importance": 0.0001935867026023,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001935867026023
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_mean_250m",
+    "importance": 0.0003549498202982,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003549498202982
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_mean_500m",
+    "importance": 0.0003287157893067,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003287157893067
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_mean_1000m",
+    "importance": 0.0004616407877216,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004616407877216
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_median_100m",
+    "importance": 0.0002959284624771,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002959284624771
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_median_250m",
+    "importance": 0.0007865107899797,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007865107899797
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_median_500m",
+    "importance": 0.0005396129985333,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005396129985333
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_median_1000m",
+    "importance": 0.0006197384605413,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006197384605413
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_min_100m",
+    "importance": 0.0017754301587005,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0017754301587005
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_min_250m",
+    "importance": 0.001050720545907,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.001050720545907
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_min_500m",
+    "importance": 0.0006983930683875,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006983930683875
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_min_1000m",
+    "importance": 0.0010318513002772,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0010318513002772
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_std_100m",
+    "importance": 0.0004275205552487,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004275205552487
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_std_250m",
+    "importance": 0.0004906781336362,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004906781336362
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_std_500m",
+    "importance": 0.0003791970443054,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003791970443054
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndvi_std_1000m",
+    "importance": 0.000452430769254,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000452430769254
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_mean_100m",
+    "importance": 0.0003530363256997,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003530363256997
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_mean_250m",
+    "importance": 0.0005622383660492,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005622383660492
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_mean_500m",
+    "importance": 0.0006890579639163,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006890579639163
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_mean_1000m",
+    "importance": 0.0008381450713681,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0008381450713681
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_median_100m",
+    "importance": 0.0003313316768013,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003313316768013
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_median_250m",
+    "importance": 0.0017776192876888,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0017776192876888
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_median_500m",
+    "importance": 0.0004246416448748,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004246416448748
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_median_1000m",
+    "importance": 0.000490090112772,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000490090112772
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_std_100m",
+    "importance": 0.000700062382077,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000700062382077
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_std_250m",
+    "importance": 0.0005885784026869,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005885784026869
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_std_500m",
+    "importance": 0.0004875494954922,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004875494954922
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_ndwi_std_1000m",
+    "importance": 0.0006617159488599,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006617159488599
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_valid_pixels_100m",
+    "importance": 0.0011245369191663,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0011245369191663
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_valid_pixels_250m",
+    "importance": 0.0009422927008875,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0009422927008875
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_valid_pixels_500m",
+    "importance": 0.0003879512551318,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0003879512551318
+  },
+  {
+    "model": "Random Forest",
+    "feature": "sentinel2_valid_pixels_1000m",
+    "importance": 0.0038090727997302,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0038090727997301
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_mean_100m",
+    "importance": 0.0002515779838178,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002515779838178
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_mean_250m",
+    "importance": 0.0002739308674951,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002739308674951
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_mean_500m",
+    "importance": 0.0002472487789236,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002472487789236
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_mean_1000m",
+    "importance": 0.0003335187418532,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0003335187418532
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_median_100m",
+    "importance": 0.0001646557603041,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001646557603041
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_median_250m",
+    "importance": 0.0002201604354355,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002201604354355
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_median_500m",
+    "importance": 0.0001971709964874,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001971709964874
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_median_1000m",
+    "importance": 0.0004224347526462,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0004224347526462
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_std_100m",
+    "importance": 0.0003433162503956,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0003433162503956
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_std_250m",
+    "importance": 0.0004737716754389,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0004737716754389
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_std_500m",
+    "importance": 0.0009051119700601,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0009051119700601
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_total_std_1000m",
+    "importance": 0.0006355792083833,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0006355792083833
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_mean_100m",
+    "importance": 0.0001630082316961,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001630082316961
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_mean_250m",
+    "importance": 0.0003294770012654,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0003294770012654
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_mean_500m",
+    "importance": 0.0004369749689596,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0004369749689596
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_mean_1000m",
+    "importance": 0.0002887363704495,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002887363704495
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_median_100m",
+    "importance": 0.0002396364322028,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002396364322028
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_median_250m",
+    "importance": 0.0001863451355697,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001863451355697
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_median_500m",
+    "importance": 0.0001972961555404,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001972961555404
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_median_1000m",
+    "importance": 0.0003720729461666,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0003720729461666
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_std_100m",
+    "importance": 0.000312735834424,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.000312735834424
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_std_250m",
+    "importance": 0.0005202435316865,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0005202435316865
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_std_500m",
+    "importance": 0.0004983242214473,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0004983242214473
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_no2_trop_std_1000m",
+    "importance": 0.0005540580158226,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0005540580158226
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_valid_obs_count_100m",
+    "importance": 0.0005015041096742,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0005015041096742
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_valid_obs_count_250m",
+    "importance": 0.0010225013919318,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0010225013919318
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_valid_obs_count_500m",
+    "importance": 0.0011520836851799,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0011520836851799
+  },
+  {
+    "model": "Random Forest",
+    "feature": "s5p_valid_obs_count_1000m",
+    "importance": 0.0008083388849047,
+    "importance_measure": "split_impurity",
+    "feature_group": "Other",
+    "importance_share": 0.0008083388849047
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_mean_100m",
+    "importance": 0.00034539443324,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.00034539443324
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_mean_250m",
+    "importance": 0.000553090383817,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000553090383817
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_mean_500m",
+    "importance": 0.0005512340242285,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005512340242285
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_mean_1000m",
+    "importance": 0.0007735152145354,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007735152145354
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_median_100m",
+    "importance": 0.0004853319917163,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004853319917163
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_median_250m",
+    "importance": 0.0004074219416918,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004074219416918
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_median_500m",
+    "importance": 0.000527169121285,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000527169121285
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_median_1000m",
+    "importance": 0.0006451534614124,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006451534614124
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_std_100m",
+    "importance": 0.0007645637458053,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007645637458053
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_std_250m",
+    "importance": 0.0005853661561112,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005853661561112
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_std_500m",
+    "importance": 0.0005581104557233,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005581104557233
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_evi_std_1000m",
+    "importance": 0.0009395994294971,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0009395994294971
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_mean_100m",
+    "importance": 0.0007424825629133,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007424825629133
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_mean_250m",
+    "importance": 0.0005864498797145,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005864498797145
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_mean_500m",
+    "importance": 0.0005559419671813,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005559419671813
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_mean_1000m",
+    "importance": 0.000411538252449,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000411538252449
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_median_100m",
+    "importance": 0.0006544820739354,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006544820739354
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_median_250m",
+    "importance": 0.000767840979474,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000767840979474
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_median_500m",
+    "importance": 0.0006281276526307,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006281276526307
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_median_1000m",
+    "importance": 0.0007356159704244,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007356159704244
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_std_100m",
+    "importance": 0.000728407295184,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000728407295184
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_std_250m",
+    "importance": 0.0008639560760648,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0008639560760648
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_std_500m",
+    "importance": 0.0007539754366161,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007539754366161
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_ndvi_std_1000m",
+    "importance": 0.0012015214444037,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0012015214444037
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_mean_c_100m",
+    "importance": 0.0003266765673996,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003266765673996
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_mean_c_250m",
+    "importance": 0.0002673145542753,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002673145542753
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_mean_c_500m",
+    "importance": 0.0002406547652363,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002406547652363
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_mean_c_1000m",
+    "importance": 0.0005420544072258,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0005420544072258
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_median_c_100m",
+    "importance": 0.0002958080318031,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002958080318031
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_median_c_250m",
+    "importance": 0.0003017810911572,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003017810911572
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_median_c_500m",
+    "importance": 0.0002164946436301,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002164946436301
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_median_c_1000m",
+    "importance": 0.0003426930589748,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003426930589748
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_std_c_100m",
+    "importance": 0.0005430889819424,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0005430889819424
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_std_c_250m",
+    "importance": 0.0007444358509852,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0007444358509852
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_std_c_500m",
+    "importance": 0.0010123021318185,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0010123021318185
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_day_std_c_1000m",
+    "importance": 0.0011327631550893,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0011327631550893
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_mean_c_100m",
+    "importance": 0.000501368047691,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.000501368047691
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_mean_c_250m",
+    "importance": 0.0004193319083925,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0004193319083925
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_mean_c_500m",
+    "importance": 0.0003242491171581,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003242491171581
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_mean_c_1000m",
+    "importance": 0.0006312495532665,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0006312495532665
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_median_c_100m",
+    "importance": 0.0003746084798744,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003746084798744
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_median_c_250m",
+    "importance": 0.0003907226767425,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003907226767425
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_median_c_500m",
+    "importance": 0.0003835576822229,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003835576822229
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_diurnal_range_median_c_1000m",
+    "importance": 0.0004641760561777,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0004641760561777
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_mean_c_100m",
+    "importance": 0.0017910082404613,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0017910082404613
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_mean_c_250m",
+    "importance": 0.0010801651623935,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0010801651623935
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_mean_c_500m",
+    "importance": 0.0009554535752706,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0009554535752706
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_mean_c_1000m",
+    "importance": 0.0009290791251805,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0009290791251805
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_median_c_100m",
+    "importance": 0.0044441593402054,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0044441593402054
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_median_c_250m",
+    "importance": 0.0021177066932089,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0021177066932089
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_median_c_500m",
+    "importance": 0.0011883790097083,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0011883790097083
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_median_c_1000m",
+    "importance": 0.0004683167516829,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0004683167516829
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_std_c_100m",
+    "importance": 0.000524725889941,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.000524725889941
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_std_c_250m",
+    "importance": 0.0007466259188965,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0007466259188965
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_std_c_500m",
+    "importance": 0.0009667603769631,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0009667603769631
+  },
+  {
+    "model": "Random Forest",
+    "feature": "modis_lst_night_std_c_1000m",
+    "importance": 0.0016303187752044,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0016303187752044
+  },
+  {
+    "model": "Random Forest",
+    "feature": "month_sin",
+    "importance": 0.0015111585678606,
+    "importance_measure": "split_impurity",
+    "feature_group": "Temporal",
+    "importance_share": 0.0015111585678606
+  },
+  {
+    "model": "Random Forest",
+    "feature": "month_cos",
+    "importance": 0.6972179708368553,
+    "importance_measure": "split_impurity",
+    "feature_group": "Temporal",
+    "importance_share": 0.6972179708368552
+  },
+  {
+    "model": "Random Forest",
+    "feature": "gradient_ndvi_1000_100",
+    "importance": 0.0017634476472814,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0017634476472814
+  },
+  {
+    "model": "Random Forest",
+    "feature": "gradient_lst_day_1000_100",
+    "importance": 0.0012513399519424,
+    "importance_measure": "split_impurity",
+    "feature_group": "Thermal",
+    "importance_share": 0.0012513399519424
+  },
+  {
+    "model": "Random Forest",
+    "feature": "gradient_no2_1000_100",
+    "importance": 0.0006574424532865,
+    "importance_measure": "split_impurity",
+    "feature_group": "NO₂",
+    "importance_share": 0.0006574424532865
+  },
+  {
+    "model": "Random Forest",
+    "feature": "season_encoded",
+    "importance": 0.0009524545338612,
+    "importance_measure": "split_impurity",
+    "feature_group": "Temporal",
+    "importance_share": 0.0009524545338612
+  },
+  {
+    "model": "Random Forest",
+    "feature": "era5_temp_mean",
+    "importance": 0.0731592062677927,
+    "importance_measure": "split_impurity",
+    "feature_group": "Meteorology",
+    "importance_share": 0.0731592062677927
+  },
+  {
+    "model": "Random Forest",
+    "feature": "era5_rh_mean",
+    "importance": 0.0423919182357099,
+    "importance_measure": "split_impurity",
+    "feature_group": "Meteorology",
+    "importance_share": 0.0423919182357099
+  },
+  {
+    "model": "Random Forest",
+    "feature": "era5_wind_speed_mean",
+    "importance": 0.0093570961858754,
+    "importance_measure": "split_impurity",
+    "feature_group": "Meteorology",
+    "importance_share": 0.0093570961858754
+  },
+  {
+    "model": "Random Forest",
+    "feature": "era5_blh_mean",
+    "importance": 0.03229991918589,
+    "importance_measure": "split_impurity",
+    "feature_group": "Meteorology",
+    "importance_share": 0.03229991918589
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_water_frac_100m",
+    "importance": 1.3969673357883694e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 1.3969673357883693e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_trees_frac_100m",
+    "importance": 3.581390709521214e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 3.581390709521213e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_grass_frac_100m",
+    "importance": 6.98951860153618e-07,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 6.989518601536179e-07
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_crops_frac_100m",
+    "importance": 8.241338345385805e-06,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 8.241338345385803e-06
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_100m",
+    "importance": 5.2622483500875e-06,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 5.262248350087499e-06
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_built_frac_100m",
+    "importance": 0.0002509694543514,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0002509694543514
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_bare_frac_100m",
+    "importance": 1.3008137541186095e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 1.3008137541186094e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_valid_pixels_100m",
+    "importance": 8.357684978036724e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 8.357684978036722e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_water_frac_250m",
+    "importance": 0.0001002308379936,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001002308379936
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_trees_frac_250m",
+    "importance": 0.0001615999987594,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001615999987594
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_grass_frac_250m",
+    "importance": 1.2275958725349843e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 1.2275958725349842e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_250m",
+    "importance": 0.0,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_crops_frac_250m",
+    "importance": 0.0001135543417835,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001135543417835
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_250m",
+    "importance": 5.387997795437221e-06,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 5.38799779543722e-06
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_built_frac_250m",
+    "importance": 0.0007527160396959,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0007527160396959
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_bare_frac_250m",
+    "importance": 3.791944463899891e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 3.7919444638998906e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_250m",
+    "importance": 0.0,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_valid_pixels_250m",
+    "importance": 0.0005295531247821,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0005295531247821
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_water_frac_500m",
+    "importance": 0.0001916709038866,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001916709038866
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_trees_frac_500m",
+    "importance": 0.0009340774755434,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0009340774755434
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_grass_frac_500m",
+    "importance": 1.5730193553665083e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 1.573019355366508e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_500m",
+    "importance": 0.0,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_crops_frac_500m",
+    "importance": 0.0002372005057839,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0002372005057839
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_500m",
+    "importance": 4.653511550563418e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 4.6535115505634165e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_built_frac_500m",
+    "importance": 0.0022083572589401,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0022083572589401
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_bare_frac_500m",
+    "importance": 0.00014108174256,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.00014108174256
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_500m",
+    "importance": 0.0,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_valid_pixels_500m",
+    "importance": 0.0005267537664002,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0005267537664002
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_water_frac_1000m",
+    "importance": 0.0009160063866112,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0009160063866112
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_trees_frac_1000m",
+    "importance": 0.0034755017992978,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0034755017992978
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_grass_frac_1000m",
+    "importance": 0.0001506367803879,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001506367803879
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_1000m",
+    "importance": 1.1905821162511785e-05,
+    "importance_measure": "split_impurity",
+    "feature_group": "Vegetation",
+    "importance_share": 1.190582116251178e-05
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_crops_frac_1000m",
+    "importance": 0.0007233335397266,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0007233335397266
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_1000m",
+    "importance": 0.0002027152148295,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0002027152148295
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_built_frac_1000m",
+    "importance": 0.0007037457470985,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0007037457470985
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_bare_frac_1000m",
+    "importance": 0.0007379457586732,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0007379457586732
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_1000m",
+    "importance": 0.0,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "Random Forest",
+    "feature": "dynamicworld_2025_valid_pixels_1000m",
+    "importance": 0.0006897369930732,
+    "importance_measure": "split_impurity",
+    "feature_group": "Land cover",
+    "importance_share": 0.0006897369930732
+  },
+  {
+    "model": "Random Forest",
+    "feature": "population_density_2025_250m",
+    "importance": 0.0119528536909336,
+    "importance_measure": "split_impurity",
+    "feature_group": "Population",
+    "importance_share": 0.0119528536909336
+  },
+  {
+    "model": "Random Forest",
+    "feature": "population_density_2025_500m",
+    "importance": 0.0010995654932319,
+    "importance_measure": "split_impurity",
+    "feature_group": "Population",
+    "importance_share": 0.0010995654932319
+  },
+  {
+    "model": "Random Forest",
+    "feature": "population_density_2025_1000m",
+    "importance": 0.0023889462994381,
+    "importance_measure": "split_impurity",
+    "feature_group": "Population",
+    "importance_share": 0.0023889462994381
+  },
+  {
+    "model": "Random Forest",
+    "feature": "road_density_100m",
+    "importance": 0.0006384739882002,
+    "importance_measure": "split_impurity",
+    "feature_group": "Roads",
+    "importance_share": 0.0006384739882002
+  },
+  {
+    "model": "Random Forest",
+    "feature": "road_density_250m",
+    "importance": 0.0030836510921516,
+    "importance_measure": "split_impurity",
+    "feature_group": "Roads",
+    "importance_share": 0.0030836510921516
+  },
+  {
+    "model": "Random Forest",
+    "feature": "road_density_500m",
+    "importance": 0.0061745817916409,
+    "importance_measure": "split_impurity",
+    "feature_group": "Roads",
+    "importance_share": 0.0061745817916409
+  },
+  {
+    "model": "Random Forest",
+    "feature": "road_density_1000m",
+    "importance": 0.00119900610007,
+    "importance_measure": "split_impurity",
+    "feature_group": "Roads",
+    "importance_share": 0.00119900610007
+  },
+  {
+    "model": "Random Forest",
+    "feature": "major_road_density_1000m",
+    "importance": 0.001558587664549,
+    "importance_measure": "split_impurity",
+    "feature_group": "Roads",
+    "importance_share": 0.001558587664549
+  },
+  {
+    "model": "LightGBM",
+    "feature": "year",
+    "importance": 221776.01887249947,
+    "importance_measure": "gain",
+    "feature_group": "Temporal",
+    "importance_share": 0.0037332575806095
+  },
+  {
+    "model": "LightGBM",
+    "feature": "month",
+    "importance": 333177.51545763016,
+    "importance_measure": "gain",
+    "feature_group": "Temporal",
+    "importance_share": 0.0056085301359203
+  },
+  {
+    "model": "LightGBM",
+    "feature": "latitude",
+    "importance": 94268.91310405733,
+    "importance_measure": "gain",
+    "feature_group": "Spatial",
+    "importance_share": 0.0015868719091033
+  },
+  {
+    "model": "LightGBM",
+    "feature": "longitude",
+    "importance": 161384.5317256451,
+    "importance_measure": "gain",
+    "feature_group": "Spatial",
+    "importance_share": 0.0027166599415073
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_mean_100m",
+    "importance": 21641.655732154846,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003643039302885
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_mean_250m",
+    "importance": 52576.04794073105,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0008850367615538
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_mean_500m",
+    "importance": 12231.522693157196,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002058988390574
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_mean_1000m",
+    "importance": 47918.21503448486,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0008066293210431
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_median_100m",
+    "importance": 19078.262506961823,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003211531548409
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_median_250m",
+    "importance": 11279.294041872025,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001898695368409
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_median_500m",
+    "importance": 8569.907062530518,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001442611814792
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_median_1000m",
+    "importance": 10096.149391412737,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001699531195576
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_std_100m",
+    "importance": 14592.198937177658,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002456371864592
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_std_250m",
+    "importance": 24199.06812429428,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004073540276266
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_std_500m",
+    "importance": 16190.1539311409,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002725362967644
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_evi_std_1000m",
+    "importance": 72555.34706187248,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0012213574795398
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_max_100m",
+    "importance": 15429.89446091652,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002597384999382
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_max_250m",
+    "importance": 12221.172860622406,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000205724615573
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_max_500m",
+    "importance": 10835.02112519741,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001823908867935
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_max_1000m",
+    "importance": 142318.44565963745,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0023957117582891
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_mean_100m",
+    "importance": 9190.255492687224,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001547037915111
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_mean_250m",
+    "importance": 9130.06949186325,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001536906529176
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_mean_500m",
+    "importance": 20526.03637599945,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003455241972966
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_mean_1000m",
+    "importance": 47806.40368270874,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0008047471492071
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_median_100m",
+    "importance": 20961.94639801979,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003528620708974
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_median_250m",
+    "importance": 36496.26955294609,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006143584670028
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_median_500m",
+    "importance": 20586.52517437935,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003465424330204
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_median_1000m",
+    "importance": 13132.831601142883,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002210709858491
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_min_100m",
+    "importance": 14607.53098988533,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000245895277944
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_min_250m",
+    "importance": 31459.142456293102,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005295661931867
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_min_500m",
+    "importance": 35477.58328318596,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005972104531726
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_min_1000m",
+    "importance": 38246.64358973503,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006438233170572
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_std_100m",
+    "importance": 16253.127441644669,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002735963587885
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_std_250m",
+    "importance": 22738.888417720795,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.00038277415201
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_std_500m",
+    "importance": 6302.872793674469,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001060991524522
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndvi_std_1000m",
+    "importance": 11055.497691869736,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001861022700985
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_mean_100m",
+    "importance": 37820.71932518482,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006366535382981
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_mean_250m",
+    "importance": 11362.8187584877,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000191275546756
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_mean_500m",
+    "importance": 11089.699597358704,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001866780064815
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_mean_1000m",
+    "importance": 13767.97616326809,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002317626659658
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_median_100m",
+    "importance": 18858.32541155815,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003174508527036
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_median_250m",
+    "importance": 255976.48960232732,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0043089698116328
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_median_500m",
+    "importance": 9576.09389781952,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001611987865884
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_median_1000m",
+    "importance": 23461.0410900116,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003949304796053
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_std_100m",
+    "importance": 25708.278728961945,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004327592628691
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_std_250m",
+    "importance": 43964.79754114151,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0007400796286941
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_std_500m",
+    "importance": 15559.086745977402,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002619132530067
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_ndwi_std_1000m",
+    "importance": 18676.896956443787,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003143967841942
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_valid_pixels_100m",
+    "importance": 74034.33036351204,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.001246253884708
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_valid_pixels_250m",
+    "importance": 136636.8765554428,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.0023000712961877
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_valid_pixels_500m",
+    "importance": 14676.729388713837,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.0002470601263722
+  },
+  {
+    "model": "LightGBM",
+    "feature": "sentinel2_valid_pixels_1000m",
+    "importance": 274195.5414404869,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.0046156594786767
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_mean_100m",
+    "importance": 11022.849627494812,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001855526902366
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_mean_250m",
+    "importance": 7995.292035579681,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001345884228275
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_mean_500m",
+    "importance": 13293.406831264496,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.000223774022445
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_mean_1000m",
+    "importance": 8449.132420778275,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001422281264665
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_median_100m",
+    "importance": 5633.416621208191,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 9.48298892404068e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_median_250m",
+    "importance": 318.81189918518066,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 5.366707119518957e-06
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_median_500m",
+    "importance": 6387.266784906387,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001075197952662
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_median_1000m",
+    "importance": 8028.114881038666,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001351409448596
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_std_100m",
+    "importance": 25811.82912349701,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0004345023742178
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_std_250m",
+    "importance": 18216.82472586632,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0003066521770398
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_std_500m",
+    "importance": 32416.59766459465,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0005456834764379
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_total_std_1000m",
+    "importance": 23812.2010294199,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0004008417161423
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_mean_100m",
+    "importance": 40164.0639424324,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0006761001344666
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_mean_250m",
+    "importance": 14721.522588729858,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002478141508802
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_mean_500m",
+    "importance": 6898.575764656067,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0001161268941508
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_mean_1000m",
+    "importance": 14393.4010515213,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002422907303482
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_median_100m",
+    "importance": 2166.531298160553,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 3.6470216363365126e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_median_250m",
+    "importance": 5339.162689208984,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 8.987657766125107e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_median_500m",
+    "importance": 1325.5049275159836,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 2.2312833208667605e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_median_1000m",
+    "importance": 12880.786199092863,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0002168281898396
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_std_100m",
+    "importance": 5894.08590722084,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 9.92178550492722e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_std_250m",
+    "importance": 36491.92944216728,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0006142854079248
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_std_500m",
+    "importance": 42507.7963476181,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0007155532584476
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_no2_trop_std_1000m",
+    "importance": 32722.10336542129,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0005508261942093
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_valid_obs_count_100m",
+    "importance": 15480.1271109581,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.0002605840892067
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_valid_obs_count_250m",
+    "importance": 227998.3642835617,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.0038380011786465
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_valid_obs_count_500m",
+    "importance": 189423.2617592812,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.0031886487614929
+  },
+  {
+    "model": "LightGBM",
+    "feature": "s5p_valid_obs_count_1000m",
+    "importance": 20832.399607658383,
+    "importance_measure": "gain",
+    "feature_group": "Other",
+    "importance_share": 0.0003506813502784
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_mean_100m",
+    "importance": 14402.355862140656,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000242441470788
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_mean_250m",
+    "importance": 36017.04679751396,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006062914902683
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_mean_500m",
+    "importance": 26569.82423877716,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004472620541173
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_mean_1000m",
+    "importance": 22545.302648305893,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003795154338455
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_median_100m",
+    "importance": 8383.274311065674,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001411195066591
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_median_250m",
+    "importance": 10298.476383686066,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001733589827411
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_median_500m",
+    "importance": 20602.36860799789,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003468091328149
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_median_1000m",
+    "importance": 10859.612877845764,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0001828048510601
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_std_100m",
+    "importance": 25421.38737821579,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004279298890016
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_std_250m",
+    "importance": 61710.13652658463,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0010387950697265
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_std_500m",
+    "importance": 21614.024574756622,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003638388023259
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_evi_std_1000m",
+    "importance": 72397.41014766693,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0012186988549274
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_mean_100m",
+    "importance": 24684.25187397003,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004155213485149
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_mean_250m",
+    "importance": 19518.569566249847,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003285650457895
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_mean_500m",
+    "importance": 25968.220859527588,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004371349881364
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_mean_1000m",
+    "importance": 30969.533112049103,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0005213243742325
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_median_100m",
+    "importance": 17203.878745555878,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0002896007921382
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_median_250m",
+    "importance": 8405.863341450691,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000141499758182
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_median_500m",
+    "importance": 40226.26878118515,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006771472570861
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_median_1000m",
+    "importance": 16268.411590218544,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000273853643881
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_std_100m",
+    "importance": 29693.83430218697,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004998499502767
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_std_250m",
+    "importance": 26296.943048477173,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.000442668519715
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_std_500m",
+    "importance": 23635.96150112152,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0003978749952211
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_ndvi_std_1000m",
+    "importance": 40477.66785156727,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0006813791730977
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_mean_c_100m",
+    "importance": 13586.523402929306,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002287081883153
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_mean_c_250m",
+    "importance": 9065.317754268646,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0001526006571802
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_mean_c_500m",
+    "importance": 15979.650273680689,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002689927920205
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_mean_c_1000m",
+    "importance": 24018.145963668823,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0004043084818048
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_median_c_100m",
+    "importance": 15162.548298358915,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002552381392
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_median_c_250m",
+    "importance": 9016.545196056366,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.000151779646308
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_median_c_500m",
+    "importance": 5737.714616775513,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 9.658558530066451e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_median_c_1000m",
+    "importance": 38364.437812805176,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0006458062013134
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_std_c_100m",
+    "importance": 25670.287822961807,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0004321197445004
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_std_c_250m",
+    "importance": 24301.954879045486,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.000409085967622
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_std_c_500m",
+    "importance": 33401.0204988718,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0005622547181225
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_day_std_c_1000m",
+    "importance": 40703.78366494179,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0006851854844323
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_mean_c_100m",
+    "importance": 37444.5287425518,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0006303209494478
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_mean_c_250m",
+    "importance": 19651.13541507721,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0003307965876062
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_mean_c_500m",
+    "importance": 2940.91065120697,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 4.950569966190026e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_mean_c_1000m",
+    "importance": 46550.30413937569,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0007836026487061
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_median_c_100m",
+    "importance": 65963.67259454727,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0011103967958772
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_median_c_250m",
+    "importance": 2711.732396841049,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 4.564783685161001e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_median_c_500m",
+    "importance": 11133.126072883606,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0001874090242884
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_diurnal_range_median_c_1000m",
+    "importance": 4138.291017055512,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 6.966175328033521e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_mean_c_100m",
+    "importance": 4499.903269529343,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 7.57489384036526e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_mean_c_250m",
+    "importance": 1750.1855833530426,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 2.9461677731183048e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_mean_c_500m",
+    "importance": 1066.531112909317,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 1.7953408048657193e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_mean_c_1000m",
+    "importance": 12547.945133924484,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0002112253233259
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_median_c_100m",
+    "importance": 238630.9093055725,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0040169836922041
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_median_c_250m",
+    "importance": 325.0376300811768,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 5.471507706978663e-06
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_median_c_500m",
+    "importance": 141502.0265622139,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0023819686006659
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_median_c_1000m",
+    "importance": 8710.01915872097,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0001466197527436
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_std_c_100m",
+    "importance": 6590.308040380478,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0001109376819702
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_std_c_250m",
+    "importance": 34330.887991428375,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0005779076046844
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_std_c_500m",
+    "importance": 32752.56698727608,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.000551339002347
+  },
+  {
+    "model": "LightGBM",
+    "feature": "modis_lst_night_std_c_1000m",
+    "importance": 56753.27149391174,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0009553538840953
+  },
+  {
+    "model": "LightGBM",
+    "feature": "month_sin",
+    "importance": 68142.05800580978,
+    "importance_measure": "gain",
+    "feature_group": "Temporal",
+    "importance_share": 0.0011470665579707
+  },
+  {
+    "model": "LightGBM",
+    "feature": "month_cos",
+    "importance": 44177304.066545725,
+    "importance_measure": "gain",
+    "feature_group": "Temporal",
+    "importance_share": 0.74365684863404
+  },
+  {
+    "model": "LightGBM",
+    "feature": "gradient_ndvi_1000_100",
+    "importance": 24147.39914894104,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0004064842600345
+  },
+  {
+    "model": "LightGBM",
+    "feature": "gradient_lst_day_1000_100",
+    "importance": 63622.54954349995,
+    "importance_measure": "gain",
+    "feature_group": "Thermal",
+    "importance_share": 0.0010709875963529
+  },
+  {
+    "model": "LightGBM",
+    "feature": "gradient_no2_1000_100",
+    "importance": 45050.12010967732,
+    "importance_measure": "gain",
+    "feature_group": "NO₂",
+    "importance_share": 0.0007583493619457
+  },
+  {
+    "model": "LightGBM",
+    "feature": "season_encoded",
+    "importance": 4478.923686981201,
+    "importance_measure": "gain",
+    "feature_group": "Temporal",
+    "importance_share": 7.539577945534043e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "era5_temp_mean",
+    "importance": 3168775.214919567,
+    "importance_measure": "gain",
+    "feature_group": "Meteorology",
+    "importance_share": 0.0533414485140852
+  },
+  {
+    "model": "LightGBM",
+    "feature": "era5_rh_mean",
+    "importance": 2317593.614460945,
+    "importance_measure": "gain",
+    "feature_group": "Meteorology",
+    "importance_share": 0.0390131177119419
+  },
+  {
+    "model": "LightGBM",
+    "feature": "era5_wind_speed_mean",
+    "importance": 666219.0921401978,
+    "importance_measure": "gain",
+    "feature_group": "Meteorology",
+    "importance_share": 0.0112147719520076
+  },
+  {
+    "model": "LightGBM",
+    "feature": "era5_blh_mean",
+    "importance": 1246773.023361683,
+    "importance_measure": "gain",
+    "feature_group": "Meteorology",
+    "importance_share": 0.0209875029068875
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_water_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_trees_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_grass_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_crops_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_built_frac_100m",
+    "importance": 2080.148035526276,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 3.5016087230257155e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_bare_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_100m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_valid_pixels_100m",
+    "importance": 9685.968746185305,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001630483603731
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_water_frac_250m",
+    "importance": 3307.2239532470703,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 5.5672019711614656e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_trees_frac_250m",
+    "importance": 17235.116391658783,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0002901266297815
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_grass_frac_250m",
+    "importance": 46.81772029399872,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 7.881041876530099e-07
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_250m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_crops_frac_250m",
+    "importance": 11207.87486553192,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001886673050449
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_250m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_built_frac_250m",
+    "importance": 38660.88948440552,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0006507965084527
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_bare_frac_250m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_250m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_valid_pixels_250m",
+    "importance": 18816.917030334476,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0003167538064049
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_water_frac_500m",
+    "importance": 18807.03077697754,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0003165873865617
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_trees_frac_500m",
+    "importance": 100070.48503017426,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0016845324338198
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_grass_frac_500m",
+    "importance": 7.915750026702881,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 1.3324945566088646e-07
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_500m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_crops_frac_500m",
+    "importance": 17125.826890945435,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0002882869094227
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_500m",
+    "importance": 343.78040313720703,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 5.787013413812084e-06
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_built_frac_500m",
+    "importance": 103843.41036248209,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0017480438187275
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_bare_frac_500m",
+    "importance": 22106.15153980255,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0003721230015474
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_500m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_valid_pixels_500m",
+    "importance": 13.483890056610107,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 2.2698051406038625e-07
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_water_frac_1000m",
+    "importance": 146674.80238938332,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0024690443118621
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_trees_frac_1000m",
+    "importance": 403046.8355708122,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.006784672490223
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_grass_frac_1000m",
+    "importance": 5189.149659156799,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 8.735133942999531e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_flooded_vegetation_frac_1000m",
+    "importance": 545.5589165687561,
+    "importance_measure": "gain",
+    "feature_group": "Vegetation",
+    "importance_share": 9.183643801092752e-06
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_crops_frac_1000m",
+    "importance": 42546.23458576202,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0007162003069637
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_shrub_and_scrub_frac_1000m",
+    "importance": 4216.4469311237335,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 7.097738767646171e-05
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_built_frac_1000m",
+    "importance": 11040.385499477386,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0001858478796234
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_bare_frac_1000m",
+    "importance": 28689.4624915123,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0004829428983105
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_snow_and_ice_frac_1000m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "dynamicworld_2025_valid_pixels_1000m",
+    "importance": 0.0,
+    "importance_measure": "gain",
+    "feature_group": "Land cover",
+    "importance_share": 0.0
+  },
+  {
+    "model": "LightGBM",
+    "feature": "population_density_2025_250m",
+    "importance": 665177.5606563091,
+    "importance_measure": "gain",
+    "feature_group": "Population",
+    "importance_share": 0.0111972393741958
+  },
+  {
+    "model": "LightGBM",
+    "feature": "population_density_2025_500m",
+    "importance": 7322.032699346542,
+    "importance_measure": "gain",
+    "feature_group": "Population",
+    "importance_share": 0.0001232551392133
+  },
+  {
+    "model": "LightGBM",
+    "feature": "population_density_2025_1000m",
+    "importance": 41671.81547355652,
+    "importance_measure": "gain",
+    "feature_group": "Population",
+    "importance_share": 0.0007014808084541
+  },
+  {
+    "model": "LightGBM",
+    "feature": "road_density_100m",
+    "importance": 63986.53043603897,
+    "importance_measure": "gain",
+    "feature_group": "Roads",
+    "importance_share": 0.0010771146538823
+  },
+  {
+    "model": "LightGBM",
+    "feature": "road_density_250m",
+    "importance": 85185.90225124359,
+    "importance_measure": "gain",
+    "feature_group": "Roads",
+    "importance_share": 0.0014339734158694
+  },
+  {
+    "model": "LightGBM",
+    "feature": "road_density_500m",
+    "importance": 527525.125954628,
+    "importance_measure": "gain",
+    "feature_group": "Roads",
+    "importance_share": 0.0088800727213177
+  },
+  {
+    "model": "LightGBM",
+    "feature": "road_density_1000m",
+    "importance": 18172.11194992065,
+    "importance_measure": "gain",
+    "feature_group": "Roads",
+    "importance_share": 0.0003058995063471
+  },
+  {
+    "model": "LightGBM",
+    "feature": "major_road_density_1000m",
+    "importance": 117567.23256111144,
+    "importance_measure": "gain",
+    "feature_group": "Roads",
+    "importance_share": 0.001979063220728
+  }
+]

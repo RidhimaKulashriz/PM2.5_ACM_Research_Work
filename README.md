@@ -2,8 +2,8 @@
 
 A research pipeline for studying the relationship between **urban green cover and PM₂.₅ pollution across Delhi NCR**, with the eventual goal of identifying spatial patterns and estimating where increased green cover may contribute to particulate pollution mitigation.
 
-> **Current Status:** Phase 1 — CPCB Ground-Station Data Ingestion, Auditing & Exploratory Analysis
-> **Next:** Phase 2 — Multimodal Satellite + Meteorological Data Integration
+> **Current Status:** Version 1 — V3 Double Machine Learning implementation, robustness validation, time-aware sensitivities, predictive baseline modeling, and metric audits
+> **Next:** Supervisor review; any measurement-error, placebo, nonlinear dose-response, or quasi-experimental extensions will be Version 2 work with a separate specification.
 
 ---
 
@@ -31,9 +31,185 @@ The research will ultimately investigate questions such as:
 
 ---
 
-# Current Phase — Phase 1
+# Version 1 — V3 Double Machine Learning Analysis
 
-## CPCB Data Ingestion, Audit & Exploratory Analysis
+The repository now contains a complete first-pass DML implementation on the frozen 2025-context V3 datasets. The work is isolated under `data/modeling_changes/dml_v3/` and does not modify the canonical datasets, train/test splits, or protected baseline results.
+
+## Data used
+
+| Input | Rows | Role |
+|---|---:|---|
+| V3 master modeling dataset | 1,615 | Reference and integrity cross-check |
+| V3 training split | 1,292 | Cross-fitted DML estimation |
+| V3 locked test split | 323 | External diagnostic only |
+
+Train/test station–year–month keys do not overlap, and the split preserves the master key universe. IIT Delhi remains train-only under the existing split design.
+
+## DML specification
+
+The outcome is monthly station-level `pm25`. The primary treatment is `sentinel2_ndvi_mean_1000m`; sensitivity treatments are `sentinel2_ndvi_mean_500m` and `modis_ndvi_mean_1000m`. The base specification uses five-fold station-grouped cross-fitting, median imputation, and `HistGradientBoostingRegressor` nuisance models. This follows the orthogonal-score and cross-fitting framework for Double Machine Learning [1].
+
+Controls were pre-specified from temporal/spatial context, ERA5 meteorology, 2025 population and road density, and non-vegetation Dynamic World context. Green-cover proxies, Sentinel-5P NO₂/pollution proxies, and contemporaneous MODIS/LST or gradient variables were excluded to reduce treatment-proxy and plausible post-treatment adjustment.
+
+## Results
+
+| Treatment | Estimate | Original 95% interval | Dependence-aware interval |
+|---|---:|---:|---:|
+| Sentinel-2 NDVI, 1,000 m | -21.180373 | [-32.643994, -9.716752] | [-53.548470, 11.187723] |
+| Sentinel-2 NDVI, 500 m | -7.046748 | [-16.163475, 2.069980] | [-37.240398, 23.146902] |
+| MODIS NDVI, 1,000 m | -17.618217 | [-30.505183, -4.731252] | [-48.456363, 13.219928] |
+
+The dependence-aware intervals use station-clustered uncertainty and are the preferred checks for the station-month panel. The primary point estimate is negative, but the robust interval includes zero; the result is suggestive observational evidence rather than a conclusive causal claim.
+
+## Robustness and validation
+
+The robustness extension includes a 2,000-replicate wild cluster bootstrap, fold and station stability tables, residualized-treatment overlap diagnostics, within-station permutation falsification, random-forest nuisance-learner sensitivity, and deterministic geographic-block cross-fitting sensitivity. The geographic-block sensitivity estimate for the primary treatment is -38.253146.
+
+## Pre-treatment and time-aware sensitivity
+
+A follow-up sensitivity constructs the exact previous calendar month of each NDVI treatment within each split, preventing cross-split lag leakage. An expanding time-aware design fits nuisance models only on years earlier than each holdout year (2023, 2024, and 2025). The scored sample contains 764 out-of-fold rows per treatment and 34 represented station clusters.
+
+| Lagged treatment | Time-aware estimate | Station-clustered 95% interval |
+|---|---:|---:|
+| Sentinel-2 NDVI, 1,000 m | 26.970369 | [-1.665192, 55.605930] |
+| Sentinel-2 NDVI, 500 m | 19.742400 | [-6.430400, 45.915201] |
+| MODIS NDVI, 1,000 m | -76.421049 | [-111.513209, -41.328890] |
+
+These lagged results differ from the contemporaneous Version 1 estimates, demonstrating that exposure timing and satellite product choice are first-order modeling decisions. They are sensitivity evidence and are not pooled with the headline estimate.
+
+Static figures are generated under `data/modeling_changes/dml_v3/figures/`, including `dml_estimates_forest.png`, `time_aware_lagged_forest.png`, and `time_aware_sample_coverage.png`.
+
+### DML diagnostic figures
+
+![Original and dependence-aware DML intervals](data/modeling_changes/dml_v3/figures/dml_estimates_forest.png)
+
+*Figure: Original influence-function intervals compared with station-clustered intervals.*
+
+![Time-aware lagged-treatment estimates](data/modeling_changes/dml_v3/figures/time_aware_lagged_forest.png)
+
+*Figure: Expanding time-aware DML using exact previous-calendar-month NDVI treatments.*
+
+![Time-aware sample coverage](data/modeling_changes/dml_v3/figures/time_aware_sample_coverage.png)
+
+*Figure: Holdout-row coverage for each expanding time-aware split.*
+
+Validation scripts are provided for the base DML, robustness package, pre-treatment package, and attachment-driven audit package. Exact input SHA-256 hashes are recorded in the configuration files, and all generated outputs remain in the isolated DML directory.
+
+## Attachment-driven audits
+
+The attachment audit records missingness by split, variable domain, station, and treatment. It also logs cross-fitted nuisance-model RMSE, MAE, and R2, residual orthogonality correlation, mean orthogonal score, and a fixed PM2.5 concentration-band agreement metric for presentation readability. The band metric is descriptive only and is not an official AQI accuracy measure.
+
+Forward-fill, backward-fill, linear interpolation, and inverse-distance imputation are not applied automatically because imputing observed outcomes or treatments can change the causal estimand and introduce artificial temporal or spatial signal. Threshold extraction is also deferred: the current partially linear DML estimator targets a constant marginal effect, whereas thresholds require a separate nonlinear dose-response specification and overlap analysis.
+
+The attachment-to-repository implementation map is documented in `data/modeling_changes/dml_v3/attachment_implementation_scope.md`.
+
+## Learner benchmark
+
+A transparent nuisance-learner benchmark compares HistGradientBoosting, Random Forest, and Extra Trees using the same station-grouped folds. Learners are selected only by cross-fitted nuisance prediction RMSE, never by causal coefficient sign or confidence-interval width. The predictive benchmark is separate from the causal estimand and follows standard regression-evaluation practice rather than classification accuracy [2].
+
+| Learner | Outcome RMSE | Outcome R2 | Treatment RMSE | Treatment R2 |
+|---|---:|---:|---:|---:|
+| HistGradientBoosting | 25.054989 | 0.860111 | 0.083361 | 0.467057 |
+| Random Forest | 24.460314 | 0.866673 | 0.086756 | 0.422758 |
+| Extra Trees | 24.203200 | 0.869461 | 0.084366 | 0.454122 |
+
+The predictive winners produce a sensitivity coefficient of -25.996936 with station-clustered 95% interval [-68.265131, 16.271259]. The interval still includes zero, so improved nuisance prediction should not be presented as proof of a more precise causal effect.
+
+## Best-defensible implementation
+
+The analysis contract in `analysis_contract.md` freezes the estimand, protected inputs, leakage rules, inference hierarchy, and specification-selection decisions before comparison. The preferred implementation is the pre-specified station-grouped DML with dependence-aware inference, time-aware sensitivities, overlap and falsification diagnostics, and transparent learner benchmarking. No specification is selected using a favorable coefficient sign, p-value, or confidence-interval width.
+
+A rolling-origin sensitivity uses 36 chronological holdout months from 2023–2025. Every holdout month is predicted using only strictly earlier calendar months. It scores 969 rows and 35 station clusters. The primary treatment estimate is -65.311631 with station-clustered 95% interval [-86.982328, -43.640934]. A within-station expanding-time sensitivity learns station means from earlier years only, excludes one first-appearance IIT Delhi row with no earlier station mean, and estimates -44.397641 with interval [-66.307516, -22.487766] over 968 rows and 34 station clusters.
+
+These temporal estimates are sensitivities, not replacements for the headline estimate and are not pooled with it. Their differences demonstrate that exposure timing and station-level structure materially affect the estimand. The complete outputs are `rolling_time_summary.csv`, `rolling_time_folds.csv`, `within_station_time_summary.csv`, and `within_station_time_folds.csv`.
+
+## V3 baseline predictive modeling
+
+The repository also contains a separate immutable-input predictive baseline under `data/modeling_changes/baseline_predictive_v1/`. The executed notebook `notebooks/baseline_regression_models_v3.ipynb` compares Linear Regression, Random Forest, and LightGBM on the frozen V3 master and canonical train/test split. It uses train-fitted preprocessing and five-fold station-grouped cross-validation on the training data only. LightGBM is used as a predictive regression learner, not as a causal estimator [3]. The existing split remains the primary year-balanced diagnostic split, not a spatially independent generalization test.
+
+| Model | Locked-test R² | Locked-test RMSE (µg/m³) | Locked-test MAE (µg/m³) |
+|---|---:|---:|---:|
+| Linear Regression | 0.820184 | 29.096270 | 21.637563 |
+| Random Forest | 0.908961 | 20.703122 | 11.390408 |
+| LightGBM | **0.924285** | **18.880479** | **10.088022** |
+
+LightGBM is the best predictive baseline by locked-test RMSE and MAE. The tree-model train scores are much higher than locked-test scores, so potential overfitting is explicitly flagged. Temporal variables dominate aggregate tree importance, and high predictor collinearity makes individual importance rankings unstable. These are predictive findings only. Accuracy, precision, and recall are not reported as equivalent regression metrics for continuous PM₂.₅, and feature importance is not a causal effect.
+
+The package includes year-wise and season-wise diagnostics, residual and extreme-event audits, station-level error summaries, input SHA-256 hashes, an automated findings report, and exactly six static high-resolution figures under `data/modeling_changes/baseline_predictive_v1/results/plots/`. The narrative report is `data/modeling_changes/baseline_predictive_v1/baseline_predictive_report.md`, and the executed notebook is `notebooks/baseline_regression_models_v3.ipynb`. The notebook writes canonical CSV tables locally; the fork publishes direct JSON review mirrors because GitHub browser upload cannot create the repository’s Git-LFS CSV objects. The JSON mirrors are unchanged serializations, documented in `data/modeling_changes/baseline_predictive_v1/results/README.md`.
+
+## Spatial PM₂.₅ surface and threshold screen
+
+The V3 extension now includes a separate, auditable spatial prediction and threshold-analysis package under `data/modeling_changes/spatial_threshold_v1/`. These analyses are predictive/associational extensions; they do not replace the DML estimand or establish causal green-cover effects.
+
+The spatial model uses the locked LightGBM predictive configuration with five-fold station-grouped training validation. The V3 inputs contain 35 fixed-coordinate monitoring stations but no validated grid of environmental covariates for unobserved locations. Accordingly, the reported “surface” is **station-supported**: it shows predicted PM₂.₅ at observed station coordinates and summarizes station-level error. No interpolation, IDW filling, raster extrapolation, or unobserved-grid prediction is used.
+
+| Spatial diagnostic | Value |
+|---|---:|
+| Locked-test rows / stations | 323 / 34 |
+| LightGBM locked-test R² | 0.924811 |
+| LightGBM locked-test RMSE | 18.814873 µg/m³ |
+| LightGBM locked-test MAE | 9.973572 µg/m³ |
+
+The threshold work is a separate predictive breakpoint screen for `sentinel2_ndvi_mean_1000m`. It evaluates 17 pre-specified training quantiles from 0.10 to 0.90 using a piecewise-linear Ridge model and station-grouped training CV. The selected training breakpoint is NDVI **0.377235**, approximately the 0.75 training quantile. Its locked-test diagnostic is R² **0.742283**, RMSE **34.833294 µg/m³**, and MAE **25.690121 µg/m³**. However, the same quantile was selected in only 6% of 100 station-bootstrap repetitions, so the frozen stability rule concludes that **no stable threshold is identified**.
+
+The threshold result must not be described as “the amount of greenery required,” a policy threshold, or a causal dose-response effect. The complete contract, output tables, input hashes, report, validator, and visual review are stored in `data/modeling_changes/spatial_threshold_v1/`.
+
+![Station-supported predicted PM₂.₅ surface](data/modeling_changes/spatial_threshold_v1/results/plots/01_station_supported_surface.png)
+
+*Station-supported predictive map using observed station coordinates only; it is not an interpolated concentration raster or causal effect map.*
+
+![Predictive threshold screen](data/modeling_changes/spatial_threshold_v1/results/plots/03_threshold_cv.png)
+
+*Pre-specified breakpoint screen selected by training station-grouped CV; the breakpoint is not a causal vegetation threshold.*
+
+## Reproduce the analysis
+
+From the repository root:
+
+```bash
+python data/modeling_changes/dml_v3/run_dml.py
+python data/modeling_changes/dml_v3/validate_dml.py
+python data/modeling_changes/dml_v3/robustness_checks.py
+python data/modeling_changes/dml_v3/validate_robustness.py
+python data/modeling_changes/dml_v3/pre_treatment_dml.py
+python data/modeling_changes/dml_v3/validate_pre_treatment.py
+python data/modeling_changes/dml_v3/generate_dml_figures.py
+python data/modeling_changes/dml_v3/attachment_audits.py
+python data/modeling_changes/dml_v3/validate_attachment_audits.py
+python data/modeling_changes/dml_v3/model_selection_benchmark.py
+python data/modeling_changes/dml_v3/validate_model_selection.py
+python data/modeling_changes/dml_v3/rolling_time_dml.py
+python data/modeling_changes/dml_v3/within_station_time_dml.py
+python data/modeling_changes/dml_v3/validate_best_implementation.py
+jupyter nbconvert --to notebook --execute notebooks/baseline_regression_models_v3.ipynb --inplace --ExecutePreprocessor.timeout=900
+python data/modeling_changes/baseline_predictive_v1/validate_baseline.py
+python data/modeling_changes/spatial_threshold_v1/run_spatial_threshold.py
+python data/modeling_changes/spatial_threshold_v1/validate_spatial_threshold.py
+```
+
+## Pull request
+
+The correct cross-fork pull request is [PR #2](https://github.com/hitakshijoshi20072911/PM2.5_ACM_Research_Work/pull/2). Its base is `hitakshijoshi20072911/PM2.5_ACM_Research_Work:main`, and its head is `RidhimaKulashriz/PM2.5_ACM_Research_Work:dml-v3-implementation`. The PR contains the complete base DML work, robustness artifacts, time-aware specifications, learner benchmark, predictive baseline notebook, six figures, audit trail, and validators.
+
+The PR is conflict-free and mergeable. The fork account can update the PR but does not have permission to merge into Hitakshi’s upstream repository; final merge therefore requires an upstream maintainer.
+
+## Interpretation and next steps
+
+This Version 1 DML analysis remains subject to conditional exchangeability, overlap, treatment definition, measurement, spatial dependence, serial dependence, and exposure/outcome simultaneity assumptions. The next methodological priority is supervisor review and, only if approved, a clearly pre-treatment exposure window, satellite measurement-error analysis, negative-control/placebo tests, or defensible quasi-experimental variation. The station-supported surface is not a continuous spatial raster, and the threshold screen did not identify a stable breakpoint. Dependence-aware inference remains primary for causal interpretation.
+
+---
+
+## References
+
+[1]: https://academic.oup.com/ectj/article/21/1/C1/5056401 Chernozhukov et al., “Double/Debiased Machine Learning for Treatment and Structural Parameters,” *The Econometrics Journal*.
+[2]: https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics scikit-learn, “Regression metrics.”
+[3]: https://lightgbm.readthedocs.io/en/latest/ LightGBM documentation.
+
+---
+
+# Current Repository Phase — Version 1 Review
+
+## CPCB Foundation, V3 DML, and Predictive Baseline
 
 The repository is currently focused on establishing a reliable **ground-truth air-quality data foundation** using CPCB monitoring data for Delhi.
 
@@ -216,10 +392,15 @@ PM2.5_ACM_Research_Work/
 ├── data/
 │   ├── raw/
 │   ├── processed/
-│   └── ml_ready/
+│   ├── ml_ready/
+│   └── modeling_changes/
+│       ├── dml_v3/        # Version 1 DML code, outputs, reports, and audits
+│       ├── baseline_predictive_v1/ # Predictive baseline outputs and validation
+│       └── spatial_threshold_v1/ # Station-supported surface and threshold screen
 │
 ├── notebooks/
-│   └── Exploratory and research notebooks
+│   ├── Exploratory and research notebooks
+│   └── baseline_regression_models_v3.ipynb # Executed predictive baseline
 │
 ├── reports/
 │   └── Analysis outputs and research reports
@@ -281,25 +462,25 @@ Spatial Heterogeneity & Threshold Analysis
 | Data auditing                    | ✅ Implemented           |
 | Data cleaning / standardization  | ✅ Implemented / ongoing |
 | CPCB exploratory analysis        | ✅ Implemented / ongoing |
-| Multimodal satellite integration | 🔄 Next phase           |
-| Meteorological integration       | 🔄 Planned              |
-| Spatial feature engineering      | 🔄 Planned              |
-| PM₂.₅ ML prediction              | 🔄 Planned              |
-| Spatial PM₂.₅ surface            | 🔄 Planned              |
-| Causal ML                        | 🔄 Planned              |
-| Green-cover effect estimation    | 🔄 Planned              |
-| Spatial heterogeneity analysis   | 🔄 Planned              |
-| Threshold analysis               | 🔄 Planned              |
+| Multimodal satellite integration | ✅ Included in V3 dataset |
+| Meteorological integration       | ✅ Included in V3 controls |
+| Spatial feature engineering      | ✅ Included in V3 dataset |
+| PM₂.₅ ML prediction              | ✅ V3 predictive baseline |
+| Spatial PM₂.₅ surface            | ✅ Station-supported V3 surface |
+| Causal ML                        | ✅ V3 DML Version 1 |
+| Green-cover effect estimation    | ✅ Version 1 complete |
+| Spatial heterogeneity analysis   | ✅ Exploratory sensitivity |
+| Threshold analysis               | ✅ Predictive screen; no stable threshold identified |
 
 ---
 
 ## Development Status
 
-This repository represents an **active research project**. The current implementation should be considered the **data engineering and exploratory foundation** of the larger spatial causal machine learning framework.
+This repository represents an **active research project**. The data engineering foundation, multimodal V3 modeling inputs, and a Version 1 DML analysis are now represented in the repository.
 
-The modelling and causal inference components described above are **planned subsequent phases and are not yet represented as completed results**.
+The V3 DML result is an initial observational analysis with explicit robustness caveats. It should not be treated as a final causal claim. Further work will improve the temporal design, dependence-aware inference, spatial heterogeneity analysis, and causal identification strategy.
 
-As development progresses, each phase will be added to the repository with corresponding code, datasets, notebooks, validation results, and research outputs.
+Each subsequent phase will be added with corresponding code, datasets, validation results, and research outputs.
 
 ---
 
@@ -331,9 +512,9 @@ pip install -r requirements.txt
 
 ## Data
 
-The repository contains the project's working datasets, including raw and processed CPCB observations.
+The repository contains the project's working datasets, including raw and processed CPCB observations and the V3 multimodal modeling inputs.
 
-Large files are managed using **Git LFS**.
+Large files are managed using **Git LFS**. The DML outputs are kept separately under `data/modeling_changes/dml_v3/` so generated diagnostics remain reviewable without changing the canonical source data policy.
 
 The research dataset will continue to evolve as additional satellite, meteorological, land-cover, and spatial datasets are incorporated.
 
@@ -347,4 +528,4 @@ Delhi NCR PM₂.₅ Spatial & Causal Machine Learning Research
 
 ---
 
-> **Research status:** Phase 1 completed / ongoing refinement → Phase 2 multimodal environmental data integration
+> **Research status:** Version 1 V3 DML and predictive baseline implemented, validated, documented, and published in the fork-to-upstream PR → awaiting upstream maintainer review

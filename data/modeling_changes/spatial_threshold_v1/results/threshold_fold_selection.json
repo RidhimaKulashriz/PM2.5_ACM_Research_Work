@@ -1,0 +1,32 @@
+[
+  {
+    "fold": 1,
+    "selected_threshold": 0.4087294612807174,
+    "selected_quantile": 0.8000000000000002,
+    "inner_cv_rmse": 39.00411963931684
+  },
+  {
+    "fold": 2,
+    "selected_threshold": 0.3662189694029725,
+    "selected_quantile": 0.7500000000000002,
+    "inner_cv_rmse": 34.78004170249448
+  },
+  {
+    "fold": 3,
+    "selected_threshold": 0.3385448332270433,
+    "selected_quantile": 0.7000000000000002,
+    "inner_cv_rmse": 37.22151683885185
+  },
+  {
+    "fold": 4,
+    "selected_threshold": 0.1858458563240185,
+    "selected_quantile": 0.1,
+    "inner_cv_rmse": 37.11355251357948
+  },
+  {
+    "fold": 5,
+    "selected_threshold": 0.3886531332900977,
+    "selected_quantile": 0.7500000000000002,
+    "inner_cv_rmse": 46.32619456322381
+  }
+]

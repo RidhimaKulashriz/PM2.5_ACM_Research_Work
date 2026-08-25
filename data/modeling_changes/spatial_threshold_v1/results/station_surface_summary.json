@@ -1,0 +1,342 @@
+[
+  {
+    "station": "Alipur",
+    "latitude": 28.815329,
+    "longitude": 77.15301,
+    "n_test": 10,
+    "observed_pm25_mean": 105.699,
+    "predicted_pm25_mean": 104.8945689519486,
+    "mae": 12.759859500608435,
+    "rmse": 16.57024361872718
+  },
+  {
+    "station": "Anand_Vihar",
+    "latitude": 28.647622,
+    "longitude": 77.315809,
+    "n_test": 10,
+    "observed_pm25_mean": 139.90900000000002,
+    "predicted_pm25_mean": 132.25349721075162,
+    "mae": 11.652667040283545,
+    "rmse": 14.59162932399514
+  },
+  {
+    "station": "Ashok_Vihar",
+    "latitude": 28.695381,
+    "longitude": 77.181665,
+    "n_test": 10,
+    "observed_pm25_mean": 91.388,
+    "predicted_pm25_mean": 90.85146295749564,
+    "mae": 9.387163985583232,
+    "rmse": 12.31329836367506
+  },
+  {
+    "station": "Aya_Nagar",
+    "latitude": 28.4706914,
+    "longitude": 77.1099364,
+    "n_test": 10,
+    "observed_pm25_mean": 59.086,
+    "predicted_pm25_mean": 64.2240172538149,
+    "mae": 7.894181560897981,
+    "rmse": 11.696839988840004
+  },
+  {
+    "station": "Bawana",
+    "latitude": 28.7762,
+    "longitude": 77.051074,
+    "n_test": 10,
+    "observed_pm25_mean": 154.83599999999998,
+    "predicted_pm25_mean": 153.11754810760846,
+    "mae": 9.1428414212683,
+    "rmse": 12.9563684036679
+  },
+  {
+    "station": "Burari_Crossing",
+    "latitude": 28.7256504,
+    "longitude": 77.2011573,
+    "n_test": 9,
+    "observed_pm25_mean": 85.17777777777778,
+    "predicted_pm25_mean": 87.71932156268339,
+    "mae": 10.455721174993498,
+    "rmse": 13.454001610147593
+  },
+  {
+    "station": "Chandni_Chowk",
+    "latitude": 28.656756,
+    "longitude": 77.227234,
+    "n_test": 7,
+    "observed_pm25_mean": 58.24571428571429,
+    "predicted_pm25_mean": 88.54582499831899,
+    "mae": 42.23654671051622,
+    "rmse": 92.28536090757244
+  },
+  {
+    "station": "DTU",
+    "latitude": 28.7500499,
+    "longitude": 77.1112615,
+    "n_test": 10,
+    "observed_pm25_mean": 84.424,
+    "predicted_pm25_mean": 77.51543962316767,
+    "mae": 24.17167291934297,
+    "rmse": 28.042924313431516
+  },
+  {
+    "station": "Dr._Karni_Singh_Shooting_Range",
+    "latitude": 28.498571,
+    "longitude": 77.26484,
+    "n_test": 10,
+    "observed_pm25_mean": 85.752,
+    "predicted_pm25_mean": 82.17378525559242,
+    "mae": 7.298297370960805,
+    "rmse": 11.161971570074256
+  },
+  {
+    "station": "Dwarka-Sector_8",
+    "latitude": 28.5710274,
+    "longitude": 77.0719006,
+    "n_test": 10,
+    "observed_pm25_mean": 103.162,
+    "predicted_pm25_mean": 102.25104251514765,
+    "mae": 4.02908170084228,
+    "rmse": 5.204744040957137
+  },
+  {
+    "station": "IGI_Airport_(T3)",
+    "latitude": 28.5627763,
+    "longitude": 77.1180053,
+    "n_test": 10,
+    "observed_pm25_mean": 54.714,
+    "predicted_pm25_mean": 52.00007983796327,
+    "mae": 4.760502116758888,
+    "rmse": 7.865520765738653
+  },
+  {
+    "station": "IHBAS_Dilshad_Garden",
+    "latitude": 28.6811736,
+    "longitude": 77.3025234,
+    "n_test": 10,
+    "observed_pm25_mean": 77.10499999999999,
+    "predicted_pm25_mean": 75.49236549909048,
+    "mae": 13.77011292965138,
+    "rmse": 16.39995189429411
+  },
+  {
+    "station": "IMD_Lodhi_Road",
+    "latitude": 28.5918245,
+    "longitude": 77.2273074,
+    "n_test": 9,
+    "observed_pm25_mean": 77.90333333333335,
+    "predicted_pm25_mean": 79.1907306443041,
+    "mae": 8.10178837040986,
+    "rmse": 10.090008661806408
+  },
+  {
+    "station": "ITO",
+    "latitude": 28.628624,
+    "longitude": 77.24106,
+    "n_test": 10,
+    "observed_pm25_mean": 119.39,
+    "predicted_pm25_mean": 119.62368899815615,
+    "mae": 10.783010893380444,
+    "rmse": 14.13739467846886
+  },
+  {
+    "station": "Jahangirpuri",
+    "latitude": 28.73282,
+    "longitude": 77.170633,
+    "n_test": 10,
+    "observed_pm25_mean": 151.026,
+    "predicted_pm25_mean": 148.65982854569015,
+    "mae": 8.462289467749821,
+    "rmse": 9.548003607937916
+  },
+  {
+    "station": "Jawaharlal_Nehru_Stadium",
+    "latitude": 28.58028,
+    "longitude": 77.233829,
+    "n_test": 10,
+    "observed_pm25_mean": 85.628,
+    "predicted_pm25_mean": 91.59016184563254,
+    "mae": 10.03831564511068,
+    "rmse": 11.566300834622274
+  },
+  {
+    "station": "Major_Dhyan_Chand_National_Stadium",
+    "latitude": 28.611281,
+    "longitude": 77.237738,
+    "n_test": 10,
+    "observed_pm25_mean": 73.814,
+    "predicted_pm25_mean": 74.79271061116903,
+    "mae": 3.242768832789543,
+    "rmse": 3.940464428354536
+  },
+  {
+    "station": "Mandir_Marg",
+    "latitude": 28.636429,
+    "longitude": 77.201067,
+    "n_test": 10,
+    "observed_pm25_mean": 89.566,
+    "predicted_pm25_mean": 91.36068938092788,
+    "mae": 9.128205616502813,
+    "rmse": 11.72289024513247
+  },
+  {
+    "station": "Mundka",
+    "latitude": 28.684678,
+    "longitude": 77.076574,
+    "n_test": 10,
+    "observed_pm25_mean": 148.613,
+    "predicted_pm25_mean": 144.61751050812114,
+    "mae": 7.36050831525489,
+    "rmse": 9.4223266685559
+  },
+  {
+    "station": "Najafgarh",
+    "latitude": 28.570173,
+    "longitude": 76.933762,
+    "n_test": 10,
+    "observed_pm25_mean": 83.99000000000001,
+    "predicted_pm25_mean": 90.08053079467706,
+    "mae": 8.594579501029711,
+    "rmse": 11.988671941251928
+  },
+  {
+    "station": "Narela",
+    "latitude": 28.822836,
+    "longitude": 77.101981,
+    "n_test": 10,
+    "observed_pm25_mean": 97.123,
+    "predicted_pm25_mean": 96.4859677462413,
+    "mae": 3.477030486969921,
+    "rmse": 5.401302331272048
+  },
+  {
+    "station": "Nehru_Nagar",
+    "latitude": 28.56789,
+    "longitude": 77.250515,
+    "n_test": 10,
+    "observed_pm25_mean": 173.273,
+    "predicted_pm25_mean": 163.00615559045335,
+    "mae": 11.85905037822128,
+    "rmse": 16.778309093835443
+  },
+  {
+    "station": "North_Campus_DU",
+    "latitude": 28.6573814,
+    "longitude": 77.1585447,
+    "n_test": 9,
+    "observed_pm25_mean": 112.76555555555557,
+    "predicted_pm25_mean": 111.24248062615632,
+    "mae": 12.604766609501038,
+    "rmse": 14.768644474119164
+  },
+  {
+    "station": "Okhla_Phase-2",
+    "latitude": 28.530785,
+    "longitude": 77.271255,
+    "n_test": 9,
+    "observed_pm25_mean": 84.70777777777778,
+    "predicted_pm25_mean": 88.79149844638917,
+    "mae": 4.1330979442223095,
+    "rmse": 5.276988149175822
+  },
+  {
+    "station": "Patparganj",
+    "latitude": 28.623763,
+    "longitude": 77.287209,
+    "n_test": 9,
+    "observed_pm25_mean": 87.12666666666667,
+    "predicted_pm25_mean": 92.15511961182338,
+    "mae": 9.761031012140329,
+    "rmse": 12.517499109738203
+  },
+  {
+    "station": "Punjabi_Bagh",
+    "latitude": 28.674045,
+    "longitude": 77.131023,
+    "n_test": 9,
+    "observed_pm25_mean": 123.71555555555555,
+    "predicted_pm25_mean": 124.56978095267908,
+    "mae": 8.406698852866716,
+    "rmse": 11.512793017998003
+  },
+  {
+    "station": "R_K_Puram",
+    "latitude": 28.563262,
+    "longitude": 77.186937,
+    "n_test": 9,
+    "observed_pm25_mean": 76.83555555555556,
+    "predicted_pm25_mean": 70.3954348121219,
+    "mae": 8.404444857106036,
+    "rmse": 11.267117388221502
+  },
+  {
+    "station": "Rohini",
+    "latitude": 28.732528,
+    "longitude": 77.11992,
+    "n_test": 9,
+    "observed_pm25_mean": 112.91888888888889,
+    "predicted_pm25_mean": 109.3069452182919,
+    "mae": 5.889759341069116,
+    "rmse": 7.529962363358049
+  },
+  {
+    "station": "Shadipur",
+    "latitude": 28.6514781,
+    "longitude": 77.1473105,
+    "n_test": 9,
+    "observed_pm25_mean": 122.64111111111112,
+    "predicted_pm25_mean": 127.32534971463022,
+    "mae": 21.41521428682498,
+    "rmse": 27.17028820050232
+  },
+  {
+    "station": "Sirifort",
+    "latitude": 28.5504249,
+    "longitude": 77.2159377,
+    "n_test": 9,
+    "observed_pm25_mean": 100.58444444444444,
+    "predicted_pm25_mean": 101.22155345924904,
+    "mae": 3.950990742368925,
+    "rmse": 5.290122300308631
+  },
+  {
+    "station": "Sonia_Vihar",
+    "latitude": 28.710508,
+    "longitude": 77.249485,
+    "n_test": 9,
+    "observed_pm25_mean": 108.29888888888888,
+    "predicted_pm25_mean": 105.37948747525816,
+    "mae": 8.79740127603653,
+    "rmse": 11.290119149970668
+  },
+  {
+    "station": "Sri_Aurobindo_Marg",
+    "latitude": 28.531346,
+    "longitude": 77.190156,
+    "n_test": 9,
+    "observed_pm25_mean": 75.24444444444445,
+    "predicted_pm25_mean": 73.30397301811045,
+    "mae": 8.965202111085965,
+    "rmse": 11.24800576119292
+  },
+  {
+    "station": "Vivek_Vihar",
+    "latitude": 28.672342,
+    "longitude": 77.31526,
+    "n_test": 9,
+    "observed_pm25_mean": 104.9,
+    "predicted_pm25_mean": 105.57208868267544,
+    "mae": 8.867078014004449,
+    "rmse": 13.117960915309292
+  },
+  {
+    "station": "Wazirpur",
+    "latitude": 28.699793,
+    "longitude": 77.165453,
+    "n_test": 9,
+    "observed_pm25_mean": 108.73555555555556,
+    "predicted_pm25_mean": 103.47724416993184,
+    "mae": 7.767528764244304,
+    "rmse": 13.514358577340454
+  }
+]

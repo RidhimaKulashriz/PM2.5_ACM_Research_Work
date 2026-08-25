@@ -1,0 +1,42 @@
+{
+  "exposure": "sentinel2_ndvi_mean_1000m",
+  "selected_threshold": 0.37723466054106014,
+  "selected_training_quantile": 0.7500000000000002,
+  "candidate_quantiles": [
+    0.1,
+    0.15000000000000002,
+    0.20000000000000004,
+    0.25000000000000006,
+    0.30000000000000004,
+    0.3500000000000001,
+    0.40000000000000013,
+    0.45000000000000007,
+    0.5000000000000001,
+    0.5500000000000002,
+    0.6000000000000002,
+    0.6500000000000001,
+    0.7000000000000002,
+    0.7500000000000002,
+    0.8000000000000002,
+    0.8500000000000002,
+    0.9000000000000002
+  ],
+  "bootstrap_replicates": 100,
+  "bootstrap_selection_share_same_quantile": 0.06,
+  "bootstrap_threshold_q025": 0.15565071853952306,
+  "bootstrap_threshold_q975": 0.48930680495297507,
+  "selected_at_grid_boundary": false,
+  "stable_threshold_rule": "same-grid-quantile share >= 0.50 and not at 0.10/0.90 boundary",
+  "stable_threshold_identified": false,
+  "locked_test_metrics": {
+    "n": 323,
+    "r2": 0.7422829751285966,
+    "rmse": 34.83329364262993,
+    "mae": 25.690120156854313,
+    "model": "Piecewise Ridge",
+    "split": "locked_test",
+    "selected_threshold": 0.37723466054106014,
+    "selected_training_quantile": 0.7500000000000002,
+    "controls": 16
+  }
+}

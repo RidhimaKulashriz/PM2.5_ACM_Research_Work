@@ -1,0 +1,37 @@
+{
+  "validations": {
+    "master_rows_1615": true,
+    "train_rows_1292": true,
+    "test_rows_323": true,
+    "master_keys_unique": true,
+    "train_keys_unique": true,
+    "test_keys_unique": true,
+    "no_train_test_key_overlap": true,
+    "split_union_equals_master": true,
+    "train_years_complete": true,
+    "test_years_complete": true,
+    "iit_delhi_train_only": true,
+    "target_present": true
+  },
+  "all_passed": true,
+  "master_shape": [
+    1615,
+    172
+  ],
+  "train_shape": [
+    1292,
+    172
+  ],
+  "test_shape": [
+    323,
+    172
+  ],
+  "target_summary": {
+    "master_mean": 101.10362229102168,
+    "train_mean": 85.21252321981423,
+    "test_mean": 164.66801857585142,
+    "master_std": 67.33823089886124,
+    "train_std": 57.37926569468245,
+    "test_std": 66.79891270761006
+  }
+}

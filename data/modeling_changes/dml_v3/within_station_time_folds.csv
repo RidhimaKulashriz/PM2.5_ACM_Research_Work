@@ -1,0 +1,4 @@
+fold,holdout_year,train_years,n_train,n_holdout,n_train_stations,n_holdout_stations,n_unseen_station_rows_excluded,n_within_controls
+0,2023,2022,323,323,34,34,0,8
+1,2024,"2022,2023",646,322,34,34,0,9
+2,2025,"2022,2023,2024",968,323,34,34,1,9

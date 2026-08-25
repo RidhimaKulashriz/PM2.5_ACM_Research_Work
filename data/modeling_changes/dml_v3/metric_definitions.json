@@ -1,0 +1,18 @@
+{
+  "regression_metrics": [
+    "RMSE",
+    "MAE",
+    "R2"
+  ],
+  "pm25_band_accuracy": "Presentation-only agreement of predicted and observed PM2.5 concentration bands.",
+  "pm25_band_edges_ug_m3": [
+    0,
+    30,
+    60,
+    90,
+    120,
+    250,
+    "infinity"
+  ],
+  "causal_interpretation": "None; these are nuisance prediction and diagnostic metrics, not causal effect metrics."
+}
