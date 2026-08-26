@@ -1,0 +1,16 @@
+[
+  {
+    "split": "locked_test",
+    "n": 323,
+    "selected_threshold": 0.4032887677842406,
+    "selected_quantile": 0.7999999999999998,
+    "segmented_r2": 0.7555030418956294,
+    "segmented_rmse": 33.928113822065484,
+    "segmented_mae": 25.153729336198182,
+    "linear_r2": 0.7547186372713847,
+    "linear_rmse": 33.98249498541692,
+    "linear_mae": 25.222825318759003,
+    "rmse_improvement_linear_minus_segmented": 0.0543811633514366,
+    "controls": 17
+  }
+]

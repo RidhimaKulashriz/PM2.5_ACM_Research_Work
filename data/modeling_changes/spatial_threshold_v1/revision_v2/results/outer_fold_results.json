@@ -1,0 +1,67 @@
+[
+  {
+    "outer_fold": 1,
+    "selected_quantile": 0.7999999999999998,
+    "selected_threshold": 0.4087294612807173,
+    "inner_cv_rmse": 38.260476796215656,
+    "segmented_rmse": 30.185999377020504,
+    "linear_rmse": 30.5453473520501,
+    "segmented_mae": 23.58518484196298,
+    "linear_mae": 23.917758684788097,
+    "rmse_improvement_linear_minus_segmented": 0.3593479750295962,
+    "n_validation": 232,
+    "stations_validation": 7
+  },
+  {
+    "outer_fold": 2,
+    "selected_quantile": 0.7499999999999998,
+    "selected_threshold": 0.3662189694029719,
+    "inner_cv_rmse": 33.96219100298231,
+    "segmented_rmse": 38.62541024842844,
+    "linear_rmse": 38.56449794043047,
+    "segmented_mae": 29.226014999297742,
+    "linear_mae": 29.223790298137324,
+    "rmse_improvement_linear_minus_segmented": -0.0609123079979667,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "outer_fold": 3,
+    "selected_quantile": 0.7499999999999998,
+    "selected_threshold": 0.3640742079235522,
+    "inner_cv_rmse": 36.384843511868034,
+    "segmented_rmse": 31.057715081401465,
+    "linear_rmse": 31.196541076916574,
+    "segmented_mae": 24.95415500631975,
+    "linear_mae": 25.13970464495212,
+    "rmse_improvement_linear_minus_segmented": 0.1388259955151127,
+    "n_validation": 268,
+    "stations_validation": 7
+  },
+  {
+    "outer_fold": 4,
+    "selected_quantile": 0.2,
+    "selected_threshold": 0.2211064475959326,
+    "inner_cv_rmse": 36.04975470467587,
+    "segmented_rmse": 49.017934463719946,
+    "linear_rmse": 47.705624301863246,
+    "segmented_mae": 36.541923004415146,
+    "linear_mae": 35.70721833736737,
+    "rmse_improvement_linear_minus_segmented": -1.3123101618567006,
+    "n_validation": 266,
+    "stations_validation": 7
+  },
+  {
+    "outer_fold": 5,
+    "selected_quantile": 0.7499999999999998,
+    "selected_threshold": 0.388653133290097,
+    "inner_cv_rmse": 43.97540869890773,
+    "segmented_rmse": 36.62971008075641,
+    "linear_rmse": 36.69782066228818,
+    "segmented_mae": 28.641742352468487,
+    "linear_mae": 28.48467181601724,
+    "rmse_improvement_linear_minus_segmented": 0.0681105815317693,
+    "n_validation": 258,
+    "stations_validation": 7
+  }
+]

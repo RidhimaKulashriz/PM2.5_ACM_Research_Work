@@ -1,0 +1,80 @@
+[
+  {
+    "quantile": 0.2,
+    "threshold": 0.2140924745289662,
+    "inner_cv_rmse": 37.29241339760502,
+    "inner_cv_rmse_std": 7.4526947475020675
+  },
+  {
+    "quantile": 0.25,
+    "threshold": 0.2257920730742598,
+    "inner_cv_rmse": 37.27857382607067,
+    "inner_cv_rmse_std": 7.418053745543696
+  },
+  {
+    "quantile": 0.3,
+    "threshold": 0.2365022069433429,
+    "inner_cv_rmse": 37.23995920812173,
+    "inner_cv_rmse_std": 7.354960785974585
+  },
+  {
+    "quantile": 0.35,
+    "threshold": 0.2483927919794929,
+    "inner_cv_rmse": 37.20409243354912,
+    "inner_cv_rmse_std": 7.310682236290153
+  },
+  {
+    "quantile": 0.3999999999999999,
+    "threshold": 0.2624109884403215,
+    "inner_cv_rmse": 37.12090369618197,
+    "inner_cv_rmse_std": 7.198285734203377
+  },
+  {
+    "quantile": 0.4499999999999999,
+    "threshold": 0.2725904202586123,
+    "inner_cv_rmse": 37.05675002708332,
+    "inner_cv_rmse_std": 7.103829423873072
+  },
+  {
+    "quantile": 0.4999999999999999,
+    "threshold": 0.2840851039793751,
+    "inner_cv_rmse": 36.94977859468181,
+    "inner_cv_rmse_std": 6.936146390371836
+  },
+  {
+    "quantile": 0.5499999999999999,
+    "threshold": 0.2972219309062529,
+    "inner_cv_rmse": 36.82927708069618,
+    "inner_cv_rmse_std": 6.751056807362385
+  },
+  {
+    "quantile": 0.5999999999999999,
+    "threshold": 0.310264152091036,
+    "inner_cv_rmse": 36.6710320323528,
+    "inner_cv_rmse_std": 6.515006632550867
+  },
+  {
+    "quantile": 0.6499999999999999,
+    "threshold": 0.3277740546773144,
+    "inner_cv_rmse": 36.474031953389336,
+    "inner_cv_rmse_std": 6.2360794182506245
+  },
+  {
+    "quantile": 0.7,
+    "threshold": 0.3470358337119942,
+    "inner_cv_rmse": 36.35104089709844,
+    "inner_cv_rmse_std": 6.0790914207455415
+  },
+  {
+    "quantile": 0.7499999999999998,
+    "threshold": 0.3772346605410601,
+    "inner_cv_rmse": 36.27264029050032,
+    "inner_cv_rmse_std": 6.003250504242314
+  },
+  {
+    "quantile": 0.7999999999999998,
+    "threshold": 0.4032887677842406,
+    "inner_cv_rmse": 36.26604090419222,
+    "inner_cv_rmse_std": 6.0299955858283765
+  }
+]
