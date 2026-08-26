@@ -49,3 +49,14 @@ The four static figures, report, input hashes, JSON mirrors, visual review, and 
 ## Reproducibility
 
 Run `python data/modeling_changes/spatial_threshold_v1/run_spatial_threshold.py` followed by `python data/modeling_changes/spatial_threshold_v1/validate_spatial_threshold.py` from the repository root. Outputs are isolated under `data/modeling_changes/spatial_threshold_v1/`.
+
+
+## 2026-08-26 — Corrected nested threshold analysis revision v2
+
+The initial threshold screen was revised after review. The original screen selected NDVI 0.377235 near the 0.75 training quantile, but the same quantile was selected in only 6% of 100 station-bootstrap repetitions.
+
+The corrected package is under `data/modeling_changes/spatial_threshold_v1/revision_v2/`. It uses nested station-grouped validation: each outer station fold selects a breakpoint using only outer-training stations and four-fold inner grouped CV, then evaluates the segmented and no-break Ridge specifications on unseen stations. The central candidate grid is training quantiles 0.20–0.80. Full-training selection chose NDVI 0.403289 near the 0.80 training quantile.
+
+Across 100 station-bootstrap repetitions, modal breakpoint-quantile stability was 31%, below the 50% support rule. Outer-fold segmented RMSE was 37.103354 µg/m³ versus 36.941966 µg/m³ for the no-break model, so mean segmented-minus-linear RMSE improvement was -0.161388 µg/m³. The locked-test segmented R² was 0.755503 versus 0.754719 for the no-break model. The corrected conclusion is that no stable threshold is identified; the result is predictive/associational only and is not a policy, causal, or required-greenery threshold. Validator status: PASS; protected input hashes matched.
+
+The README now points to the corrected revision and its reproducibility commands. The original screen remains retained for auditability.
