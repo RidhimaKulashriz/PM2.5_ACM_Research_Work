@@ -99,7 +99,7 @@ Validation scripts are provided for the base DML, robustness package, pre-treatm
 
 The attachment audit records missingness by split, variable domain, station, and treatment. It also logs cross-fitted nuisance-model RMSE, MAE, and R2, residual orthogonality correlation, mean orthogonal score, and a fixed PM2.5 concentration-band agreement metric for presentation readability. The band metric is descriptive only and is not an official AQI accuracy measure.
 
-Forward-fill, backward-fill, linear interpolation, and inverse-distance imputation are not applied automatically because imputing observed outcomes or treatments can change the causal estimand and introduce artificial temporal or spatial signal. Threshold extraction is also deferred: the current partially linear DML estimator targets a constant marginal effect, whereas thresholds require a separate nonlinear dose-response specification and overlap analysis.
+Forward-fill, backward-fill, linear interpolation, and inverse-distance imputation are not applied automatically because imputing observed outcomes or treatments can change the causal estimand and introduce artificial temporal or spatial signal. Threshold analysis is handled separately from the constant-effect DML estimand through a nested, station-grouped predictive breakpoint screen. It remains associational and does not establish a causal dose-response threshold.
 
 The attachment-to-repository implementation map is documented in `data/modeling_changes/dml_v3/attachment_implementation_scope.md`.
 
@@ -150,9 +150,9 @@ The spatial model uses the locked LightGBM predictive configuration with five-fo
 | LightGBM locked-test RMSE | 18.814873 µg/m³ |
 | LightGBM locked-test MAE | 9.973572 µg/m³ |
 
-The threshold work is a separate predictive breakpoint screen for `sentinel2_ndvi_mean_1000m`. It evaluates 17 pre-specified training quantiles from 0.10 to 0.90 using a piecewise-linear Ridge model and station-grouped training CV. The selected training breakpoint is NDVI **0.377235**, approximately the 0.75 training quantile. Its locked-test diagnostic is R² **0.742283**, RMSE **34.833294 µg/m³**, and MAE **25.690121 µg/m³**. However, the same quantile was selected in only 6% of 100 station-bootstrap repetitions, so the frozen stability rule concludes that **no stable threshold is identified**.
+The threshold work is a separate predictive breakpoint screen for `sentinel2_ndvi_mean_1000m`. The corrected revision uses nested station-grouped cross-validation: each outer fold selects the breakpoint using only its outer-training stations and four-fold inner grouped CV, then evaluates the segmented and no-break models on unseen stations. The candidate grid is restricted to training quantiles 0.20–0.80. Full-training selection chose NDVI **0.403289**, approximately the 0.80 training quantile. In 100 station-bootstrap repetitions, the modal selected quantile had only **31%** stability. The outer segmented model was not better than the no-break model: mean segmented RMSE **37.103354** versus linear RMSE **36.941966 µg/m³**, an improvement of **−0.161388 µg/m³**. Therefore, the corrected frozen rule concludes that **no stable threshold is identified**.
 
-The threshold result must not be described as “the amount of greenery required,” a policy threshold, or a causal dose-response effect. The complete contract, output tables, input hashes, report, validator, and visual review are stored in `data/modeling_changes/spatial_threshold_v1/`.
+The threshold result must not be described as “the amount of greenery required,” a policy threshold, or a causal dose-response effect. The original screen and corrected nested revision are retained for auditability. The corrected contract, code, output tables, input hashes, report, and validator are stored in `data/modeling_changes/spatial_threshold_v1/revision_v2/`.
 
 ![Station-supported predicted PM₂.₅ surface](data/modeling_changes/spatial_threshold_v1/results/plots/01_station_supported_surface.png)
 
@@ -160,7 +160,7 @@ The threshold result must not be described as “the amount of greenery required
 
 ![Predictive threshold screen](data/modeling_changes/spatial_threshold_v1/results/plots/03_threshold_cv.png)
 
-*Pre-specified breakpoint screen selected by training station-grouped CV; the breakpoint is not a causal vegetation threshold.*
+*Nested station-grouped predictive breakpoint screen; no stable threshold was identified and the breakpoint is not a causal vegetation threshold.*
 
 ## Reproduce the analysis
 
@@ -185,6 +185,8 @@ jupyter nbconvert --to notebook --execute notebooks/baseline_regression_models_v
 python data/modeling_changes/baseline_predictive_v1/validate_baseline.py
 python data/modeling_changes/spatial_threshold_v1/run_spatial_threshold.py
 python data/modeling_changes/spatial_threshold_v1/validate_spatial_threshold.py
+python data/modeling_changes/spatial_threshold_v1/revision_v2/threshold_revision_v2.py
+python data/modeling_changes/spatial_threshold_v1/revision_v2/validate_threshold_revision_v2.py
 ```
 
 ## Pull request
